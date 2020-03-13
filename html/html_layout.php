@@ -43,4 +43,24 @@ class HtmlColumn extends HtmlQuery
     }
 }
 
+class HtmlCenter extends HtmlComponent
+{
+    private $Item;
+
+    public function __construct() {
+        parent::__construct();
+        $this
+        ->AddStyleItem("margin: 0 auto;");
+    }
+
+    public function SetItem($item) {
+        $this->Item = $item;
+        return $this;
+    }
+
+    public function Generate() {
+        return "<div".$this->GenerateArgs().">".$this->Item->Generate()."</div>";
+    }
+}
+
 ?>
