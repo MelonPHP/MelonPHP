@@ -117,7 +117,7 @@ class HtmlBuilder extends HtmlBase
     }
 }
 
-abstract class HtmlElement
+abstract class HtmlElement extends HtmlBase
 {
     protected $Context;
 
@@ -131,6 +131,10 @@ abstract class HtmlElement
 
     public static function RunOf($item) {
         echo $item->Generate();
+    }
+
+    public function Generate() {
+        return $this->Build()->Generate();
     }
 
     abstract public function Build();

@@ -21,7 +21,7 @@ class HtmlTable extends HtmlComponent
             $slines .= $line->Generate();
         }
 
-        return "<table".$this->GenerateArgs().">".$slines."</tr>";
+        return "<table".$this->GenerateArgs().">".$slines."</table>";
     }
 }
 

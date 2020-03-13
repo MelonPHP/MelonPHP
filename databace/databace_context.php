@@ -24,6 +24,9 @@ class ExampleDatabace extends DatabaceBase
     public function TestCollection() {
         return new Table($this->Data[0], $this->Data[1], $this->Data[2], "test");
     } 
+    public function ExampleCollection() {
+        return new Table($this->Data[0], $this->Data[1], $this->Data[2], "example");
+    } 
 }
 
 class Table
