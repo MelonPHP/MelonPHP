@@ -1,10 +1,6 @@
 <?php
 
-require_once("html/html_core.php");
-require_once("html/html_builder.php");
-require_once("html/html_label.php");
-require_once("html/html_document.php");
-require_once("html/html_layout.php");
+require_once("html/html.php");
 
 $title = new HtmlBuilder(function () {
   // example var in builder

@@ -43,8 +43,8 @@ abstract class HtmlComponent extends HtmlBase
             if (!$item->IsEmpty())
                 $squery .= $item->Generate()." ";
         }
-        if (strlen($squery) > 0)
-            return " ".$squery;
+        if (strlen($squery) > 0) 
+            return " ".(mb_substr($squery, 0, strlen($squery) - 3))."\"";
         else
             return null;
     }
@@ -71,6 +71,11 @@ class HtmlArgument
         return $this;
     }
 
+    public function ClearItemQuery() {
+        $this->ItemsQuery = array();
+        return $this;
+    }
+
     public function Generate() {
         $squery = "";
         foreach ($this->ItemsQuery as &$item) {
@@ -83,16 +88,74 @@ class HtmlArgument
     }
 }
 
+class HtmlBuilder extends HtmlBase
+{
+    private $Function;
+    private $Arg = null;
+
+    public function __construct() {
+        $numargs = func_num_args();
+        $args = func_get_args();
+
+        if ($numargs == 2) {
+            $this->Arg = $args[0];
+            $this->Function = $args[1];
+        }
+        else if ($numargs == 1) {
+            $this->Function = $args[0];
+        }
+        else
+            throw new Exception("bad ciinstructor args");
+    }
+    
+    public function Generate() {
+        if ($this->Arg != null)
+            return call_user_func($this->Function, $this->Arg)->Generate();
+        else
+            return call_user_func($this->Function, array())->Generate();
+        
+    }
+}
+
 abstract class HtmlElement
 {
-    abstract function Build();
+    protected $Context;
 
-    function Run() {
-        echo $this->Build()->Generate();
+    public function __construct() {
+        $this->Context = new HtmlContext($this);
     }
 
-    static function RunOf($item) {
+    public function Run() {
+        HtmlElement::RunOf($this->Build());
+    }
+
+    public static function RunOf($item) {
         echo $item->Generate();
+    }
+
+    abstract public function Build();
+}
+
+abstract class HtmlStreamElement extends HtmlElement
+{
+
+}
+
+class HtmlContext
+{
+    private $Id;
+    private $Element;
+    public function __construct($element) {
+        $this->Id = random_int(0, 10000000);
+        $this->Element = $element;
+    }
+
+    public function UpdateState() {
+        header("Refresh:0");
+    }
+
+    public function GetId() {
+        return $this->Id;
     }
 }
 
