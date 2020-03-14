@@ -12,6 +12,12 @@ class HtmlText extends HtmlComponent
     }
 
     public function Generate() {
+        $this
+        ->AddStyleItem("padding: 0px") 
+        ->AddStyleItem("margin: 0px")
+        ->AddStyleItem("text-align: left")
+        ->AddStyleItem("font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif");
+
         return "<p".$this->GenerateArgs().">".$this->Text."</p>";
     }
 }

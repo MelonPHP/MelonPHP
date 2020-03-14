@@ -32,7 +32,7 @@ class ExampleDatabace extends DatabaceBase
 class Table
 {
     private $Client;
-    private $IsOpen;
+    private $IsOpen = false;
 
     public function Table($host, $user, $password, $table) {
         $this->Connect($host, $user, $password, $table);
@@ -43,32 +43,48 @@ class Table
     }
 
     private function Connect($host, $user, $password, $table) {
-        $this->Client = mysqli_connect($host, $user, $password, $table);
-
-        $this->IsOpen = !!$this->Client;
+        try {
+            $this->Client = mysqli_connect($host, $user, $password, $table);
+            $this->IsOpen = !!$this->Client;
+        } catch (RuntimeException $e) {
+            $this->IsOpen = false;
+        }
     }
 
     public function Close() {
-        mysqli_close($this->Client);
+        if ($this->IsOpen)
+            mysqli_close($this->Client);
         $this->IsOpen = false;
     }
 
     public function Send($request) {
-        return new TableReader(mysqli_query($this->Client, $request));
+        try {
+            return new TableReader(mysqli_query($this->Client, $request), $this->IsOpen);
+        } catch (\Throwable $th) {
+            return new TableReader(null, false);
+        }
     }
 }
 
 class TableReader {
     private $Result;
-    private $IsCan;
-    private $Data;
+    private $IsCan = false;
+    private $Data = array();
 
-    public function TableReader($result) {
+    public function TableReader($result, $iscan) {
         $this->Result = $result;
+        $this->IsCan = $iscan;
+    }
+
+    public function IsCan() {
+        return $this->IsCan;
     }
 
     public function Read() {
-        return $this->Data = mysqli_fetch_assoc($this->Result);
+        if ($this->IsCan)
+            return $this->Data = mysqli_fetch_assoc($this->Result);
+        else
+            return false;
     }
 
     public function Get() {

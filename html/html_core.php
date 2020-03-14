@@ -13,7 +13,7 @@ abstract class HtmlComponent extends HtmlBase
     private $ClassArgument;
 
     public function AddStyleItem($string) {
-        $this->StyleArgument->AddItem($string);
+        $this->StyleArgument->AddItem($string.";");
         return $this;
     }
 
@@ -130,7 +130,7 @@ abstract class HtmlElement extends HtmlBase
     }
 
     public static function RunOf($item) {
-        echo $item->Generate();
+        echo @$item->Generate();
     }
 
     public function Generate() {
