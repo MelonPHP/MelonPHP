@@ -8,7 +8,7 @@ class HtmlText extends HtmlStaticElement
   
   public function __construct() {
     parent::InitializeHtml();
-    $this->AddClassItem("base_text");
+    $this->AddClassItem("text_base");
   }
 
   public function SetText(string $string) : HtmlText {

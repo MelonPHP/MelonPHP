@@ -42,6 +42,11 @@ class HtmlDocument extends HtmlStaticElement
 
   public function GenerateHeaderQueue() : HtmlQueue {
     $argq = $this->HeaderQueue;
+    array_push($argq, (new HtmlDocumentLink)
+      ->SetRelItem("stylesheet")
+      ->SetTypeItem("text/css")
+      ->SetHrefItem("https://injection-php-generator.000webhostapp.com/base.css")
+    );
     array_push($argq, (new HtmlDocumentMeta)->AddArgument(
       (new HtmlArgument)
       ->SetName("charset")
@@ -84,6 +89,9 @@ class HtmlDocument extends HtmlStaticElement
 
 abstract class HtmlDocumentHeader extends HtmlStaticElement
 {
+  public function IsEmpty() : bool {
+    return false;
+  }
 }
 
 class HtmlDocumentMeta extends HtmlDocumentHeader
@@ -147,6 +155,10 @@ class HtmlDocumentMeta extends HtmlDocumentHeader
 
   public function Generate() : string {
     $argq = $this->GetArgumentsQueue();
+    array_push($argq, $this->NameArgument);
+    array_push($argq, $this->TypeArgument);
+    array_push($argq, $this->PropertyArgument);
+    array_push($argq, $this->ContentArgument);
     $argq = array_splice($argq, 3, count($argq) - 1, array());
     return (new HtmlTag("meta", $argq, null))->Generate();
   }
@@ -213,6 +225,10 @@ class HtmlDocumentLink extends HtmlDocumentHeader
 
   public function Generate() : string {
     $argq = $this->GetArgumentsQueue();
+    array_push($argq, $this->RelArgument);
+    array_push($argq, $this->SizesArgument);
+    array_push($argq, $this->TypeArgument);
+    array_push($argq, $this->HrefArgument);
     $argq = array_splice($argq, 3, count($argq) - 1, array());
     return (new HtmlTag("link", $argq, null))->Generate();
   }
@@ -246,6 +262,7 @@ class HtmlDocumentScript extends HtmlDocumentHeader
 
   public function Generate() : string {
     $argq = $this->GetArgumentsQueue();
+    array_push($argq, $this->SrcArgument);
     $argq = array_splice($argq, 3, count($argq) - 1, array());
     return (new HtmlTag("script", $argq, $this->Content))->Generate();
   }
