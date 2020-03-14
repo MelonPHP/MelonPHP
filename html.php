@@ -1,8 +1,8 @@
 <?php
 
-require_once("html_core.php");
-require_once("html_label.php"); 
-require_once("html_layout.php");
-require_once("html_document.php");
+require_once("https://ingective.github.io/HTMLToPHP/html_core.php");
+require_once("https://ingective.github.io/HTMLToPHP/html_label.php"); 
+require_once("https://ingective.github.io/HTMLToPHP/html_layout.php");
+require_once("https://ingective.github.io/HTMLToPHP/html_document.php");
 
 ?>

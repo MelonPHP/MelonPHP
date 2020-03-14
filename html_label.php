@@ -1,6 +1,6 @@
 <?php
 
-require_once("html_core.php");
+require_once("https://ingective.github.io/HTMLToPHP/html_core.php");
 
 class HtmlText extends HtmlStaticElement
 {
