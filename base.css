@@ -89,6 +89,10 @@ acronym {
   border:0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .text_base {
   font-size: 14px;
   padding: 0px;
@@ -106,4 +110,18 @@ acronym {
 
 .base_h_scroll_container {
   overflow-y: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.base_column {
+  float: left;
+}
+
+.base_row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
