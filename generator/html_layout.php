@@ -38,7 +38,11 @@ class HtmlColumn extends HtmlQueue
   private function GenerateQueue() : string {
     $sQueue = "";
     foreach ($this->GetItems() as $value) {
+<<<<<<< HEAD:generator/html_layout.php
       if (is_a($value, "HtmlComponent") || is_a($value, "HtmlBuilder")) {
+=======
+      if (is_a($value, "HtmlComponent")) {
+>>>>>>> d8fe7610dcb42bf1869a47acf2101b306aae25df:html_layout.php
         $value = $value->Build();
       }
         $value->AddClassItem("base_table_item");
@@ -66,7 +70,11 @@ class HtmlRow extends HtmlQueue
   private function GenerateQueue() : string {
     $sQueue = "";
     foreach ($this->GetItems() as $value) {
+<<<<<<< HEAD:generator/html_layout.php
       if (is_a($value, "HtmlComponent") || is_a($value, "HtmlBuilder")) {
+=======
+      if (is_a($value, "HtmlComponent")) {
+>>>>>>> d8fe7610dcb42bf1869a47acf2101b306aae25df:html_layout.php
         $value = $value->Build();
       }
         $value->AddClassItem("base_table_item");
