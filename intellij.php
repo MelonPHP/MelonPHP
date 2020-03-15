@@ -14,15 +14,15 @@ abstract class HtmlBase extends Html
   abstract protected function InitializeHtml();
 }
 
-abstract class HtmlStaticElement extends HtmlBase
+abstract class HtmlElement extends HtmlBase
 {
   abstract protected function InitializeHtml();
 
-  abstract public function AddClassItem(string $string) : HtmlStaticElement;
+  abstract public function AddClassItem(string $string) : HtmlElement;
 
-  abstract public function AddStyleItem(string $stringName, string $stringData) : HtmlStaticElement;
+  abstract public function AddStyleItem(string $stringName, string $stringData) : HtmlElement;
 
-  abstract public function AddArgument(HtmlArgument $item) : HtmlStaticElement;
+  abstract public function AddArgument(HtmlArgument $item) : HtmlElement;
 
   abstract public function &GetClassArgumentLink() : HtmlArgument;
 
@@ -88,7 +88,7 @@ abstract class HtmlContext
   abstract public function GetId() : string;
 }
 
-abstract class HtmlDocument extends HtmlStaticElement
+abstract class HtmlDocument extends HtmlElement
 {
   abstract public function __construct();
 
@@ -107,7 +107,7 @@ abstract class HtmlDocument extends HtmlStaticElement
   abstract public function Generate() : string;
 }
 
-abstract class HtmlDocumentHeader extends HtmlStaticElement
+abstract class HtmlDocumentHeader extends HtmlElement
 {
   abstract public function IsEmpty() : bool;
 }
@@ -171,7 +171,7 @@ abstract class HtmlDocumentScript extends HtmlDocumentHeader
   abstract public function Generate() : string;
 }
 
-abstract class HtmlText extends HtmlStaticElement
+abstract class HtmlText extends HtmlElement
 {
   abstract public function __construct();
 
@@ -182,7 +182,7 @@ abstract class HtmlText extends HtmlStaticElement
   abstract public function Generate() : string;
 }
 
-abstract class HtmlQueue extends HtmlStaticElement
+abstract class HtmlQueue extends HtmlElement
 {
   abstract public function __construct();
 
@@ -191,6 +191,51 @@ abstract class HtmlQueue extends HtmlStaticElement
   abstract public function GetItems() : array;
 
   abstract public function Generate() : string;
+}
+
+abstract class HtmlColumn extends HtmlQueue
+{
+  abstract public function __construct();
+
+  abstract public function Generate() : string;
+}
+
+abstract class HtmlRow extends HtmlQueue
+{
+  abstract public function __construct();
+
+  abstract public function Generate() : string;
+}
+
+abstract class HtmlContainer extends HtmlElement
+{
+  abstract public function __construct();
+
+  abstract public function SetItem(Html $item) : HtmlContainer;
+
+  abstract public function GetItem() : Html;
+
+  abstract public function Generate() : string;
+}
+
+abstract class HtmlVerticalScrollContainer extends HtmlContainer
+{
+  abstract public function __construct();
+}
+
+abstract class HtmlHorizontalScrollContainer extends HtmlContainer
+{
+  abstract public function __construct();
+}
+
+abstract class HtmlPositionContainer extends HtmlContainer
+{
+  abstract public function __construct();
+}
+
+abstract class HtmlCenterContainer extends HtmlContainer
+{
+  abstract public function __construct();
 }
 
 ?>

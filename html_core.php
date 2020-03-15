@@ -20,7 +20,7 @@ abstract class HtmlBase extends Html
   }
 }
 
-abstract class HtmlStaticElement extends HtmlBase
+abstract class HtmlElement extends HtmlBase
 {
   private $ArgumentsQueue = array();
 
@@ -35,17 +35,17 @@ abstract class HtmlStaticElement extends HtmlBase
     $this->IdArgument = (new HtmlArgument)->SetName("id")->AddItem($this->GetId());
   }
 
-  public function AddClassItem(string $string) : HtmlStaticElement {
+  public function AddClassItem(string $string) : HtmlElement {
     $this->ClassArgument->AddItem($string);
     return $this;
   }
 
-  public function AddStyleItem(string $stringName, string $stringData) : HtmlStaticElement {
+  public function AddStyleItem(string $stringName, string $stringData) : HtmlElement {
     $this->StyleArgument->AddItem($stringName.": ".$stringData.";");
     return $this;
   }
 
-  public function AddArgument(HtmlArgument $item) : HtmlStaticElement {
+  public function AddArgument(HtmlArgument $item) : HtmlElement {
     array_push($this->ArgumentsQueue, $item);
     return $this;
   }

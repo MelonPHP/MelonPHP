@@ -3,7 +3,7 @@
 require_once("https://ingective.github.io/HTMLToPHP/html_core.php");
 require_once("https://ingective.github.io/HTMLToPHP/html_layout.php");
 
-class HtmlDocument extends HtmlStaticElement
+class HtmlDocument extends HtmlElement
 {
   private $Title = "HTMLToPHP Framework";
   private $Language = "en";
@@ -45,7 +45,7 @@ class HtmlDocument extends HtmlStaticElement
     array_push($argq, (new HtmlDocumentLink)
       ->SetRelItem("stylesheet")
       ->SetTypeItem("text/css")
-      ->SetHrefItem("https://injection-php-generator.000webhostapp.com/base.css")
+      ->SetHrefItem("https://ingective.github.io/HTMLToPHP/base.css")
     );
     array_push($argq, (new HtmlDocumentMeta)->AddArgument(
       (new HtmlArgument)
@@ -87,7 +87,7 @@ class HtmlDocument extends HtmlStaticElement
   }
 }
 
-abstract class HtmlDocumentHeader extends HtmlStaticElement
+abstract class HtmlDocumentHeader extends HtmlElement
 {
   public function IsEmpty() : bool {
     return false;

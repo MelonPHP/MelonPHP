@@ -90,5 +90,20 @@ acronym {
 }
 
 .text_base {
-  font-size: 90px;
+  font-size: 14px;
+  padding: 0px;
+  margin: 0pc;
+  font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif
+}
+
+.base_center_container {
+  margin: auto;
+}
+
+.base_v_scroll_container {
+  overflow-y: auto;
+}
+
+.base_h_scroll_container {
+  overflow-y: auto;
 }
