@@ -1,7 +1,7 @@
 <?php
 
-require_once("https://ingective.github.io/HTMLToPHP/html_core.php");
-require_once("https://ingective.github.io/HTMLToPHP/html_layout.php");
+require_once("html_core.php");
+require_once("html_layout.php");
 
 class HtmlDocument extends HtmlElement
 {
@@ -36,7 +36,7 @@ class HtmlDocument extends HtmlElement
   }
 
   public function AddHeader(HtmlDocumentHeader $item) : HtmlDocument {
-    $this->Body = $item;
+    array_push($this->HeaderQueue, $item);
     return $this;
   }
 

@@ -94,11 +94,15 @@ class HtmlBuilder extends Html
       throw new Exception("bad HtmlBuilder construct");
   }
 
-  public function Generate() : string {
+  public function Build() : Html {
     if ($this->Arguments != null)
-      return call_user_func($this->Function, $this->Arguments)->Generate();
+      return call_user_func($this->Function, $this->Arguments);
     else
-      return call_user_func($this->Function, array())->Generate();
+      return call_user_func($this->Function, array());
+  }
+
+  public function Generate() : string {
+    return $this->Build()->Generate();
   }
 }
 

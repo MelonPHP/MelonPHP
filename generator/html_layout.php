@@ -1,6 +1,6 @@
 <?php
 
-require_once("https://ingective.github.io/HTMLToPHP/html_core.php");
+require_once("html_core.php");
 
 class HtmlQueue extends HtmlElement
 {
@@ -32,13 +32,26 @@ class HtmlColumn extends HtmlQueue
 {
   public function __construct() {
     parent::__construct();
+    $this->AddClassItem("base_table_column");
+  }
+
+  private function GenerateQueue() : string {
+    $sQueue = "";
+    foreach ($this->GetItems() as $value) {
+      if (is_a($value, "HtmlComponent") || is_a($value, "HtmlBuilder")) {
+        $value = $value->Build();
+      }
+        $value->AddClassItem("base_table_item");
+      $sQueue .= $value->Generate();
+    }
+    return $sQueue;
   }
 
   public function Generate() : string {
     return (new HtmlTag(
       "div", 
       $this->GetArgumentsQueue(), 
-      parent::Generate()
+      $this->GenerateQueue()
     ))->Generate();
   }
 }
@@ -47,11 +60,16 @@ class HtmlRow extends HtmlQueue
 {
   public function __construct() {
     parent::__construct();
+    $this->AddClassItem("base_table_row");
   }
 
   private function GenerateQueue() : string {
     $sQueue = "";
     foreach ($this->GetItems() as $value) {
+      if (is_a($value, "HtmlComponent") || is_a($value, "HtmlBuilder")) {
+        $value = $value->Build();
+      }
+        $value->AddClassItem("base_table_item");
       $sQueue .= $value->Generate();
     }
     return $sQueue;
