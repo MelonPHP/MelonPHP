@@ -71,7 +71,7 @@ class HtmlDocument extends HtmlElement
       (new HtmlQueue)
       ->AddItem(
         new HtmlTag(
-          "header",
+          "head",
           array(),
           $this->GenerateHeaderQueue()->Generate()
         )
