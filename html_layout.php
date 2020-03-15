@@ -10,7 +10,7 @@ class HtmlQueue extends HtmlElement
     parent::InitializeHtml();
   }
 
-  public function AddItem(Html $item) : Html {
+  public function AddItem(Html $item) : HtmlQueue {
     array_push($this->ItemsQueue, $item);
     return $this;
   }
