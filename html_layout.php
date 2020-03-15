@@ -32,7 +32,7 @@ class HtmlColumn extends HtmlQueue
 {
   public function GenerateQueue() : string {
     $sQueue = "";
-    foreach ($this->ItemsQueue as $value) {
+    foreach ($this->GetItems() as $value) {
       $value->AddClassItem("base_column");
       $sQueue .= $value->Generate();
     }
@@ -52,7 +52,7 @@ class HtmlRow extends HtmlQueue
 {
   public function GenerateQueue() : string {
     $sQueue = "";
-    foreach ($this->ItemsQueue as $value) {
+    foreach ($this->GetItems() as $value) {
       $value->AddClassItem("base_row");
       $sQueue .= $value->Generate();
     }
