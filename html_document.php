@@ -36,7 +36,7 @@ class HtmlDocument extends HtmlElement
   }
 
   public function AddHeader(HtmlDocumentHeader $item) : HtmlDocument {
-    $this->Body = $item;
+    array_push($this->HeaderQueue, $item);
     return $this;
   }
 

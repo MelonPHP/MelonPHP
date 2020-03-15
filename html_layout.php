@@ -32,13 +32,26 @@ class HtmlColumn extends HtmlQueue
 {
   public function __construct() {
     parent::__construct();
+    $this->AddClassItem("base_table_column");
+  }
+
+  private function GenerateQueue() : string {
+    $sQueue = "";
+    foreach ($this->GetItems() as $value) {
+      if (is_a($value, "HtmlComponent")) {
+        $value = $value->Build();
+      }
+        $value->AddClassItem("base_table_item");
+      $sQueue .= $value->Generate();
+    }
+    return $sQueue;
   }
 
   public function Generate() : string {
     return (new HtmlTag(
       "div", 
       $this->GetArgumentsQueue(), 
-      parent::Generate()
+      $this->GenerateQueue()
     ))->Generate();
   }
 }
@@ -47,11 +60,16 @@ class HtmlRow extends HtmlQueue
 {
   public function __construct() {
     parent::__construct();
+    $this->AddClassItem("base_table_row");
   }
 
   private function GenerateQueue() : string {
     $sQueue = "";
     foreach ($this->GetItems() as $value) {
+      if (is_a($value, "HtmlComponent")) {
+        $value = $value->Build();
+      }
+        $value->AddClassItem("base_table_item");
       $sQueue .= $value->Generate();
     }
     return $sQueue;

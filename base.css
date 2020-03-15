@@ -96,7 +96,7 @@ acronym {
 .text_base {
   font-size: 14px;
   padding: 0px;
-  margin: 0pc;
+  margin: 0px;
   font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif
 }
 
@@ -119,12 +119,20 @@ acronym {
   box-sizing: border-box;
 }
 
-.base_column {
-  float: left;
+.base_table_row {
+  display: -webkit-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: left;
 }
 
-.base_row:after {
-  content: "";
-  display: table;
-  clear: both;
+.base_table_column {
+  display: -webkit-flex;
+  display: flex;
+  align-items: left;
+	-webkit-flex-direction: column;
+  flex-direction: column;
+  justify-content: flex-start;
 }
