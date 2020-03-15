@@ -102,6 +102,9 @@ acronym {
 
 .base_center_container {
   margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .base_v_scroll_container {
