@@ -30,30 +30,28 @@ class HtmlQueue extends HtmlElement
 
 class HtmlColumn extends HtmlQueue
 {
-  public function GenerateQueue() : string {
-    $sQueue = "";
-    foreach ($this->GetItems() as &$value) {
-      $value->AddClassItem("base_column");
-      $sQueue .= $value->Generate();
-    }
-    return $sQueue;
+  public function __construct() {
+    parent::__construct();
   }
 
   public function Generate() : string {
     return (new HtmlTag(
       "div", 
       $this->GetArgumentsQueue(), 
-      $this->GenerateQueue()
+      parent::Generate()
     ))->Generate();
   }
 }
 
 class HtmlRow extends HtmlQueue
 {
-  public function GenerateQueue() : string {
+  public function __construct() {
+    parent::__construct();
+  }
+
+  private function GenerateQueue() : string {
     $sQueue = "";
-    foreach ($this->GetItems() as &$value) {
-      $value->AddClassItem("base_row");
+    foreach ($this->GetItems() as $value) {
       $sQueue .= $value->Generate();
     }
     return $sQueue;
