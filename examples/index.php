@@ -1,10 +1,6 @@
 <?php
 
-<<<<<<< HEAD
 require "generator/html.php";
-=======
-require "https://ingective.github.io/HTMLToPHP/html.php";
->>>>>>> d8fe7610dcb42bf1869a47acf2101b306aae25df
 
 class TitleBarButton extends HtmlComponent
 {
@@ -30,7 +26,6 @@ class TitleBarButton extends HtmlComponent
   }
 }
 
-<<<<<<< HEAD
 class ListCard extends HtmlComponent
 {
   private $Title;
@@ -70,20 +65,12 @@ $titleBar = new HtmlBuilder(function () {
   return (new HtmlContainer)
   ->AddStyleItem("width", "100%")
   ->AddStyleItem("z-index", "1")
-=======
-$titleBar = new HtmlBuilder(function () {
-  return (new HtmlContainer)
-  ->AddStyleItem("width", "100%")
->>>>>>> d8fe7610dcb42bf1869a47acf2101b306aae25df
   ->AddStyleItem("background-color", "white")
   ->AddStyleItem("box-shadow", "0 0 4px rgba(0,0,0,0.25)")
   ->SetItem(
     (new HtmlCenterContainer)
-<<<<<<< HEAD
     ->AddStyleItem("width", "100%")
     ->AddStyleItem("height", "100%")
-=======
->>>>>>> d8fe7610dcb42bf1869a47acf2101b306aae25df
     ->SetItem(
       (new HtmlRow)
       ->AddStyleItem("min-width", "600px")
@@ -94,7 +81,6 @@ $titleBar = new HtmlBuilder(function () {
   );
 });
 
-<<<<<<< HEAD
 $cardList = new HtmlBuilder(function () {
   $list = new HtmlColumn;
   for ($i=0; $i < 30; $i++) { 
@@ -111,9 +97,6 @@ $cardList = new HtmlBuilder(function () {
 });
 
 $page = new HtmlBuilder(array($titleBar, $cardList), function ($args) {
-=======
-$page = new HtmlBuilder(array($titleBar), function ($args) {
->>>>>>> d8fe7610dcb42bf1869a47acf2101b306aae25df
   return (new HtmlDocument)
   ->AddStyleItem("background-color", "#f7f7f7")
   ->AddHeader(
@@ -123,7 +106,6 @@ $page = new HtmlBuilder(array($titleBar), function ($args) {
     ->SetHrefItem("custom.css")
   )
   ->SetTitle("Test page")
-<<<<<<< HEAD
   ->SetBody(
     (new HtmlColumn)
     ->AddStyleItem("width", "100%")
@@ -132,9 +114,6 @@ $page = new HtmlBuilder(array($titleBar), function ($args) {
     ->AddItem($args[0])
     ->AddItem($args[1])
   );
-=======
-  ->SetBody($args[0]);
->>>>>>> d8fe7610dcb42bf1869a47acf2101b306aae25df
 });
 
 // its like main
