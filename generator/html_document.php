@@ -31,7 +31,11 @@ class HtmlDocument extends HtmlElement
   }
 
   public function SetBody(Html $item) : HtmlDocument {
-    $this->Body = $item;
+    $this->Body = (new HtmlContainer)
+    ->AddStyleItem("width", "100%")
+    ->AddStyleItem("height", "100%")
+    ->AddStyleItem("position", "fixed")
+    ->SetItem($item);
     return $this;
   }
 
@@ -45,7 +49,7 @@ class HtmlDocument extends HtmlElement
     array_push($argq, (new HtmlDocumentLink)
       ->SetRelItem("stylesheet")
       ->SetTypeItem("text/css")
-      ->SetHrefItem("https://ingective.github.io/HTMLToPHP/base.css")
+      ->SetHrefItem("http://localhost/test/generator/base.css")
     );
     array_push($argq, (new HtmlDocumentMeta)->AddArgument(
       (new HtmlArgument)

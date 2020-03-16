@@ -1,5 +1,6 @@
 {
   "path" : "",
   "version" : "1.0.0",
-  "version_type" : "development"
+  "version_type" : "development",
+  "license_id": "x"
 }

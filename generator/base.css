@@ -100,28 +100,11 @@ acronym {
   font-family: 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif
 }
 
-.base_center_container {
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.base_v_scroll_container {
-  overflow-y: auto;
-  overflow-x: none;
-}
-
-.base_h_scroll_container {
-  overflow-y: none;
-  overflow-x: auto;
-}
-
 * {
   box-sizing: border-box;
 }
 
-.base_table_row {
+.base_row {
   display: -webkit-flex;
 	display: flex;
 	-webkit-flex-direction: row;
@@ -130,11 +113,33 @@ acronym {
   align-items: left;
 }
 
-.base_table_column {
+.base_column {
   display: -webkit-flex;
   display: flex;
   align-items: left;
 	-webkit-flex-direction: column;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.base_container {
+  display: flex;
+}
+.base_container_center {
+  margin: auto;
+}
+
+.base_scroll_container_v {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.base_scroll_container_h {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.base_scroll_container {
+  overflow-y: auto;
+  overflow-x: auto;
 }

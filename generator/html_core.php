@@ -108,7 +108,7 @@ class HtmlBuilder extends Html
 
 abstract class HtmlComponent extends HtmlBase
 {
-  abstract function Build() : Html;
+  abstract function Build() /* html */;
 
   public function Generate() : string {
     return $this->Build()->Generate();
