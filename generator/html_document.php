@@ -31,11 +31,7 @@ class HtmlDocument extends HtmlElement
   }
 
   public function SetBody(Html $item) : HtmlDocument {
-    $this->Body = (new HtmlContainer)
-    ->AddStyleItem("width", "100%")
-    ->AddStyleItem("height", "100%")
-    ->AddStyleItem("position", "fixed")
-    ->SetItem($item);
+    $this->Body = $item;
     return $this;
   }
 

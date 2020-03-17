@@ -219,4 +219,15 @@ class HtmlContext
   }
 }
 
+class HtmlNullable extends HtmlElement
+{
+  public function __construct() {
+    $this->InitializeHtml();
+  }
+
+  public function Generate() : string {
+    return "";
+  }
+}
+
 ?>
