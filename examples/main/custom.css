@@ -1,0 +1,39 @@
+.top_bar {
+  z-index: 10;
+  position: fixed;
+  height: auto;
+  background-color: #ffffffd5;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1.6px 3.6px 0 rgba(0,0,0,.132), 0 0.3px 0.9px 0 rgba(0,0,0,.108);
+}
+
+.top_bar_item_link {
+  padding: 12px 15px;
+  text-decoration: none;
+}
+
+.top_bar_item_link:hover {
+  font-weight: 500;
+}
+
+.top_bar_item_text {
+  font-size: 16px;
+  color: black;
+}
+
+.top_bar_title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+@media only screen and (min-width: 600px) {
+  .top_bar_item_layout_state_mobile {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .top_bar_item_layout_state_desktop {
+    display: none;
+  }
+}

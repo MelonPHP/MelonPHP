@@ -32,7 +32,7 @@ abstract class HtmlElement extends HtmlBase
     parent::InitializeHtml();
     $this->StyleArgument = (new HtmlArgument)->SetName("style");
     $this->ClassArgument = (new HtmlArgument)->SetName("class");
-    $this->IdArgument = (new HtmlArgument)->SetName("id")->AddItem($this->GetId());
+    $this->IdArgument = (new HtmlArgument)->SetName("id");
   }
 
   public function AddClassItem(string $string) : HtmlElement {
@@ -60,7 +60,9 @@ abstract class HtmlElement extends HtmlBase
 
   protected function GetArgumentsQueue() : array {
     $argq = array();
-    array_push($argq, $this->IdArgument);
+    $idArg = $this->IdArgument;
+    $idArg->AddItem($this->Context->GetId());
+    array_push($argq, $idArg);
     array_push($argq, $this->ClassArgument);
     array_push($argq, $this->StyleArgument);
     foreach ($this->ArgumentsQueue as $item) {
@@ -168,6 +170,10 @@ class HtmlArgument extends Html
     return $this->ItemsQueue;
   }
 
+  public function ReverseItems() {
+    $this->ItemsQueue = array_reverse($this->ItemsQueue);
+  }
+
   public function RemoveItemByIndex(int $index) {
     array_splice($this->ItemsQueue, $index, 1, array());
   }
@@ -216,6 +222,10 @@ class HtmlContext
 
   public function GetId() : string {
     return $this->Id;
+  }
+
+  public function SetId(string $id) {
+    $this->Id = $id;
   }
 }
 

@@ -105,8 +105,8 @@ acronym {
 }
 
 .base_row {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   flex-shrink: 0;
   left: 0;
   flex: auto;
@@ -121,8 +121,8 @@ acronym {
 .base_column {
   flex-shrink: 0;
   left: 0;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   display: -webkit-flex;
   display: flex;
   flex: auto;
@@ -133,9 +133,9 @@ acronym {
 }
 
 .base_container {
-  display: flex;
-  width: auto;
-  height: auto;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .base_container_center {
   margin: auto;

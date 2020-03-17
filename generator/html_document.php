@@ -73,7 +73,7 @@ class HtmlDocument extends HtmlElement
         new HtmlTag(
           "head",
           array(),
-          $this->GenerateHeaderQueue()->Generate()
+          $this->GenerateHeaderQueue()->GetReverseQueue()->Generate()
         )
       )
       ->AddItem(
@@ -160,7 +160,11 @@ class HtmlDocumentMeta extends HtmlDocumentHeader
     array_push($argq, $this->PropertyArgument);
     array_push($argq, $this->ContentArgument);
     $argq = array_splice($argq, 3, count($argq) - 1, array());
-    return (new HtmlTag("meta", $argq, null))->Generate();
+    return (new HtmlTag(
+      "meta", 
+      array_reverse($argq), 
+      null
+    ))->Generate();
   }
 }
 
@@ -230,7 +234,11 @@ class HtmlDocumentLink extends HtmlDocumentHeader
     array_push($argq, $this->TypeArgument);
     array_push($argq, $this->HrefArgument);
     $argq = array_splice($argq, 3, count($argq) - 1, array());
-    return (new HtmlTag("link", $argq, null))->Generate();
+    return (new HtmlTag(
+      "link", 
+      $argq, 
+      null
+    ))->Generate();
   }
 }
 

@@ -20,6 +20,12 @@ class HtmlQueue extends HtmlElement
     return $this->ItemsQueue;
   }
 
+  public function GetReverseQueue() : HtmlQueue {
+    $c = $this;
+    $c->ItemsQueue = array_reverse($c->ItemsQueue);
+    return $c;
+  }
+
   public function Generate() : string {
     $sQueue = "";
     foreach ($this->ItemsQueue as $value) {
@@ -145,7 +151,7 @@ class HtmlContainer extends HtmlElement
     return $this;
   }
 
-  public function GetItem() {
+  public function GetItem() : Html {
     return $this->Item;
   }
 
