@@ -236,7 +236,7 @@ class HtmlNullable extends HtmlElement
   }
 
   public function Generate() : string {
-    return "";
+    return " ";
   }
 }
 

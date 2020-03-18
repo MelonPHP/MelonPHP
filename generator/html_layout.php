@@ -35,44 +35,12 @@ class HtmlQueue extends HtmlElement
   }
 }
 
-class HtmlMainAxisAligment
-{
-  const Center = "center";
-  const Start = "flex-start";
-  const End = "flex-end";
-  const Between = "space-between";
-  const Around = "space-around";  
-}
-
-class HtmlCrossAxisAligment
-{
-  const Center = "center";
-  const Start = "flex-start";
-  const End = "flex-end";
-  const Baseline = "baseline";
-  const Scretch = "stretch";
-}
 
 // Контейнер с очередью
-abstract class HtmlFlexQueue extends HtmlElement
+abstract class HtmlFlexQueue extends HtmlQueue
 {
-  private $ItemsQueue;
   private $MainAxisAlign = HtmlMainAxisAligment::Start;
   private $CrossAxisAlign = HtmlCrossAxisAligment::Start;
-
-  public function __construct() {
-    parent::InitializeHtml();
-    $this->ItemsQueue = new HtmlQueue;
-  }
-
-  public function AddItem(Html $item) : HtmlFlexQueue {
-    $this->ItemsQueue->AddItem($item);
-    return $this;
-  }
-
-  public function GetItems() {
-    return $this->ItemsQueue->GetItems();
-  }
 
   public function SetMainAligment($align) : HtmlFlexQueue {
     $this->MainAxisAlign = $align;
@@ -112,7 +80,7 @@ abstract class HtmlFlexQueue extends HtmlElement
     return (new HtmlTag(
       "div", 
       $argq, 
-      $this->ItemsQueue->Generate()
+      parent::Generate()
     ))->Generate();
   }
 
@@ -136,6 +104,181 @@ class HtmlRow extends HtmlFlexQueue
   }
 }
 
+abstract class HtmlColumnArgument extends Html
+{
+  
+}
+
+class HtmlColumnCustomArgument extends HtmlColumnArgument
+{
+  private $Value;
+
+  public function SetValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnCustomArgument {
+    $this->Value = $value;
+    return $this;
+  }
+
+  public function GetValue() {
+    return $this->Value;
+  }
+
+  public function Generate() : string {
+    if (is_a($this->Value, "HtmlColumnArgument")) {
+      return $this->Value->Generate();
+    }
+    else {
+      return $this->Value;
+    }
+  }
+}
+
+class HtmlColumnMinmaxArgument extends HtmlColumnArgument
+{
+  private $MinValue;
+  private $MaxValue;
+
+  public function SetMinValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnMinmaxArgument {
+    $this->MinValue = $value;
+    return $this;
+  }
+
+  public function GetMinValue() {
+    return $this->MinValue;
+  }
+
+  public function SetMaxValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnMinmaxArgument {
+    $this->MaxValue = $value;
+    return $this;
+  }
+
+  public function GetMaxValue() {
+    return $this->MaxValue;
+  }
+
+  public function Generate() : string {
+    $min = $this->MinValue;
+    $max = $this->MaxValue;
+    if (is_a($min, "HtmlColumnArgument")) {
+      $min = $min->Generate();
+    }
+    if (is_a($max, "HtmlColumnArgument")) {
+      $max = $max->Generate();
+    }
+    return "minmax(".$min.", ".$max.")";
+  }
+}
+
+class HtmlColumnFitContentArgument extends HtmlColumnCustomArgument
+{
+  public function Generate() : string {
+    $value = parent::Generate();
+    return "fit-content(".$value.")";
+  }
+}
+
+class HtmlColumnRepeatArgument extends HtmlColumnArgument
+{
+  private $StartValue;
+  private $EndValue;
+
+  public function SetStartValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnRepeatArgument {
+    $this->StartValue = $value;
+    return $this;
+  }
+
+  public function GetStartValue() {
+    return $this->StartValue;
+  }
+
+  public function SetEndValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnRepeatArgument {
+    $this->EndValue = $value;
+    return $this;
+  }
+
+  public function GetEndValue() {
+    return $this->EndValue;
+  }
+
+  public function Generate() : string {
+    $start = $this->StartValue;
+    $end = $this->EndValue;
+    if (is_a($start, "HtmlColumnArgument")) {
+      $start = $start->Generate();
+    }
+    if (is_a($end, "HtmlColumnArgument")) {
+      $end = $end->Generate();
+    }
+    return "repeat(".$start.", ".$end.")";
+  }
+}
+
+class HtmlGrid extends HtmlQueue
+{
+  private $ColumnsArgumentQueue = array();
+  private $Gap = "0px";
+
+  public function __construct() {
+    parent::__construct();
+    $this->AddClassItem("base_grid");
+  }
+
+  public function AddGridColumn(HtmlColumnArgument $argument) : HtmlGrid {
+    array_push($this->ColumnsArgumentQueue, $argument);
+    return $this;
+  }
+
+  public function GetGridColumns() : array {
+    return $this->ColumnsArgumentQueue;
+  }
+
+  public function SetGap(string $string) : HtmlGrid {
+    $this->Gap = $string;
+    return $this;
+  }
+
+  public function GetGap() : string {
+    return $this->Gap;
+  }
+
+  private function AddInStyleColumnTeample(&$value) {
+    if (count($this->ColumnsArgumentQueue) > 0) {
+      $itemsS = "";
+      foreach ($this->ColumnsArgumentQueue as $argument) {
+        $itemsS .= " ".$argument->Generate();
+      }
+      $value->AddItem("grid-template-columns:".$itemsS.";");
+    }
+  }
+
+  private function AddInStyleGap(&$value) {
+    $value->AddItem("grid-gap: ".$this->Gap.";");
+  }
+
+  public function Generate() : string {
+    $argq = $this->GetArgumentsQueue();
+    $isFindStyle = false;
+    foreach($argq as &$value) {
+      if ($value->GetName() == "style") {
+        $isFindStyle = true;
+        $this->AddInStyleColumnTeample($value);
+        $this->AddInStyleGap($value);
+      }
+    }
+    if (!$isFindStyle) {
+      $styleArgument = (new HtmlArgument())
+      ->SetName("style");
+      $this->AddInStyleColumnTeample($styleArgument);
+      $this->AddInStyleGap($styleArgument);
+      $argq->AddItem($styleArgument);
+    }
+    return (new HtmlTag(
+      "div",
+      $argq,
+      parent::Generate()
+    ))->Generate();
+  }
+}
+
 // Конейнер
 class HtmlContainer extends HtmlElement
 {
@@ -143,6 +286,7 @@ class HtmlContainer extends HtmlElement
 
   public function __construct() {
     parent::InitializeHtml();
+    $this->Item = new HtmlNullable;
     $this->AddClassItem("base_container");
   }
 

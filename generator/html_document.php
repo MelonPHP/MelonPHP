@@ -1,6 +1,7 @@
 <?php
 
 require_once("html_core.php");
+require_once("html_config.php");
 require_once("html_layout.php");
 
 class HtmlDocument extends HtmlElement
@@ -45,7 +46,7 @@ class HtmlDocument extends HtmlElement
     array_push($argq, (new HtmlDocumentLink)
       ->SetRelItem("stylesheet")
       ->SetTypeItem("text/css")
-      ->SetHrefItem("http://localhost/test/generator/base.css")
+      ->SetHrefItem(HTML_BASE_CSS_PATH)
     );
     array_push($argq, (new HtmlDocumentMeta)->AddArgument(
       (new HtmlArgument)
