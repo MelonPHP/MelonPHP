@@ -103,3 +103,85 @@ Html::RunOf(/* there shoud be HtmlDocument */ $page, /* debug id on or not */ tr
 ?>
 
 ```
+
+### Html components example
+
+If you dream add yourth component you shoud create class and extend this from HtmlComponent
+
+_test_component.php_
+
+```php
+
+<?php
+
+require_once("generator/main.php");
+
+class MyFistComponent extends HtmlComponent
+  // user oop to experements with you class
+  private $Text;
+
+  function __construct() {
+    // if you create new __construct function, invok please previous __construct
+    parent::__construct();
+    
+    // Code . . .
+    
+    $this->Text = "";
+  }
+  
+  function SetText(string $text) {
+    $this->Text = $text;
+    // return this to get this class already
+    return $this;
+  }
+  
+  // if you code tree so big, use functions and i recommend add to name of this function Build
+  function BuildText() {
+    return (new HtmlText)
+    ->SetText($this->Text);
+  }
+
+  // you shoud create build function
+  function Build () {
+    // and you shoud return there Html class
+    return (new HtmlContainer)
+    ->AddStyle(Margin, Px(25))
+    ->SetItem(
+      // if you code tree so big, use functions and i recommend add to name of this function Build
+      // and invoke there
+      $this->BuildText()
+    )
+  }
+
+?>
+
+```
+
+_test_component_page.php_
+
+```php
+
+require_once("generator/main.php");
+// include file with you component
+require_once("test_component.php");
+
+$page = new HtmlBuilder(function () {
+
+    // Code ...
+
+    return (new HtmlDocument)
+    ->SetTitle("Example page")
+    ->SetLanguage("ru")
+    ->SetBody(
+      // and create you first component in page file
+      (new MyFistComponent)
+      ->SetText("Yo? Hey? A?")
+    )
+  }
+);
+
+// generate page
+Html::RunOf(/* there shoud be HtmlDocument */ $page, true)
+
+```
+
