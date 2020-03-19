@@ -6,7 +6,7 @@ Genereta Html from php class tree
 
 ### Html builder pattern example
 
-This pattern _so simple_ and i think you can use this _for small projects_ or for _teach this framework_
+This pattern *so simple* and i think you can use this *for small projects* or for *teach this framework*
 
 ```php
 
