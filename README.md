@@ -23,7 +23,7 @@ $page = new HtmlBuilder(function ($args) {
   ->SetLanguage("ru")
   ->SetBody(
     // there i use layout Html Column to group elements to column
-    (new HtmlQueue)
+    (new HtmlColumn)
     ->AddItem(
       (new HtmlText)
       // you can add css there
@@ -39,6 +39,8 @@ $page = new HtmlBuilder(function ($args) {
   )
 })
 
+// generate page
+// its like main function or echo function
 Html::RunOf(/* there shoud be HtmlDocument */ $page, /* debug id on or not */ true)
 
 ?>
