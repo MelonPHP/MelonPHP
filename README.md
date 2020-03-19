@@ -2,7 +2,9 @@
 
 Genereta Html from php class tree
 
-## Example
+## Examples
+
+### Html builder pattern example
 
 ```php
 
