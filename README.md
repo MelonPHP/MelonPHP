@@ -190,6 +190,6 @@ Html::RunOf(/* there shoud be HtmlDocument */ $page, true)
 
 #
 
-All rights reserved by [GNU General Public License v3.0](LICENSE)
+License: [GNU General Public License v3.0](LICENSE)
 
 © 2020 - 2020 Injective
