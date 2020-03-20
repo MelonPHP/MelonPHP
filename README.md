@@ -4,7 +4,7 @@
 >
 > Its so simple !!!
 >
-> Try to Do That @
+> Try to Do That 🐱‍💻
 
 ## Examples
 
