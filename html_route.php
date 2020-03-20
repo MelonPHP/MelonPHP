@@ -12,7 +12,7 @@ class HtmlLink extends HtmlElement
     $this->LinkArg = (new HtmlArgument)->SetName("href");
   }
 
-  public function SetItem(Html $item) : HtmlLink {
+  public function SetItem(Html $item) {
     $this->Item = $item;
     return $this;
   }
@@ -21,7 +21,7 @@ class HtmlLink extends HtmlElement
     return $this->Item;
   }
 
-  public function SetLink(string $string) : HtmlLink {
+  public function SetLink(string $string) {
     $this->LinkArg->RemoveAllItems();
     $this->LinkArg->AddItem($string);
     return $this;

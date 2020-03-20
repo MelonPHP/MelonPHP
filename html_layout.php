@@ -11,7 +11,7 @@ class HtmlQueue extends HtmlElement
     parent::InitializeHtml();
   }
 
-  public function AddItem(Html $item) : HtmlQueue {
+  public function AddItem(Html $item) {
     array_push($this->ItemsQueue, $item);
     return $this;
   }
@@ -42,7 +42,7 @@ abstract class HtmlFlexQueue extends HtmlQueue
   private $MainAxisAlign = HtmlMainAxisAligment::Start;
   private $CrossAxisAlign = HtmlCrossAxisAligment::Start;
 
-  public function SetMainAligment($align) : HtmlFlexQueue {
+  public function SetMainAligment($align) {
     $this->MainAxisAlign = $align;
     return $this;
   }
@@ -51,7 +51,7 @@ abstract class HtmlFlexQueue extends HtmlQueue
     return $this->MainAxisAlign;
   }
 
-  public function SetCrossAligment($align) : HtmlFlexQueue {
+  public function SetCrossAligment($align) {
     $this->CrossAxisAlign = $align;
     return $this;
   }
@@ -113,7 +113,7 @@ class HtmlColumnCustomArgument extends HtmlColumnArgument
 {
   private $Value;
 
-  public function SetValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnCustomArgument {
+  public function SetValue(/* string or HtmlColumnArgument */ $value) {
     $this->Value = $value;
     return $this;
   }
@@ -137,7 +137,7 @@ class HtmlColumnMinmaxArgument extends HtmlColumnArgument
   private $MinValue;
   private $MaxValue;
 
-  public function SetMinValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnMinmaxArgument {
+  public function SetMinValue(/* string or HtmlColumnArgument */ $value) {
     $this->MinValue = $value;
     return $this;
   }
@@ -146,7 +146,7 @@ class HtmlColumnMinmaxArgument extends HtmlColumnArgument
     return $this->MinValue;
   }
 
-  public function SetMaxValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnMinmaxArgument {
+  public function SetMaxValue(/* string or HtmlColumnArgument */ $value) {
     $this->MaxValue = $value;
     return $this;
   }
@@ -181,7 +181,7 @@ class HtmlColumnRepeatArgument extends HtmlColumnArgument
   private $StartValue;
   private $EndValue;
 
-  public function SetStartValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnRepeatArgument {
+  public function SetStartValue(/* string or HtmlColumnArgument */ $value) {
     $this->StartValue = $value;
     return $this;
   }
@@ -190,7 +190,7 @@ class HtmlColumnRepeatArgument extends HtmlColumnArgument
     return $this->StartValue;
   }
 
-  public function SetEndValue(/* string or HtmlColumnArgument */ $value) : HtmlColumnRepeatArgument {
+  public function SetEndValue(/* string or HtmlColumnArgument */ $value) {
     $this->EndValue = $value;
     return $this;
   }
@@ -231,7 +231,7 @@ class HtmlGrid extends HtmlQueue
     return $this->ColumnsArgumentQueue;
   }
 
-  public function SetGap(string $string) : HtmlGrid {
+  public function SetGap(string $string) {
     $this->Gap = $string;
     return $this;
   }
@@ -290,7 +290,7 @@ class HtmlContainer extends HtmlElement
     $this->AddClassItem("base_container");
   }
 
-  public function SetItem(Html $item) : HtmlContainer {
+  public function SetItem(Html $item) {
     $this->Item = $item;
     return $this;
   }
@@ -317,7 +317,7 @@ class HtmlAlignContainer extends HtmlContainer
     parent::__construct();
   }
 
-  public function SetCrossAligment(string $enumber) : HtmlContainer {
+  public function SetCrossAligment(string $enumber) {
     $this->CrossAxisAlign = $enumber;
     return $this;
   }

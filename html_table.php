@@ -34,7 +34,7 @@ class HtmlTableLine extends HtmlElement
     $this->ItemsQueue = new HtmlQueue;
   }
 
-  public function AddLine(HtmlTableLine $line) : HtmlTableLine {
+  public function AddLine(HtmlTableLine $line) {
     $this->ItemsQueue->AddItem($line);
     return $this;
   }
@@ -60,7 +60,7 @@ class HtmlTableItem extends HtmlElement
     $this->InitializeHtml();
   }
   
-  public function SetItem(Html $item) : HtmlTableItem {
+  public function SetItem(Html $item) {
       $this->Item = $item;
       return $this;
   }

@@ -16,27 +16,27 @@ class HtmlDocument extends HtmlElement
     parent::InitializeHtml();
   }
 
-  public function SetLanguage(string $string) : HtmlDocument {
+  public function SetLanguage(string $string) {
     $this->Language = $string;
     return $this;
   }
 
-  public function SetTitle(string $string) : HtmlDocument {
+  public function SetTitle(string $string) {
     $this->Title = $string;
     return $this;
   }
 
-  public function SetCharset(string $string) : HtmlDocument {
+  public function SetCharset(string $string) {
     $this->Title = $string;
     return $this;
   }
 
-  public function SetBody(Html $item) : HtmlDocument {
+  public function SetBody(Html $item) {
     $this->Body = $item;
     return $this;
   }
 
-  public function AddHeader(HtmlDocumentHeader $item) : HtmlDocument {
+  public function AddHeader(HtmlDocumentHeader $item) {
     array_push($this->HeaderQueue, $item);
     return $this;
   }
@@ -114,25 +114,25 @@ class HtmlDocumentMeta extends HtmlDocumentHeader
     ->SetName("content");
   }
 
-  public function SetPropertyItem(string $string) : HtmlDocumentMeta {
+  public function SetPropertyItem(string $string) {
     $this->PropertyArgument->RemoveAllItems();
     $this->PropertyArgument->AddItem($string);
     return $this;
   }
 
-  public function SetTypeItem(string $string) : HtmlDocumentMeta {
+  public function SetTypeItem(string $string) {
     $this->TypeArgument->RemoveAllItems();
     $this->TypeArgument->AddItem($string);
     return $this;
   }
 
-  public function SetContentItem(string $string) : HtmlDocumentMeta {
+  public function SetContentItem(string $string) {
     $this->ContentArgument->RemoveAllItems();
     $this->ContentArgument->AddItem($string);
     return $this;
   }
 
-  public function SetNameItem(string $string) : HtmlDocumentMeta {
+  public function SetNameItem(string $string) {
     $this->NameArgument->RemoveAllItems();
     $this->NameArgument->AddItem($string);
     return $this;
@@ -188,25 +188,25 @@ class HtmlDocumentLink extends HtmlDocumentHeader
     ->SetName("sizes");
   }
 
-  public function SetRelItem(string $string) : HtmlDocumentLink {
+  public function SetRelItem(string $string) {
     $this->RelArgument->RemoveAllItems();
     $this->RelArgument->AddItem($string);
     return $this;
   }
 
-  public function SetTypeItem(string $string) : HtmlDocumentLink {
+  public function SetTypeItem(string $string) {
     $this->TypeArgument->RemoveAllItems();
     $this->TypeArgument->AddItem($string);
     return $this;
   }
 
-  public function SetHrefItem(string $string) : HtmlDocumentLink {
+  public function SetHrefItem(string $string) {
     $this->HrefArgument->RemoveAllItems();
     $this->HrefArgument->AddItem($string);
     return $this;
   }
 
-  public function SetSizesItem(string $string) : HtmlDocumentLink {
+  public function SetSizesItem(string $string) {
     $this->SizesArgument->RemoveAllItems();
     $this->SizesArgument->AddItem($string);
     return $this;
@@ -254,13 +254,13 @@ class HtmlDocumentScript extends HtmlDocumentHeader
     ->SetName("src");
   }
 
-  public function SetSrcItem(string $string) : HtmlDocumentScript {
+  public function SetSrcItem(string $string) {
     $this->SrcArgument->RemoveAllItems();
     $this->SrcArgument->AddItem($string);
     return $this;
   }
 
-  public function SetContent($other) : HtmlDocumentScript {
+  public function SetContent($other) {
     $this->Content = $other;
     return $this;
   }

@@ -29,7 +29,7 @@ function Rgba($r, $g, $b, $a) : string {
 }
 
 function Url($value) : string {
-  return "url(".$value.")";
+  return "url(\"".$value."\")";
 }
 
 function SpaceL(...$params) {
@@ -56,6 +56,15 @@ function DotL(...$params) {
 
 const AutoFit = "auto-fit";
 const Auto = "auto";
+
+const Repeat = "repeat";
+const NoRepeat = "no-repeat";
+
+const Inherit = "inherit";
+
+const Contain = "contain";
+const Cover = "cover";
+const Center = "center";
 
 const Px = "px";
 const Pr = "%";

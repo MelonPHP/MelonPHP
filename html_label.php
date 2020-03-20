@@ -11,7 +11,7 @@ class HtmlText extends HtmlElement
     $this->AddClassItem("text_base");
   }
 
-  public function SetText(string $string) : HtmlText {
+  public function SetText(string $string) {
     $this->Text = $string;
     return $this;
   }

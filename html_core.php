@@ -35,17 +35,17 @@ abstract class HtmlElement extends HtmlBase
     $this->IdArgument = (new HtmlArgument)->SetName("id");
   }
 
-  public function AddClassItem(string $string) : HtmlElement {
+  public function AddClassItem(string $string) {
     $this->ClassArgument->AddItem($string);
     return $this;
   }
 
-  public function AddStyleItem(string $stringName, string $stringData) : HtmlElement {
+  public function AddStyleItem(string $stringName, string $stringData) {
     $this->StyleArgument->AddItem($stringName.": ".$stringData.";");
     return $this;
   }
 
-  public function AddArgument(HtmlArgument $item) : HtmlElement {
+  public function AddArgument(HtmlArgument $item) {
     array_push($this->ArgumentsQueue, $item);
     return $this;
   }
@@ -152,7 +152,7 @@ class HtmlArgument extends Html
   private $Name;
   private $ItemsQueue = array();
 
-  public function SetName(string $string) : HtmlArgument {
+  public function SetName(string $string) {
     $this->Name = $string;
     return $this;
   }
@@ -161,7 +161,7 @@ class HtmlArgument extends Html
     return $this->Name;
   }
 
-  public function AddItem(string $string) : HtmlArgument {
+  public function AddItem(string $string) {
     array_push($this->ItemsQueue, $string);
     return $this;
   }
@@ -207,7 +207,7 @@ class HtmlContext
     $this->Id = sha1(random_bytes(64));
   }
 
-  public function AddItem(string $key, $other) : HtmlContext {
+  public function AddItem(string $key, $other) {
     $this->Items[$key] = $other;
     return $this;
   }
