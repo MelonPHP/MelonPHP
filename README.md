@@ -102,7 +102,7 @@ $page = new HtmlBuilder(
 
 // generate page
 // its like main function or echo function
-Html::RunOf(/* there shoud be HtmlDocument */ $page, /* print debug info or not */ true)
+Html::RunOf(/* there HtmlDocument */ $page, /* print debug info or not */ true)
 
 ?>
 
@@ -177,7 +177,7 @@ $page = new HtmlBuilder(function () {
     ->SetTitle("Example page")
     ->SetLanguage("ru")
     ->SetBody(
-      // and create you first component in page file
+      // and create your first
       (new MyFistComponent)
       ->SetText("Yo? Hey? A?")
     )
@@ -185,7 +185,7 @@ $page = new HtmlBuilder(function () {
 );
 
 // generate page
-Html::RunOf(/* there shoud be HtmlDocument */ $page, true)
+Html::RunOf(/* there should be HtmlDocument */ $page, true)
 
 ```
 
