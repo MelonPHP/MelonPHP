@@ -2,7 +2,7 @@
 
 > Genereta you Html code from php class tree
 >
-> its so simple !!!
+> Its so simple !!!
 >
 > Try to Do That @
 
@@ -49,7 +49,7 @@ $page = new HtmlBuilder(function () {
 
 // generate page
 // its like main function or echo function
-Html::RunOf(/* there shoud be HtmlDocument */ $page, /* debug id on or not */ true)
+Html::RunOf(/* there should be HtmlDocument */ $page, /* print debug info or not */ true)
 
 ?>
 
@@ -92,7 +92,7 @@ $page = new HtmlBuilder(
     ->SetTitle("Example page")
     ->SetLanguage("ru")
     ->SetBody(
-      // same code from pre example but with arguments
+      // there same code from pre example but with arguments
       (new HtmlColumn)
       ->AddItem($args[0] /* title */)
       ->AddItem($args[1] /* text */)
@@ -102,7 +102,7 @@ $page = new HtmlBuilder(
 
 // generate page
 // its like main function or echo function
-Html::RunOf(/* there shoud be HtmlDocument */ $page, /* debug id on or not */ true)
+Html::RunOf(/* there shoud be HtmlDocument */ $page, /* print debug info or not */ true)
 
 ?>
 
@@ -120,8 +120,8 @@ _test_component.php_
 
 require_once("generator/main.php");
 
+// experements with you class
 class MyFistComponent extends HtmlComponent
-  // user oop to experements with you class
   private $Text;
 
   function __construct() {
