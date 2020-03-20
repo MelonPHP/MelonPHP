@@ -25,7 +25,7 @@ $page = new HtmlBuilder(function () {
   
   // Code ...
   
-  // in html builder you always should return Html class or class extended from Html class
+  // in html builder you always must return Html class or class extended from Html class
   return (new HtmlDocument)
   ->SetTitle("Example page")
   ->SetLanguage("ru")
@@ -49,7 +49,7 @@ $page = new HtmlBuilder(function () {
 
 // generate page
 // its like main function or echo function
-Html::RunOf(/* there should be HtmlDocument */ $page, /* print debug info or not */ true)
+Html::RunOf(/* there must be HtmlDocument */ $page, /* print debug info or not */ true)
 
 ?>
 
@@ -83,7 +83,7 @@ $text = new HtmlBuilder(function () {
 $page = new HtmlBuilder(
   // in first argument you can add array (and only array) with arguments 
   array($title, $text), 
-  // there shoud be function with one argument and this argument its array from first html builder argument 
+  // there must be function with one argument and this argument its array from first html builder argument 
   function ($args) {
 
     // Code ...
@@ -110,7 +110,7 @@ Html::RunOf(/* there HtmlDocument */ $page, /* print debug info or not */ true)
 
 ### Html components example
 
-If you dream add yourth component you shoud create class and extend this from HtmlComponent
+If you dream add yourth component you must create class and extend this from HtmlComponent
 
 _test_component.php_
 
@@ -145,9 +145,9 @@ class MyFistComponent extends HtmlComponent
     ->SetText($this->Text);
   }
 
-  // you should create build function
+  // you must create build function
   function Build () {
-    // and you shoud return there Html class
+    // and you must return there Html class
     return (new HtmlContainer)
     ->AddStyle(Margin, Px(25))
     ->SetItem(
@@ -185,7 +185,7 @@ $page = new HtmlBuilder(function () {
 );
 
 // generate page
-Html::RunOf(/* there should be HtmlDocument */ $page, true)
+Html::RunOf(/* there must be HtmlDocument */ $page, true)
 
 ```
 
