@@ -139,13 +139,13 @@ class MyFistComponent extends HtmlComponent
     return $this;
   }
   
-  // if you code tree so big, use functions and i recommend add to name of this function Build
+  // if you code tree so big, use functions and i recommend add to name of this function 'Build'
   function BuildText() {
     return (new HtmlText)
     ->SetText($this->Text);
   }
 
-  // you shoud create build function
+  // you should create build function
   function Build () {
     // and you shoud return there Html class
     return (new HtmlContainer)
