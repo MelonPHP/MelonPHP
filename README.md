@@ -3,7 +3,8 @@
 > Genereta you Html code from php class tree
 >
 > its so simple !!!
-> Try to Do That @)*
+>
+> Try to Do That @
 
 ## Examples
 
