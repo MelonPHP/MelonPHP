@@ -246,7 +246,7 @@ class HtmlDocumentLink extends HtmlDocumentHeader
 class HtmlDocumentScript extends HtmlDocumentHeader
 {
   private $SrcArgument;
-  private $Content;
+  private $Content = " ";
   
   public function __construct() {
     parent::InitializeHtml();

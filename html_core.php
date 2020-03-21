@@ -74,6 +74,10 @@ abstract class HtmlElement extends HtmlBase
   public function GetId() : string {
     return $this->Context->GetId();
   }
+
+  public function &GetContext() : HtmlContext {
+    return $this->Context;
+  }
 }
 
 class HtmlBuilder extends Html
