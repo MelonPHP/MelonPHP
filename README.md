@@ -193,4 +193,4 @@ Html::RunOf(/* there must be HtmlDocument */ $page, true)
 
 License: [GNU General Public License v3.0](LICENSE)
 
-© 2020 Injective
+© 2020 Roman Suslikov

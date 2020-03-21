@@ -1,7 +1,7 @@
 <?php
 
 require_once("html_core.php");
-require_once("html_config.php");
+require_once("config.php");
 require_once("html_layout.php");
 
 class HtmlDocument extends HtmlElement
