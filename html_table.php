@@ -34,12 +34,12 @@ class HtmlTableLine extends HtmlElement
     $this->ItemsQueue = new HtmlQueue;
   }
 
-  public function AddLine(HtmlTableLine $line) {
+  public function AddItem(HtmlTableItem $line) {
     $this->ItemsQueue->AddItem($line);
     return $this;
   }
 
-  public function GetLines() : array {
+  public function GetItems() : array {
     return $this->ItemsQueue->GetItems();
   }
 
