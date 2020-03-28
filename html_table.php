@@ -12,7 +12,7 @@ class HtmlTable extends HtmlElement
   }
 
   public function AddLine(HtmlTableLine $line) {
-    $this->ItemsQueue->AddItem($line);
+    $this->ItemsQueue->AddChild($line);
     return $this;
   }
 
@@ -34,13 +34,13 @@ class HtmlTableLine extends HtmlElement
     $this->ItemsQueue = new HtmlQueue;
   }
 
-  public function AddItem(HtmlTableItem $line) {
-    $this->ItemsQueue->AddItem($line);
+  public function AddChild(HtmlTableItem $line) {
+    $this->ItemsQueue->AddChild($line);
     return $this;
   }
 
-  public function GetItems() : array {
-    return $this->ItemsQueue->GetItems();
+  public function GetChilds() : array {
+    return $this->ItemsQueue->GetChilds();
   }
 
   public function Generate() : string {
@@ -60,12 +60,12 @@ class HtmlTableItem extends HtmlElement
     $this->InitializeHtml();
   }
   
-  public function SetItem(Html $item) {
+  public function SetChild(Html $item) {
       $this->Item = $item;
       return $this;
   }
 
-  public function GetItem() : Html {
+  public function GetChild() : Html {
     return $this->Item;
   }
 

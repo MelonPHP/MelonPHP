@@ -11,12 +11,12 @@ class HtmlQueue extends HtmlElement
     parent::InitializeHtml();
   }
 
-  public function AddItem(Html $item) {
+  public function AddChild(Html $item) {
     array_push($this->ItemsQueue, $item);
     return $this;
   }
 
-  public function GetItems() : array {
+  public function GetChilds() : array {
     return $this->ItemsQueue;
   }
 
@@ -66,15 +66,15 @@ abstract class HtmlFlexQueue extends HtmlQueue
     foreach($argq as &$arg) {
       if ($arg->GetName() === "style") {
         $isStyleFind = true;
-        $arg->AddItem("justify-content: ".$this->MainAxisAlign.";");
-        $arg->AddItem("align-items: ".$this->CrossAxisAlign.";");
+        $arg->AddChild("justify-content: ".$this->MainAxisAlign.";");
+        $arg->AddChild("align-items: ".$this->CrossAxisAlign.";");
         break;
       }
     }
     if (!$isStyleFind) {
       $arg = (new HtmlArgument)->SetName("style");
-      $arg->AddItem("justify-content: ".$this->MainAxisAlign.";");
-        $arg->AddItem("align-items: ".$this->CrossAxisAlign.";");
+      $arg->AddChild("justify-content: ".$this->MainAxisAlign.";");
+        $arg->AddChild("align-items: ".$this->CrossAxisAlign.";");
       array_push($argq, $arg);
     }
     return (new HtmlTag(
@@ -222,8 +222,8 @@ class HtmlGrid extends HtmlQueue
     $this->AddClassItem("base_grid");
   }
 
-  public function AddGridColumn(HtmlColumnArgument $argument) : HtmlGrid {
-    array_push($this->ColumnsArgumentQueue, $argument);
+  public function AddGridColumn(string $css) : HtmlGrid {
+    array_push($this->ColumnsArgumentQueue, $css);
     return $this;
   }
 
@@ -231,8 +231,8 @@ class HtmlGrid extends HtmlQueue
     return $this->ColumnsArgumentQueue;
   }
 
-  public function SetGap(string $string) {
-    $this->Gap = $string;
+  public function SetGap(string $css) {
+    $this->Gap = $css;
     return $this;
   }
 
@@ -244,14 +244,14 @@ class HtmlGrid extends HtmlQueue
     if (count($this->ColumnsArgumentQueue) > 0) {
       $itemsS = "";
       foreach ($this->ColumnsArgumentQueue as $argument) {
-        $itemsS .= " ".$argument->Generate();
+        $itemsS .= " ".$argument;
       }
-      $value->AddItem("grid-template-columns:".$itemsS.";");
+      $value->AddChild("grid-template-columns:".$itemsS.";");
     }
   }
 
   private function AddInStyleGap(&$value) {
-    $value->AddItem("grid-gap: ".$this->Gap.";");
+    $value->AddChild("grid-gap: ".$this->Gap.";");
   }
 
   public function Generate() : string {
@@ -269,7 +269,7 @@ class HtmlGrid extends HtmlQueue
       ->SetName("style");
       $this->AddInStyleColumnTeample($styleArgument);
       $this->AddInStyleGap($styleArgument);
-      $argq->AddItem($styleArgument);
+      $argq->AddChild($styleArgument);
     }
     return (new HtmlTag(
       "div",
@@ -290,12 +290,12 @@ class HtmlContainer extends HtmlElement
     $this->AddClassItem("base_container");
   }
 
-  public function SetItem(Html $item) {
+  public function SetChild(Html $item) {
     $this->Item = $item;
     return $this;
   }
 
-  public function GetItem() : Html {
+  public function GetChild() : Html {
     return $this->Item;
   }
 
@@ -332,19 +332,19 @@ class HtmlAlignContainer extends HtmlContainer
     foreach($argq as &$arg) {
       if ($arg->GetName() === "style") {
         $isStyleFind = true;
-        $arg->AddItem("align-self: ".$this->CrossAxisAlign.";");
+        $arg->AddChild("align-self: ".$this->CrossAxisAlign.";");
         break;
       }
     }
     if (!$isStyleFind) {
       $arg = (new HtmlArgument)->SetName("style");
-      $arg->AddItem("align-self: ".$this->CrossAxisAlign.";");
+      $arg->AddChild("align-self: ".$this->CrossAxisAlign.";");
       array_push($argq, $arg);
     }
     return (new HtmlTag(
       "div", 
       $argq, 
-      $this->GetItem()->Generate()
+      $this->GetChild()->Generate()
     ))->Generate();
   }
 }

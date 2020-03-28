@@ -36,12 +36,12 @@ abstract class HtmlElement extends HtmlBase
   }
 
   public function AddClassItem(string $string) {
-    $this->ClassArgument->AddItem($string);
+    $this->ClassArgument->AddChild($string);
     return $this;
   }
 
-  public function AddStyleItem(string $stringName, string $stringData) {
-    $this->StyleArgument->AddItem($stringName.": ".$stringData.";");
+  public function AddStyleItem(string $cssName, string $cssData) {
+    $this->StyleArgument->AddChild($cssName.": ".$cssData.";");
     return $this;
   }
 
@@ -61,7 +61,7 @@ abstract class HtmlElement extends HtmlBase
   protected function GetArgumentsQueue() : array {
     $argq = array();
     $idArg = $this->IdArgument;
-    $idArg->AddItem($this->Context->GetId());
+    $idArg->AddChild($this->Context->GetId());
     array_push($argq, $idArg);
     array_push($argq, $this->ClassArgument);
     array_push($argq, $this->StyleArgument);
@@ -165,12 +165,12 @@ class HtmlArgument extends Html
     return $this->Name;
   }
 
-  public function AddItem(string $string) {
+  public function AddChild(string $string) {
     array_push($this->ItemsQueue, $string);
     return $this;
   }
 
-  public function GetItems() : array {
+  public function GetChilds() : array {
     return $this->ItemsQueue;
   }
 
@@ -211,7 +211,7 @@ class HtmlContext
     $this->Id = sha1(random_bytes(64));
   }
 
-  public function AddItem(string $key, $other) {
+  public function AddChild(string $key, $other) {
     $this->Items[$key] = $other;
     return $this;
   }
@@ -220,7 +220,7 @@ class HtmlContext
     $this->Items[$key] = null;
   }
   
-  public function GetItem(string $key) {
+  public function GetChild(string $key) {
     return $this->Items[$key];
   }
 

@@ -32,6 +32,18 @@ function Url($value) : string {
   return "url(\"".$value."\")";
 }
 
+function Minmax($min, $max) : string {
+  return "minmax(".$min.", ".$max.")";
+}
+
+function Repeat($start, $end) : string {
+  return "repeat(".$start.", ".$end.")";
+}
+
+function FitContent($start, $end) : string {
+  return "fit-content(".$start.", ".$end.")";
+}
+
 function SpaceL(...$params) {
   $line = "";
   foreach ($params as $value) {
@@ -65,6 +77,8 @@ const Inherit = "inherit";
 const Contain = "contain";
 const Cover = "cover";
 const Center = "center";
+
+const None = "none";
 
 const Px = "px";
 const Pr = "%";

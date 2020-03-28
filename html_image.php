@@ -53,24 +53,24 @@ class HtmlPicture extends HtmlContainer
   }
 
   private function AddInStyleLink(&$value) {
-    $value->AddItem("background-image: ".$this->ImageLink.";");
+    $value->AddChild("background-image: ".$this->ImageLink.";");
   }
 
   private function AddInStyleRepeat(&$value) {
     if ($this->ImageRepeat != null) {
-      $value->AddItem("background-repeat: ".$this->ImageRepeat.";");
+      $value->AddChild("background-repeat: ".$this->ImageRepeat.";");
     }
   }
 
   private function AddInStylePosition(&$value) {
     if ($this->ImageRepeat != null) {
-      $value->AddItem("background-position: ".$this->ImagePosition.";");
+      $value->AddChild("background-position: ".$this->ImagePosition.";");
     }
   }
 
   private function AddInStyleSize(&$value) {
     if ($this->ImageRepeat != null) {
-      $value->AddItem("background-size: ".$this->ImageSize.";");
+      $value->AddChild("background-size: ".$this->ImageSize.";");
     }
   }
 
@@ -93,12 +93,12 @@ class HtmlPicture extends HtmlContainer
       $this->AddInStyleRepeat($value);
       $this->AddInStylePosition($value);
       $this->AddInStyleSize($value);
-      $argq->AddItem($styleArgument);
+      $argq->AddChild($styleArgument);
     }
     return (new HtmlTag(
       "div",
       $argq, 
-      $this->GetItem()->Generate()
+      $this->GetChild()->Generate()
     ))->Generate();
   }
 }
@@ -114,12 +114,12 @@ class HtmlImage extends HtmlElement
 
   public function SetLink(string $string) {
     $this->LinkArg->RemoveAllItems();
-    $this->LinkArg->AddItem($string);
+    $this->LinkArg->AddChild($string);
     return $this;
   }
 
   public function GetLink() {
-    return $this->LinkArg->GetItems()[0];
+    return $this->LinkArg->GetChilds()[0];
   }
 
   public function Generate() : string {
