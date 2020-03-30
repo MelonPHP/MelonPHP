@@ -1,4 +1,4 @@
-<?
+<?php
 
 require_once("html_core.php");
 

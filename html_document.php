@@ -27,7 +27,7 @@ class HtmlDocument extends HtmlElement
   }
 
   public function SetCharset(string $string) {
-    $this->Title = $string;
+    $this->Charset = $string;
     return $this;
   }
 
