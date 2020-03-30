@@ -32,17 +32,17 @@ $page = new HtmlBuilder(function () {
   ->SetBody(
     // there i use layout Html Column to group elements to column
     (new HtmlColumn)
-    ->AddItem(
+    ->AddChild(
       (new HtmlText)
       // you can add css there
       ->AddStyleItem(/* css constants */ FontSize, /* in pixels 12 */ Px(26))
-      ->SetText("I like coka")
+      ->SetText("I like juse")
     )
-    ->AddItem(
+    ->AddChild(
       (new HtmlText)
       // or you can add css class for all html elements who extended from HtmlElement
       ->AddClassItem("small_text")
-      ->SetText("... but pepsi is fine too")
+      ->SetText("... however i can't drink it much")
     )
   )
 });
@@ -94,8 +94,8 @@ $page = new HtmlBuilder(
     ->SetBody(
       // there same code from pre example but with arguments
       (new HtmlColumn)
-      ->AddItem($args[0] /* title */)
-      ->AddItem($args[1] /* text */)
+      ->AddChild($args[0] /* title */)
+      ->AddChild($args[1] /* text */)
     )
   }
 );
@@ -149,8 +149,8 @@ class MyFistComponent extends HtmlComponent
   function Build () {
     // and you must return there Html class
     return (new HtmlContainer)
-    ->AddStyle(Margin, Px(25))
-    ->SetItem(
+    ->AddStyleItem(Margin, Px(25))
+    ->SetChild(
       // if you code tree so big, use functions and i recommend add to name of this function Build
       // and invoke there
       $this->BuildText()
