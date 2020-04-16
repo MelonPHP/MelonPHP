@@ -6,7 +6,7 @@ require_once("html_layout.php");
 
 class HtmlDocument extends HtmlElement
 {
-  private $Title = "HTMLToPHP Framework";
+  private $Title = "Jour-PHP Framework";
   private $Language = "en";
   private $Charset = "UFT-8";
   private $Body;
@@ -74,7 +74,8 @@ class HtmlDocument extends HtmlElement
         new HtmlTag(
           "head",
           array(),
-          $this->GenerateHeaderQueue()->GetReverseQueue()->Generate()
+          $this->GenerateHeaderQueue()
+          ->GetReverseQueue()->Generate()
         )
       )
       ->AddChild(
