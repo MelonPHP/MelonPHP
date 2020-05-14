@@ -39,11 +39,23 @@ class ThemeBlock extends GeneratedObject
   function GetModifiers() : array {
     return $this->Modifiers;
   }
+  
+  private function GenerateNames() : string {
+    $name = str_replace(" ", "", $this->Name);
+    $names = explode(",", $name);
+    $string = "";
+    foreach ($names as $value) {
+      $string .= $this->Type.$value.",";
+    }
+    if (count($string) > 0)
+      $string = substr($string, 0, -1);
+    return $string;
+  }
 
   function Generate() : string {
     $string = "";
     foreach ($this->Modifiers as $modifier) {
-      $string .= " ".$this->Type.$this->GetName().$modifier->Generate();
+      $string .= " ".$this->GenerateNames().$modifier->Generate();
     }
     return $string;
   }

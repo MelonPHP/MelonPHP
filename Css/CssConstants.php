@@ -44,7 +44,7 @@ function FitContent($start, $end) : string {
   return "fit-content(".$start.", ".$end.")";
 }
 
-function SpaceL(...$params) {
+function SpaceLine(...$params) {
   $line = "";
   foreach ($params as $value) {
     $line .= $value." ";
@@ -55,7 +55,7 @@ function SpaceL(...$params) {
   return $line;
 }
 
-function DotL(...$params) {
+function CommaLine(...$params) {
   $line = "";
   foreach ($params as $value) {
     $line .= $value.", ";
@@ -68,6 +68,10 @@ function DotL(...$params) {
 
 const AutoFit = "auto-fit";
 const Auto = "auto";
+
+const Solid = "solid";
+
+const Normal = "normal";
 
 const Repeat = "repeat";
 const NoRepeat = "no-repeat";
@@ -100,6 +104,8 @@ const BackgroundImage = "background-image";
 const BackgroundColor = "background-color";
 const Color = "color";
 
+const Collapse = "collapse";
+
 const BoxShadow = "box-shadow";
 
 const AlignContent = "align-content";
@@ -128,6 +134,7 @@ const BackgroundBlendMode = "background-blend-mode";
 const BackgroundAttachment = "background-attachment";
 
 const Border = "border";
+const BorderSpacing = "border-spacing";
 const BorderRadius = "border-radius";
 const BorderImage = "border-image";
 const BorderImageWwidth = "border-image-width";
