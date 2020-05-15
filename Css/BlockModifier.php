@@ -1,28 +1,30 @@
 <?php
 
 require_once(__DIR__ . "/../Core/GeneratedObject.php");
+require_once(__DIR__ . "/../Core/Queue.php");
 require_once(__DIR__ . "/ThemeParameter.php");
 
 abstract class BlockModifier extends GeneratedObject
 {
   private $Name;
-  private $Parameters = array();
+  private $Parameters;
 
   function __construct(string $name) {
     $this->Name = $name;
+    $this->Parameters = new Queue;
+    $this->Parameters->SetPrefix(" ", "");
   }
 
   private function AddParametersFromString(string $name, string $value) {
-    array_push(
-      $this->Parameters
-      ,(new ThemeParameter)
+    $this->Parameters->AddChild(
+      (new ThemeParameter)
       ->SetName($name)
       ->SetValue($value)
     );
   }
 
   private function AddParametersFromClass(ThemeParameter $parameter) {
-    array_push($this->Parameters, $parameter);
+    $this->Parameters->AddChild($parameter);
   }
 
   function AddParameter() {
@@ -43,23 +45,15 @@ abstract class BlockModifier extends GeneratedObject
   }
 
   function GetParameters() : array {
-    return $this->Parameters;
+    return $this->Parameters->GetChilds();
   }
 
   function GetName() : string {
     return $this->Name;
   }
 
-  private function GenerateParameters() : string {
-    $string = "";
-    foreach ($this->Parameters as $value) {
-      $string .= " ".$value->Generate();
-    }
-    return $string;
-  }
-
   function Generate() : string {
-    $body = " {".$this->GenerateParameters()." }";
+    $body = " {".$this->Parameters->Generate()." }";
     return $this->GetName() != "" ? ":".$this->GetName().$body : $body;  
   }
 

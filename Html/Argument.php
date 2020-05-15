@@ -25,6 +25,11 @@ class Argument extends GeneratedObject
     return $this->ItemsQuery;
   }
 
+  function Emplty() : bool {
+    return $this->Name == "" 
+     || count($this->ItemsQuery) < 1;
+  }
+
   private function GenerateItems() : string {
     $items = "";
     $itemsCount = count($this->ItemsQuery);

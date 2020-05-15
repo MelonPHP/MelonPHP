@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . "/../Core/GeneratedObject.php");
 require_once(__DIR__ . "/BlockModifier.php");
+require_once(__DIR__ . "/../Core/Queue.php");
 
 class ThemeBlock extends GeneratedObject
 {
@@ -9,17 +10,21 @@ class ThemeBlock extends GeneratedObject
   const IdType = "#";
   const CoreType = "";
 
-  private $Name = "";
+  private $Key = "";
   private $Type = ".";
-  private $Modifiers = array();
+  private $Modifiers;
 
-  function SetName(string $string) {
-      $this->Name = $string;
+  function __construct() {
+    $this->Modifiers = new Queue;
+  }
+
+  function SetKey(string $string) {
+      $this->Key = $string;
       return $this;
   }
 
-  function GetName() : string {
-    return $this->Name;
+  function GetKey() : string {
+    return $this->Key;
   }
 
   function SetType(string $string) {
@@ -32,29 +37,29 @@ class ThemeBlock extends GeneratedObject
   }
 
   function AddModifier(BlockModifier $modifier) {
-    array_push($this->Modifiers, $modifier);
+    $this->Modifiers->AddChild($modifier);
     return $this;
   }
 
   function GetModifiers() : array {
-    return $this->Modifiers;
+    return $this->Modifiers->GetChilds();
   }
   
   private function GenerateNames() : string {
-    $name = str_replace(" ", "", $this->Name);
+    $name = str_replace(" ", "", $this->Key);
     $names = explode(",", $name);
     $string = "";
     foreach ($names as $value) {
       $string .= $this->Type.$value.",";
     }
-    if (count($string) > 0)
+    if (strlen($string) > 0)
       $string = substr($string, 0, -1);
     return $string;
   }
 
   function Generate() : string {
     $string = "";
-    foreach ($this->Modifiers as $modifier) {
+    foreach ($this->Modifiers->GetChilds() as $modifier) {
       $string .= " ".$this->GenerateNames().$modifier->Generate();
     }
     return $string;

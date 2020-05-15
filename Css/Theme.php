@@ -2,26 +2,27 @@
 
 require_once(__DIR__ . "/../Core/GeneratedObject.php");
 require_once(__DIR__ . "/ThemeBlock.php");
+require_once(__DIR__ . "/../Core/Queue.php");
 
 class Theme extends GeneratedObject
 {
-  private $Blocks = array();
+  private $Blocks;
+
+  function __construct() {
+    $this->Blocks = new Queue;
+  }
 
   function AddBlock(ThemeBlock $block) {
-    array_push($this->Blocks, $block);
+    $this->Blocks->AddChild($block);
     return $this;
   }
 
   function GetBlocks() : array {
-    return $this->Blocks;
+    return $this->Blocks->GetChilds();
   }
 
   function Generate() : string {
-    $string = "";
-    foreach ($this->Blocks as $block) {
-      $string .= $block->Generate();
-    }
-    return $string;
+    return $this->Blocks->Generate();
   }
   
 }

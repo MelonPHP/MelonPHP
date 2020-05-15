@@ -6,6 +6,11 @@ class Text extends Element
 {
   private $Text;
 
+  function __construct() {
+    parent::__construct();
+    $this->AddThemeKey("__text");
+  }
+
   public function SetText(string $string) {
     $this->Text = $string;
     return $this;

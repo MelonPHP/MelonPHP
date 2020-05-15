@@ -34,19 +34,22 @@ class Tag extends GeneratedObject
     return $this->Arguments;
   }
 
-  function SetChild(string $child) {
+  function SetChild($child) {
+    if (!is_string($child))
+      $child = $child->Generate();
     $this->Child = $child;
     return $this;
   }
 
-  function GetChild() {
+  function GetChild() : string {
     return $this->Child;
   }
 
   private function GenerateArguments() : string {
     $final = "";
     foreach ($this->Arguments as $argument) {
-      $final .= " ".$argument->Generate();
+      if (!$argument->Emplty())
+        $final .= " ".$argument->Generate();
     }
     return $final;
   }
@@ -55,6 +58,6 @@ class Tag extends GeneratedObject
     if ($this->Child == "")
       return "<".$this->Name.$this->GenerateArguments()."/>";
     else
-      return "<".$this->Name.$this->GenerateArguments().">".$this->Child."<".$this->Name."/>";
+      return "<".$this->Name.$this->GenerateArguments().">".$this->Child."</".$this->Name.">";
   }
 } 

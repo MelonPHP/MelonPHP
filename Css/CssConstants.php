@@ -21,11 +21,11 @@ function Hex($value) : string {
 }
 
 function Rgb($r, $g, $b) : string {
-  return "rgb(".DotL($r, $g, $b).")";
+  return "rgb(".CommaLine($r, $g, $b).")";
 }
 
 function Rgba($r, $g, $b, $a) : string {
-  return "rgba(".DotL($r, $g, $b, $a).")";
+  return "rgba(".CommaLine($r, $g, $b, $a).")";
 }
 
 function Url($value) : string {
@@ -47,7 +47,7 @@ function FitContent($start, $end) : string {
 function SpaceLine(...$params) {
   $line = "";
   foreach ($params as $value) {
-    $line .= $value." ";
+    $line .= $value.Sp;
   }
   if (strlen($line) > 1) {
     $line = substr($line, 0, -1);
@@ -58,7 +58,7 @@ function SpaceLine(...$params) {
 function CommaLine(...$params) {
   $line = "";
   foreach ($params as $value) {
-    $line .= $value.", ";
+    $line .= $value.Cm;
   }
   if (strlen($line) > 2) {
     $line = substr($line, 0, -2);
@@ -66,8 +66,20 @@ function CommaLine(...$params) {
   return $line;
 }
 
+function WebKit(string $value) {
+  return "-webkit-".$value;
+}
+
 const AutoFit = "auto-fit";
 const Auto = "auto";
+
+const FlexStart = "flex-start";
+const Row = "row";
+const Column = "column";
+const Block = "block";
+const Hidden = "hidden";
+
+const BorderBox = "BorderBox";
 
 const Solid = "solid";
 
@@ -89,6 +101,8 @@ const Pr = "%";
 const Pr100 = "100%";
 const Fr = "fr";
 const Em = "em";
+const Sp = " ";
+const Cm = ", ";
 
 const White = "white";
 const Transparent = "transparent";
@@ -105,6 +119,14 @@ const BackgroundColor = "background-color";
 const Color = "color";
 
 const Collapse = "collapse";
+
+const Start = "flex-start";
+const End = "flex-end";
+const Between = "space-between";
+const Around = "space-around"; 
+
+const Baseline = "baseline";
+const Scretch = "stretch";
 
 const BoxShadow = "box-shadow";
 
