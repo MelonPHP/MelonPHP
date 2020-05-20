@@ -1,20 +1,20 @@
-<?php namespace Generator;
+<?php
 
-require_once("Html.php");
-require_once("Argument.php");
+require_once(__DIR__ . "/../Core/GeneratedObject.php");
+require_once(__DIR__ . "/Argument.php");
 
-class Tag extends Html
+class Tag extends GeneratedObject
 {
   private $Name = "";
   private $Arguments = array();
-  private $Child;
+  private $Child = "";
 
   function SetName(string $string) {
     $this->Name = $string;
     return $this;
   }
 
-  function GetName() : array {
+  function GetName() : string {
     return $this->Name;
   }
 
@@ -23,31 +23,41 @@ class Tag extends Html
     return $this;
   }
 
+  function AddArguments(array $arguments) {
+    foreach ($arguments as $argument) {
+      array_push($this->Arguments, $argument);
+    }
+    return $this;
+  }
+
   function GetArguments() : array {
     return $this->Arguments;
   }
 
-  function SetChild(string $child) {
+  function SetChild($child) {
+    if (!is_string($child))
+      $child = $child->Generate();
     $this->Child = $child;
     return $this;
   }
 
-  function GetChild() {
+  function GetChild() : string {
     return $this->Child;
   }
 
   private function GenerateArguments() : string {
     $final = "";
     foreach ($this->Arguments as $argument) {
-      $final .= " ".$argument->Generate();
+      if (!$argument->Emplty())
+        $final .= " ".$argument->Generate();
     }
     return $final;
   }
 
   function Generate() : string {
-    if ($this->Child == null)
+    if ($this->Child == "")
       return "<".$this->Name.$this->GenerateArguments()."/>";
     else
-      return "<".$this->Name.$this->GenerateArguments().">".$this->Child."<".$this->Name."/>";
+      return "<".$this->Name.$this->GenerateArguments().">".$this->Child."</".$this->Name.">";
   }
-}
+} 

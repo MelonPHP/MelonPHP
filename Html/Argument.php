@@ -1,10 +1,10 @@
-<?php namespace Generator;
+<?php
 
-require_once("Html.php");
+require_once(__DIR__ . "/../Core/GeneratedObject.php");
 
-class Argument extends Html
+class Argument extends GeneratedObject
 {
-  private $Name;
+  private $Name = "";
   private $ItemsQuery = array();
 
   function SetName(string $string) {
@@ -12,7 +12,7 @@ class Argument extends Html
     return $this;
   }
 
-  function GetName() : array {
+  function GetName() : string {
     return $this->Name;
   }
 
@@ -23,6 +23,11 @@ class Argument extends Html
 
   function GetItems() : array {
     return $this->ItemsQuery;
+  }
+
+  function Emplty() : bool {
+    return $this->Name == "" 
+     || count($this->ItemsQuery) < 1;
   }
 
   private function GenerateItems() : string {
