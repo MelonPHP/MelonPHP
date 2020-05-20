@@ -40,6 +40,9 @@ class MyPage extends Component
 GeneratedObject::RunOf(new MyPage);
 
 ```
+###### _Result_
+
+[](/.assets/my_page_example.png)
 
 #
 
