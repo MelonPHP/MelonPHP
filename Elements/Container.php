@@ -5,7 +5,7 @@ require_once(__DIR__ . "/../Includes/Core.php");
 
 class Container extends Element
 {
-  private $Child = "";
+  private $Child;
 
   function __construct() {
     parent::__construct();
