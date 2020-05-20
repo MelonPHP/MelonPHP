@@ -7,7 +7,7 @@ class Builder extends Component
   private $Function;
   private $Arguments = array();
 
-  function AddArgument(Argument $argument) {
+  function AddArgument($argument) {
     array_push($this->Arguments, $argument);
     return $this;
   }

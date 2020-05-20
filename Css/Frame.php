@@ -4,15 +4,12 @@ require_once(__DIR__ . "/../Core/GeneratedObject.php");
 require_once(__DIR__ . "/../Core/Queue.php");
 require_once(__DIR__ . "/ThemeParameter.php");
 
-abstract class BlockModifier extends GeneratedObject
+class Frame extends GeneratedObject
 {
-  private $Name;
+  private $Value;
   private $Parameters;
 
-  private $SubModifier = "";
-
-  function __construct(string $name) {
-    $this->Name = $name;
+  function __construct() {
     $this->Parameters = new Queue;
     $this->Parameters->SetPrefix(" ", "");
   }
@@ -46,25 +43,21 @@ abstract class BlockModifier extends GeneratedObject
     return $this;
   }
 
-  function SetSubModifier(string $string) {
-    $this->SubModifier = $string;
-    return $this;
-  }
-
-  function GetSubModifier() : string {
-    return $this->SubModifier;
-  }
-  
   function GetParameters() : array {
     return $this->Parameters->GetChilds();
   }
 
-  function GetName() : string {
-    return $this->Name;
+  function SetValue(string $string) {
+    $this->Value = $string;
+    return $this;
+  }
+
+  function GetValue() : string {
+    return $this->Value;
   }
 
   function Generate() : string {
-    return " {".$this->Parameters->Generate()." }";
+    return $this->Value." {".$this->Parameters->Generate()." }";
   }
 
 }

@@ -8,6 +8,7 @@ class ThemeBlock extends GeneratedObject
 {
   const ClassType = ".";
   const IdType = "#";
+  const LinkType = "@";
   const CoreType = "";
 
   private $Key = "";
@@ -50,7 +51,10 @@ class ThemeBlock extends GeneratedObject
     $names = explode(",", $name);
     $string = "";
     foreach ($names as $value) {
-      $string .= $this->Type.$value.($modifier->GetName() != "" ? ":".$modifier->GetName() : "").",";
+      $string .= $this->Type.$value
+        .($modifier->GetName() != "" ? ":".$modifier->GetName() : "")
+        .($modifier->GetSubModifier() != "" ? ":".$modifier->GetSubModifier() : "")
+        .",";
     }
     if (strlen($string) > 0)
       $string = substr($string, 0, -1);

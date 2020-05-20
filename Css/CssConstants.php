@@ -40,6 +40,18 @@ function Repeat($start, $end) : string {
   return "repeat(".$start.", ".$end.")";
 }
 
+function Local(string $string) : string {
+  return "local(".$string.")";
+}
+
+function Scale(string $string) : string {
+  return "scale(".$string.")";
+}
+
+function Format(string $string) : string {
+  return "format(".$string.")";
+}
+
 function FitContent($start, $end) : string {
   return "fit-content(".$start.", ".$end.")";
 }
@@ -68,6 +80,14 @@ function CommaLine(...$params) {
 
 function WebKit(string $value) {
   return "-webkit-".$value;
+}
+
+function MozOSX(string $value) {
+  return "-moz-osx-".$value;
+}
+
+function Moz(string $value) {
+  return "-moz-".$value;
 }
 
 const AutoFit = "auto-fit";
@@ -139,6 +159,15 @@ const All = "all";
 const Absolute = "absolute";
 const Relative = "relative";
 const Fixed = "fixed";
+
+const InlineBlock = "inline-block";
+
+const NoWrap = "nowrap";
+
+const LTR = "ltr";
+
+const From = "from";
+const To = "to";
 
 const Animation = "animation";
 const AnimationDelay = "animation-delay";
@@ -231,6 +260,8 @@ const Display = "display";
 
 const EmptyCells = "empty-cells";
 
+const Underline = "underline";
+
 const Filter = "filter";
 const Flex = "flex";
 const FlexBasis = "flex-basis";
@@ -258,6 +289,12 @@ const FontVariantEastAsian = "font-variant-east-asian";
 const FontVariantLigatures = "font-variant-ligatures";
 const FontVariantNumeric = "font-variant-numeric";
 const FontVariantPosition = "font-variant-position";
+const FontSmoothing = "font-smoothing";
+const TextRendering = "text-rendering";
+
+const Antialiased = "antialiased";
+const OptimizeLegibility = "optimizeLegibility";
+const GrayScale = "grayscale";
 
 const Grid = "grid";
 const GridArea = "grid-area";
