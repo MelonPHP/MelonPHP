@@ -53,8 +53,7 @@ abstract class BlockModifier extends GeneratedObject
   }
 
   function Generate() : string {
-    $body = " {".$this->Parameters->Generate()." }";
-    return $this->GetName() != "" ? ":".$this->GetName().$body : $body;  
+    return " {".$this->Parameters->Generate()." }";
   }
 
 }

@@ -11,6 +11,8 @@ class PasswordField extends ActionItem
   function __construct() {
     parent::__construct();
     $this->Type = "password";
+    $this->AddThemeKey("__text");
+    $this->AddThemeKey("__field");
   }
 
   function SetText(string $text) {

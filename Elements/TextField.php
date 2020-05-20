@@ -11,6 +11,8 @@ class TextField extends ActionItem
   function __construct() {
     parent::__construct();
     $this->Type = "text";
+    $this->AddThemeKey("__text");
+    $this->AddThemeKey("__field");
   }
 
   function SetText(string $text) {
