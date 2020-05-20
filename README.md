@@ -9,7 +9,7 @@ _MyPage.php_
 ```php
 <?php
 
-require_once("/../frameworks/tree-php/Includes/All.php");
+require_once(__DIR__ . "/../frameworks/tree-php/Includes/All.php");
 
 class MyPage extends Component
 {
