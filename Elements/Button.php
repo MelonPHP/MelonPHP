@@ -12,6 +12,8 @@ class Button extends ActionItem
   function __construct() {
     parent::__construct();
     $this->Type = Button::Send;
+    $this->AddThemeKey("__text");
+    $this->AddThemeKey("__button");
   }
 
   function SetText(string $text) {

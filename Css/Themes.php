@@ -240,6 +240,22 @@ function GetElementsTheme() {
       ->AddParameter(OverflowX, Auto)
       ->AddParameter(OverflowY, Auto)
     )
+  )
+  ->AddBlock(
+    (new ThemeBlock)
+    ->SetKey("__button")
+    ->AddModifier(
+      (new StandartModifier)
+      ->AddParameter(Width, Pr(100))
+    )
+  )
+  ->AddBlock(
+    (new ThemeBlock)
+    ->SetKey("__field")
+    ->AddModifier(
+      (new StandartModifier)
+      ->AddParameter(Width, Pr(100))
+    )
   );
 }
 

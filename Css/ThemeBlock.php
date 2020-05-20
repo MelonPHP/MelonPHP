@@ -45,12 +45,12 @@ class ThemeBlock extends GeneratedObject
     return $this->Modifiers->GetChilds();
   }
   
-  private function GenerateNames() : string {
+  private function GenerateNames(BlockModifier $modifier) : string {
     $name = str_replace(" ", "", $this->Key);
     $names = explode(",", $name);
     $string = "";
     foreach ($names as $value) {
-      $string .= $this->Type.$value.",";
+      $string .= $this->Type.$value.($modifier->GetName() != "" ? ":".$modifier->GetName() : "").",";
     }
     if (strlen($string) > 0)
       $string = substr($string, 0, -1);
@@ -60,7 +60,7 @@ class ThemeBlock extends GeneratedObject
   function Generate() : string {
     $string = "";
     foreach ($this->Modifiers->GetChilds() as $modifier) {
-      $string .= " ".$this->GenerateNames().$modifier->Generate();
+      $string .= " ".$this->GenerateNames($modifier).$modifier->Generate();
     }
     return $string;
   }

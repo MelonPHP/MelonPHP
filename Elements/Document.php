@@ -6,25 +6,25 @@ require_once(__DIR__ . "/../Includes/Core.php");
 
 class Document extends Element
 {
-  private $Childs;
+  private $Child;
   private $Themes;
   private $Title = " ";
 
   function __construct() {
     parent::__construct();
-    $this->Childs = new Queue;
+    $this->Child = new EmptyGeneratedObject;
     $this->Themes = new Queue;
     $this->Themes->AddChild(GetStandartTheme());
     $this->Themes->AddChild(GetElementsTheme());
   }
 
-  function AddChild(GeneratedObject $child) {
-    $this->Childs->AddChild($child);
+  function SetChild(GeneratedObject $child) {
+    $this->Child = $child;
     return $this;
   }
 
-  function GetChilds() : array {
-    return $this->Childs->GetChilds();
+  function GetChild() : GeneratedObject {
+    return $this->Child;
   }
 
   function AddTheme(Theme $child) {
@@ -71,7 +71,7 @@ class Document extends Element
         (new Tag)
         ->SetName("body")
         ->AddArguments($this->GetArguments())
-        ->SetChild($this->Childs)
+        ->SetChild($this->Child)
       )
     )
     ->Generate();
