@@ -18,7 +18,7 @@ class MyPage extends Component
     return (new Document)
     ->SetTitle("My page")
     ->SetChild(
-      // align childs in column
+      // align childs like column
       (new Column)
       // add childs
       ->AddChild(
