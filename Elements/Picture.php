@@ -6,10 +6,10 @@ require_once(__DIR__ . "/Container.php");
 
 class Picture extends Container 
 {
-  private $Link;
-  private $Repeat;
-  private $Position;
-  private $Size;
+  private $Link = "";
+  private $Repeat = "";
+  private $Position = "";
+  private $Size = "";
 
   function __construct() {
     parent::__construct();
@@ -56,10 +56,30 @@ class Picture extends Container
     $args = parent::GetArguments();
     foreach ($args as &$arg) {
       if ($arg->GetName() === "style") {
-        $arg->AddItem(BackgroundImage, $this->Link);
-        $arg->AddItem(BackgroundRepeat, $this->Repeat);
-        $arg->AddItem(BackgroundPosition, $this->Position);
-        $arg->AddItem(BackgroundSize, $this->Size);
+        $arg->AddItem(
+          (new ThemeParameter)
+          ->SetName(BackgroundImage)
+          ->SetValue($this->Link)
+          ->Generate()
+        );
+        $arg->AddItem(
+          (new ThemeParameter)
+          ->SetName(BackgroundRepeat)
+          ->SetValue($this->Repeat)
+          ->Generate()
+        );
+        $arg->AddItem(
+          (new ThemeParameter)
+          ->SetName(BackgroundPosition)
+          ->SetValue($this->Position)
+          ->Generate()
+        );
+        $arg->AddItem(
+          (new ThemeParameter)
+          ->SetName(BackgroundSize)
+          ->SetValue($this->Size)
+          ->Generate()
+        );
         break;
       }
     } 

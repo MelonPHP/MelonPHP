@@ -10,6 +10,7 @@ class Container extends Element
   function __construct() {
     parent::__construct();
     $this->AddThemeKey("__ly_container");
+    $this->Child = new EmptyGeneratedObject;
   }
 
   function SetChild(GeneratedObject $child) {

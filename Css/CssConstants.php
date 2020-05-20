@@ -79,7 +79,7 @@ const Column = "column";
 const Block = "block";
 const Hidden = "hidden";
 
-const BorderBox = "BorderBox";
+const BorderBox = "border-box";
 
 const Solid = "solid";
 
@@ -135,6 +135,10 @@ const AlignItems = "align-items";
 const AlignSelf = "align-self";
 
 const All = "all";
+
+const Absolute = "absolute";
+const Relative = "relative";
+const Fixed = "fixed";
 
 const Animation = "animation";
 const AnimationDelay = "animation-delay";

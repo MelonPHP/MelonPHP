@@ -2,8 +2,9 @@
 
 require_once(__DIR__ . "/../Includes/Html.php");
 require_once(__DIR__ . "/../Includes/Core.php");
+require_once(__DIR__ . "/Container.php");
 
-class Action extends Element
+class Action extends Container
 {
   const Post = "POST";
   const Get = "GET";
@@ -12,16 +13,6 @@ class Action extends Element
 
   private $Redirect = "";
   private $Type = Action::Get;
-  private $Child = " ";
-
-  function SetChild(GeneratedObject $child) {
-    $this->Child = $child;
-    return $this;
-  }
-
-  function GetChild() : GeneratedObject {
-    return $this->Child;
-  }
 
   function SetType(string $type) {
     $this->Type = $type;
@@ -62,7 +53,7 @@ class Action extends Element
     return (new Tag)
     ->SetName("form")
     ->AddArguments($this->GetArguments())
-    ->SetChild($this->Child)
+    ->SetChild($this->GetChild())
     ->Generate();
   }
 }

@@ -118,6 +118,16 @@ function GetStandartTheme() {
       (new StandartModifier)
       ->AddParameter(BoxSizing, BorderBox)
     )
+  )
+  ->AddBlock(
+    (new ThemeBlock)
+    ->SetType(ThemeBlock::CoreType)
+    ->SetKey(CommaLine("html", "body"))
+    ->AddModifier(
+      (new StandartModifier)
+      ->AddParameter(Position, Relative)
+      ->AddParameter(Height, Pr(100))
+    )
   );
 }
 
@@ -186,6 +196,14 @@ function GetElementsTheme() {
       ->AddParameter(Width, Pr(100))
       ->AddParameter(Height, Pr(100))
       ->AddParameter(Display, Block)
+    )
+  )
+  ->AddBlock(
+    (new ThemeBlock)
+    ->SetKey("__ly_stack")
+    ->AddModifier(
+      (new StandartModifier)
+      ->AddParameter(Position, Absolute)
     )
   )
   ->AddBlock(

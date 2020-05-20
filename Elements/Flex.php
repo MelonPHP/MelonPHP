@@ -48,8 +48,18 @@ abstract class Flex extends Element
     $args = parent::GetArguments();
     foreach ($args as &$arg) {
       if ($arg->GetName() === "style") {
-        $arg->AddItem(JustifyContent, $this->MainAlign);
-        $arg->AddItem(AlignItems, $this->CrossAlign);
+        $arg->AddItem(
+          (new ThemeParameter)
+          ->SetName(JustifyContent)
+          ->SetValue($this->MainAlign)
+          ->Generate()
+        );
+        $arg->AddItem(
+          (new ThemeParameter)
+          ->SetName(AlignItems)
+          ->SetValue($this->CrossAlign)
+          ->Generate()
+        );
         break;
       }
     } 

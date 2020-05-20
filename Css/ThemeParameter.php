@@ -26,6 +26,8 @@ class ThemeParameter extends GeneratedObject
   }
 
   function Generate() : string {
+    if ($this->Value == null || $this->Value == "")
+      return "";
     return $this->Name.": ".$this->Value.";";
   }
 }
