@@ -65,6 +65,20 @@ class Document extends Element
             ->SetName("style")
             ->SetChild($this->Themes)
           )
+          ->AddChild(
+            (new Tag)
+            ->SetName("meta")
+            ->AddArgument(
+              (new Argument)
+              ->SetName("name")
+              ->AddItem("viewport")
+            )
+            ->AddArgument(
+              (new Argument)
+              ->SetName("content")
+              ->AddItem("width=device-width, initial-scale=1, user-scalable=no")
+            )
+          )
         )
       )
       ->AddChild(

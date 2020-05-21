@@ -210,6 +210,8 @@ const BorderImageOutset = "border-image-outset";
 const BorderColor = "border-color";
 const BorderCollapse = "border-collapse";
 
+const Visible = "visible";
+
 const BorderBottomWidth = "border-bottom-width";
 const BorderBottomStyle = "border-bottom-style";
 const BorderBottomRightRadius = "border-bottom-right-radius";

@@ -34,7 +34,7 @@ class Queue extends GeneratedObject
   function Generate() : string {
     $string = "";
     foreach ($this->Childs as $child) {
-      $string .= $this->Prefix.$child->Generate().$this->PrefixRight;
+      $string .= $this->Prefix.$child->Generate().$this->RightPrefix;
     }
     return $string;
   }
