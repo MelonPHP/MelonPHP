@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . "/../Core/GeneratedObject.php");
 require_once(__DIR__ . "/ThemeBlock.php");
-require_once(__DIR__ . "/KeyFrame.php");
+require_once(__DIR__ . "/FrameBlock.php");
 require_once(__DIR__ . "/../Core/Queue.php");
 
 class Theme extends GeneratedObject
@@ -17,21 +17,21 @@ class Theme extends GeneratedObject
     ->SetPrefix(" ", "");
   }
 
-  function AddBlock(ThemeBlock $block) {
+  function AddThemeBlock(ThemeBlock $block) {
     $this->Blocks->AddChild($block);
     return $this;
   }
 
-  function GetBlocks() : array {
+  function GetThemeBlocks() : array {
     return $this->Blocks->GetChilds();
   }
 
-  function AddKeyFrame(KeyFrame $keyframe) {
+  function AddFrameBlock(FrameBlock $keyframe) {
     $this->KeyFrames->AddChild($keyframe);
     return $this;
   }
 
-  function GetKeyFrames() : array {
+  function GetFrameBlocks() : array {
     return $this->KeyFrames->GetChilds();
   }
 

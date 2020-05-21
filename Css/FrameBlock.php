@@ -4,7 +4,7 @@ require_once(__DIR__ . "/../Core/GeneratedObject.php");
 require_once(__DIR__ . "/../Core/Queue.php");
 require_once(__DIR__ . "/Frame.php");
 
-class KeyFrame extends GeneratedObject
+class FrameBlock extends GeneratedObject
 {
   private $Key = "";
   private $Frames;

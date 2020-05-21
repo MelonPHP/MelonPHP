@@ -146,6 +146,8 @@ const BackgroundImage = "background-image";
 const BackgroundColor = "background-color";
 const Color = "color";
 
+const BackdropFilter = "backdrop-filter";
+
 const Collapse = "collapse";
 
 const Start = "flex-start";
@@ -299,6 +301,7 @@ const FontVariantNumeric = "font-variant-numeric";
 const FontVariantPosition = "font-variant-position";
 const FontSmoothing = "font-smoothing";
 const TextRendering = "text-rendering";
+const FontSmooth = "font-smooth";
 
 const Antialiased = "antialiased";
 const OptimizeLegibility = "optimizeLegibility";
