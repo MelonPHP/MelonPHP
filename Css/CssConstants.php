@@ -44,12 +44,20 @@ function Local(string $string) : string {
   return "local(".$string.")";
 }
 
-function Scale(string $string) : string {
-  return "scale(".$string.")";
+function Scale(string $width, string $height) : string {
+  return "scale(".$width.", ".$height.")";
+}
+
+function Translate(string $x, string $y) : string {
+  return "translate(".$x.", ".$y.")";
 }
 
 function Format(string $string) : string {
   return "format(".$string.")";
+}
+
+function Blur(string $string) : string {
+  return "blur(".$string.")";
 }
 
 function FitContent($start, $end) : string {
