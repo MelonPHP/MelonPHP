@@ -13,7 +13,7 @@ class Picture extends Container
 
   function __construct() {
     parent::__construct();
-    $this->Link = Url("https://www.selikoff.net/blog-files/null-value.gif");
+    $this->Link = Url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Icon_None.svg/768px-Icon_None.svg.png");
   }
 
   function SetLink(string $string) {

@@ -20,6 +20,7 @@ class Queue extends GeneratedObject
   function SetPrefix(string $left, string $right) {
     $this->Prefix = $left;
     $this->RightPrefix = $right;
+    return $this;
   }
 
   function GetPrefix() : string {

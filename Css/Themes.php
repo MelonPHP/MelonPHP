@@ -4,7 +4,7 @@ require_once(__DIR__ . "/../Includes/Css.php");
 
 function GetStandartTheme() {
   return (new Theme)
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey(
@@ -22,7 +22,7 @@ function GetStandartTheme() {
       ->AddParameter(Padding, Px(0))
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey("table")
@@ -32,7 +32,7 @@ function GetStandartTheme() {
       ->AddParameter(BorderSpacing, 0)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey(CommaLine("fieldset", "img"))
@@ -41,7 +41,7 @@ function GetStandartTheme() {
       ->AddParameter(Border, 0)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey("input")
@@ -50,7 +50,7 @@ function GetStandartTheme() {
       ->AddParameter(Border, SpaceLine(Px(0), Solid, Hex("b0b0b0")))
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey(CommaLine("address", "caption", "cite", "code", "dfn", "th", "var"))
@@ -60,7 +60,7 @@ function GetStandartTheme() {
       ->AddParameter(FontWeight, Normal)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey(CommaLine("ol", "ul"))
@@ -69,7 +69,7 @@ function GetStandartTheme() {
       ->AddParameter(ListStyle, None)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey(CommaLine("caption", "th"))
@@ -78,7 +78,7 @@ function GetStandartTheme() {
       ->AddParameter(TextAlign, Left)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey(CommaLine("h1", "h2", "h3", "h4", "h5", "h6"))
@@ -88,7 +88,7 @@ function GetStandartTheme() {
       ->AddParameter(FontWeight, Normal)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey("q")
@@ -101,7 +101,7 @@ function GetStandartTheme() {
       ->AddParameter(Content, "")
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey(CommaLine("abbr", "acronym"))
@@ -110,7 +110,7 @@ function GetStandartTheme() {
       ->AddParameter(Border, 0)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey("*")
@@ -119,7 +119,7 @@ function GetStandartTheme() {
       ->AddParameter(BoxSizing, BorderBox)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetType(ThemeBlock::CoreType)
     ->SetKey(CommaLine("html", "body"))
@@ -133,7 +133,7 @@ function GetStandartTheme() {
 
 function GetElementsTheme() {
   return (new Theme)
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__text")
     ->AddModifier(
@@ -144,7 +144,7 @@ function GetElementsTheme() {
       ))
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__layout_queue")
     ->AddModifier(
@@ -160,7 +160,7 @@ function GetElementsTheme() {
       ->AddParameter(AlignItems, Left)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__ly_row")
     ->AddModifier(
@@ -169,7 +169,7 @@ function GetElementsTheme() {
       ->AddParameter(WebKit(FlexDirection), Row)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__ly_column")
     ->AddModifier(
@@ -178,7 +178,7 @@ function GetElementsTheme() {
       ->AddParameter(WebKit(FlexDirection), Column)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__ly_grid")
     ->AddModifier(
@@ -188,7 +188,7 @@ function GetElementsTheme() {
       ->AddParameter(Display, Grid)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__ly_container")
     ->AddModifier(
@@ -198,7 +198,7 @@ function GetElementsTheme() {
       ->AddParameter(Display, Block)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__ly_stack")
     ->AddModifier(
@@ -206,7 +206,7 @@ function GetElementsTheme() {
       ->AddParameter(Position, Absolute)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__center")
     ->AddModifier(
@@ -214,7 +214,7 @@ function GetElementsTheme() {
       ->AddParameter(Margin, Auto)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__sc_vertical")
     ->AddModifier(
@@ -223,7 +223,7 @@ function GetElementsTheme() {
       ->AddParameter(OverflowY, Auto)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__sc_horizontal")
     ->AddModifier(
@@ -232,7 +232,7 @@ function GetElementsTheme() {
       ->AddParameter(OverflowY, Hidden)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__sc_all")
     ->AddModifier(
@@ -241,7 +241,7 @@ function GetElementsTheme() {
       ->AddParameter(OverflowY, Auto)
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__button")
     ->AddModifier(
@@ -249,7 +249,7 @@ function GetElementsTheme() {
       ->AddParameter(Width, Pr(100))
     )
   )
-  ->AddBlock(
+  ->AddThemeBlock(
     (new ThemeBlock)
     ->SetKey("__field")
     ->AddModifier(
