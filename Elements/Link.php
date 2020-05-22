@@ -10,6 +10,7 @@ class Link extends Element
   function __construct() {
     parent::__construct();
     $this->AddThemeKey("__text");
+    $this->AddThemeKey("__hover_cursor");
   }
 
   public function SetText(string $string) {

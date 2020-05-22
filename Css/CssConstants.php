@@ -211,6 +211,10 @@ const BorderColor = "border-color";
 const BorderCollapse = "border-collapse";
 
 const Visible = "visible";
+const Pointer = "pointer";
+const Text = "text";
+
+const Defualt = "defualt";
 
 const BorderBottomWidth = "border-bottom-width";
 const BorderBottomStyle = "border-bottom-style";

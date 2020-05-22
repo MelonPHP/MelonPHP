@@ -13,6 +13,7 @@ class PasswordField extends ActionItem
     $this->Type = "password";
     $this->AddThemeKey("__text");
     $this->AddThemeKey("__field");
+    $this->AddThemeKey("__text_cursor");
   }
 
   function SetText(string $text) {

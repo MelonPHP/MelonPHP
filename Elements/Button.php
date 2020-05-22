@@ -14,6 +14,7 @@ class Button extends ActionItem
     $this->Type = Button::Send;
     $this->AddThemeKey("__text");
     $this->AddThemeKey("__button");
+    $this->AddThemeKey("__hover_cursor");
   }
 
   function SetText(string $text) {

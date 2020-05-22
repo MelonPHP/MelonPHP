@@ -13,6 +13,7 @@ class TextField extends ActionItem
     $this->Type = "text";
     $this->AddThemeKey("__text");
     $this->AddThemeKey("__field");
+    $this->AddThemeKey("__text_cursor");
   }
 
   function SetText(string $text) {

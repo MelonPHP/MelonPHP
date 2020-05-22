@@ -116,6 +116,7 @@ function GetStandartTheme() {
     ->SetKey("*")
     ->AddModifier(
       (new StandartModifier)
+      ->AddParameter(Cursor, Defualt)
       ->AddParameter(BoxSizing, BorderBox)
     )
   )
@@ -145,6 +146,22 @@ function GetElementsTheme() {
       ->AddParameter(FontFamily, CommaLine(
         "'Segoe UI'", "Frutiger", "'Frutiger Linotype'", "'Dejavu Sans'", "'Helvetica Neue'", "Arial", "sans-serif"
       ))
+    )
+  )
+  ->AddThemeBlock(
+    (new ThemeBlock)
+    ->SetKey("__hover_cursor")
+    ->AddModifier(
+      (new StandartModifier)
+      ->AddParameter(Cursor, Pointer)
+    )
+  )
+  ->AddThemeBlock(
+    (new ThemeBlock)
+    ->SetKey("__text_cursor")
+    ->AddModifier(
+      (new StandartModifier)
+      ->AddParameter(Cursor, Text)
     )
   )
   ->AddThemeBlock(
