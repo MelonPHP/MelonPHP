@@ -1,5 +1,13 @@
 # Tree PHP
 
+| Browser       | Has Support                                                                |
+| ------------- | -------------------------------------------------------------------------- |
+| Chromium      | ![#c5f015](https://via.placeholder.com/15/f03c15/000000?text=+) Yes        |
+| Safari        | ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Not        |
+| Edge          | ![#edff26](https://via.placeholder.com/15/f03c15/000000?text=+) Partial    |
+| EI            | ![#edff26](https://via.placeholder.com/15/f03c15/000000?text=+) Not        |
+| Mozilla       | ![#c7c7c7](https://via.placeholder.com/15/f03c15/000000?text=+) Not tested |
+
 ## Examples
 
 Simple page
