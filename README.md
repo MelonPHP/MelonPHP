@@ -5,7 +5,7 @@
 | Chromium      | ![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) Yes        |
 | Safari        | ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Not        |
 | Edge          | ![#edff26](https://via.placeholder.com/15/edff26/000000?text=+) Partial    |
-| EI            | ![#edff26](https://via.placeholder.com/15/edff26/000000?text=+) Not        |
+| EI            | ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Not        |
 | Mozilla       | ![#c7c7c7](https://via.placeholder.com/15/c7c7c7/000000?text=+) Not tested |
 
 ## Examples
