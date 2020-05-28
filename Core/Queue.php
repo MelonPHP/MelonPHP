@@ -1,15 +1,48 @@
 <?php
 
-require_once(__DIR__ . "/GeneratedObject.php");
+require_once(__DIR__ . "/Node.php");
 
-class Queue extends GeneratedObject
+class Queue extends Node
 {
   private $Childs = array();
-  private $Prefix = "";
-  private $RightPrefix = "";
+  private $PrefixLeft = "";
+  private $PrefixRight = "";
 
-  function AddChild(GeneratedObject $item) {
-    array_push($this->Childs, $item);
+  /// PrefixLeft
+  function SetLeftPrefix(string $string) {
+    $this->PrefixLeft = $string;
+    return $this;
+  }
+
+  function GetLeftPrefix() {
+    return $this->PrefixLeft;
+  }
+
+  /// PrefixRight
+  function SetRightPrefix(string $string) {
+    $this->PrefixRight = $string;
+    return $this;
+  }
+
+  function GetRightPrefix() {
+    return $this->PrefixRight;
+  }
+
+  /// Childs
+  function SetChilds(array $nodes /*node or string*/) {
+    $this->Childs = $nodes;
+    return $this;
+  }
+
+  function AddChilds(array $nodes /*node or string*/) {
+    foreach ($nodes as $node) {
+      array_push($this->Childs, $node);
+    }
+    return $this;
+  }
+
+  function AddChild($node /*node or string*/) {
+    array_push($this->Childs, $node);
     return $this;
   }
 
@@ -17,25 +50,12 @@ class Queue extends GeneratedObject
     return $this->Childs;
   }
 
-  function SetPrefix(string $left, string $right) {
-    $this->Prefix = $left;
-    $this->RightPrefix = $right;
-    return $this;
-  }
-
-  function GetPrefix() : string {
-    return $this->Prefix;
-  }
-
-  function GetPrefixRight() : string {
-    return $this->RightPrefix;
-  }
-
+  /// Generate
   function Generate() : string {
-    $string = "";
+    $str = "";
     foreach ($this->Childs as $child) {
-      $string .= $this->Prefix.$child->Generate().$this->RightPrefix;
+      $str .= $this->PrefixLeft.(is_string($child) ? $child : $child->Generate()).$this->PrefixRight;
     }
-    return $string;
+    return $str;
   }
 }
