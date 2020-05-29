@@ -64,7 +64,7 @@ class Position extends Element
   }
 
   /// Generate
-
+  // TODO: Refactor
   function GetArguments() : Queue {
     $args = parent::GetArguments()->GetChilds();
     foreach ($args as &$arg) {

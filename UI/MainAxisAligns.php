@@ -1,6 +1,6 @@
 <?php
 
-class MainAxisAlign
+class MainAxisAligns
 {
   const Center = "center";
   const Start = "flex-start";

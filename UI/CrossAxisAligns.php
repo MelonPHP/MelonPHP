@@ -1,6 +1,6 @@
 <?php
 
-class CrossAxisAlign
+class CrossAxisAligns
 {
   const Center = "center";
   const Start = "flex-start";
