@@ -11,15 +11,24 @@ function GetElementsTheme() : Theme {
     ->AddModifier(
       (new StandartModifier)
       ->AddParameter(FontSize, Px(14))
-      ->AddParameter(WebKit(UserSelect), None)
-      ->AddParameter(Moz(UserSelect), None)
-      ->AddParameter(UserSelect, None)
+      //->AddParameter(WebKit(UserSelect), None)
+      //->AddParameter(Moz(UserSelect), None)
+      //->AddParameter(UserSelect, None)
       ->AddParameter(FontFamily, CommaLine([
         "'Segoe UI'", "Frutiger", 
         "'Frutiger Linotype'", 
         "'Dejavu Sans'", "'Helvetica Neue'", 
         "Arial", "sans-serif"
       ]))
+    ),
+
+    (new ThemeBlock)
+    ->SetKey("__text_no_select")
+    ->AddModifier(
+      (new StandartModifier)
+      ->AddParameter(WebKit(UserSelect), None)
+      ->AddParameter(Moz(UserSelect), None)
+      ->AddParameter(UserSelect, None)
     ),
 
     (new ThemeBlock)

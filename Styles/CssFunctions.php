@@ -23,11 +23,11 @@ function Hex($value) : string {
 }
 
 function Rgb($r, $g, $b) : string {
-  return "rgb(".CommaLine($r, $g, $b).")";
+  return "rgb(".CommaLine([$r, $g, $b]).")";
 }
 
 function Rgba($r, $g, $b, $a) : string {
-  return "rgba(".CommaLine($r, $g, $b, $a).")";
+  return "rgba(".CommaLine([$r, $g, $b, $a]).")";
 }
 
 function Url($value) : string {

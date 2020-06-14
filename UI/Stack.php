@@ -40,8 +40,10 @@ class Stack extends Element
   function GenerateChilds() : string {
     $childs = $this->Childs->GetChilds();
     foreach ($childs as &$child) {
-      if (!($child instanceof Element))
-        throw "Stack childs is not a Element. Try use Position element to Fix it";
+      if (!($child instanceof Element)) {
+        $child = (new Container)
+        ->SetChild($child);
+      }
       $child->AddThemeKey("__ly_stack_item");
     }
     return (new Queue)

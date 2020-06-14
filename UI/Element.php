@@ -10,6 +10,7 @@ abstract class Element extends Node
   private $Arguments;
   private $Parameters;
   private $Keys;
+  private $Id = "";
 
   function __construct() {
     $this->Arguments = (new Queue)
@@ -67,10 +68,26 @@ abstract class Element extends Node
     return $this;
   }
 
+  /// ID
+  function SetID(string $string) {
+    $this->Id = $string;
+    return $this;
+  }
+
+  function GetID() : string {
+    return  $this->Id ;
+  }
+
   // sdo
   function GetArguments() : Queue {
     $arguments = (new Queue)
     ->SetLeftPrefix(" ");
+    if (!empty($this->Id))
+      $arguments->AddChild(
+        (new Argument)
+        ->SetName("id")
+        ->SetValue($this->Id)
+      );
     $arguments->AddChild(
       (new Argument)
       ->SetName("class")

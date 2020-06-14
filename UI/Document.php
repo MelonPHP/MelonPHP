@@ -97,6 +97,7 @@ class Document extends Element
         ),
         (new Tag)
         ->SetName("body")
+        ->SetArguments($this->GetArguments()->GetChilds())
         ->SetChild($this->Child)
       ])
     )->Generate();

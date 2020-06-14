@@ -34,4 +34,6 @@ require_once(__DIR__ . "/../UI/PasswordField.php");
 require_once(__DIR__ . "/../UI/Grid.php");
 require_once(__DIR__ . "/../UI/Component.php");
 require_once(__DIR__ . "/../UI/Builder.php");
+require_once(__DIR__ . "/../UI/EmptyNode.php");
+require_once(__DIR__ . "/../UI/TextBox.php");
 //require_once(__DIR__ . "/../UI");

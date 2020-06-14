@@ -2,15 +2,16 @@
 
 require_once(__DIR__ . "/Element.php");
 require_once(__DIR__ . "/Tag.php");
+require_once(__DIR__ . "/EmptyNode.php");
 
 class Container extends Element
 {
-  private $Child = " ";
+  private $Child;
 
   function __construct() {
     parent::__construct();
     $this->AddThemeKey("__ly_container");
-    $this->Child;
+    $this->Child = new EmptyNode;
   }
 
   /// Child

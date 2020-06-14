@@ -16,8 +16,10 @@ class Theme extends Node
   private $FrameBlocks;
 
   function __construct() {
-    $this->ThemeBlocks = (new Queue);
-    $this->FrameBlocks = (new Queue);
+    $this->ThemeBlocks = (new Queue)
+    ->SetLeftPrefix(" ");
+    $this->FrameBlocks = (new Queue)
+    ->SetLeftPrefix(" ");
   }
 
   /// TargetMinWidth

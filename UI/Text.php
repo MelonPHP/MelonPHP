@@ -10,6 +10,7 @@ class Text extends Element
   function __construct() {
     parent::__construct();
     $this->AddThemeKey("__text");
+    $this->AddThemeKey("__text_no_select");
   }
 
   /// Text

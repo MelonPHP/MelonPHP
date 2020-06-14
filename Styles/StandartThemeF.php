@@ -99,6 +99,14 @@ function GetStandartTheme() : Theme {
     ),
 
     (new ThemeBlock)
+    ->SetKeys(["input", "textarea", "button", "select", "a"])
+    ->SetType(ThemeBlockTypes::Core)
+    ->AddModifier(
+      (new StandartModifier)
+      ->AddParameter("-webkit-tap-highlight-color", Transparent)
+    ),
+
+    (new ThemeBlock)
     ->SetType(ThemeBlockTypes::Core)
     ->SetKey("*")
     ->AddModifier(
@@ -109,11 +117,23 @@ function GetStandartTheme() : Theme {
 
     (new ThemeBlock)
     ->SetType(ThemeBlockTypes::Core)
-    ->SetKeys(["html", "body"])
+    ->SetKey("html")
     ->AddModifier(
       (new StandartModifier)
       ->AddParameter(Position, Relative)
       ->AddParameter(Height, Pr(100))
+    ),
+
+    (new ThemeBlock)
+    ->SetType(ThemeBlockTypes::Core)
+    ->SetKey("body")
+    ->AddModifier(
+      (new StandartModifier)
+      ->AddParameter(Position, Fixed)
+      ->AddParameter(Top, 0)
+      ->AddParameter(Left, 0)
+      ->AddParameter(Height, Pr(100))
+      ->AddParameter(Width, Pr(100))
     )
   ]);
 }

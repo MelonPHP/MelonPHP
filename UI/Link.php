@@ -13,6 +13,7 @@ class Link extends Element
     parent::__construct();
     $this->AddThemeKey("__text");
     $this->AddThemeKey("__hover_cursor");
+    $this->AddThemeKey("__text_no_select");
   }
 
   /// Child
