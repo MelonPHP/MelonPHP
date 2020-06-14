@@ -1,7 +1,5 @@
 # Gidra PHP
 
-> Support only chromium!
-
 ## Examples
 
 Simple page
