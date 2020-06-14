@@ -21,17 +21,15 @@ class MyPage extends Component
       // align childs like column
       (new Column)
       // add childs
-      ->AddChild(
+      ->AddChilds([
         (new Text)
         // add css
         // framework have full css support
         ->AddThemeParameter(FontSize /*parameter name*/, Px(20)/*value. Px(20) equals to 20px*/)
-        ->SetText("My title")
-      )
-      ->AddChild(
+        ->SetText("My title"),
         (new Text)
         ->SetText("My text.")
-      )
+      ])
     );
   }
 }
