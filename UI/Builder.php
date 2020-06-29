@@ -29,8 +29,8 @@ class Builder extends Node
     return $this->Function;
   }
 
-  public function Build() : Node {
+  public function Generate() : string {
     if ($this->Function != null)
-      return call_user_func($this->Function, $this->Arguments);
+      return call_user_func($this->Function, $this->Arguments)->Generate();
   }
 }

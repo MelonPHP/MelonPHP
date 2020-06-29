@@ -21,8 +21,6 @@ class Picture extends Container
 
     $this->Link(Url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Icon_None.svg/768px-Icon_None.svg.png"));
     $this->Repeat(PictureRepeats::NoRepeat);
-    $this->Positions(PicturePositions::Center);
-    $this->Sizes(PictureSizes::Contain);
   }
 
   /// Link

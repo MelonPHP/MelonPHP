@@ -18,7 +18,7 @@ abstract class Element extends Node
     $this->Parameters = Queue::Create()
     ->LeftPrefix(" ")
     ->RightPrefix(";");
-    $this->Keys = Queue::Create()
+    $this->Keys = (new Queue)
     ->LeftPrefix(" ");
   }
 

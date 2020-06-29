@@ -14,7 +14,7 @@ class Text extends Element
   }
 
   /// Text
-  public function SetText(string $string) {
+  public function Text(string $string) {
     $this->Text = $string;
     return $this;
   }
@@ -26,7 +26,7 @@ class Text extends Element
   /// Generate
   function Generate() : string {
     return (new Tag)
-    ->Arguments([$this->GetArguments()->GetChildren()])
+    ->Arguments($this->GetArguments()->GetChildren())
     ->Name("p")
     ->Child($this->Text)
     ->Generate();

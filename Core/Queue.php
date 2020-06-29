@@ -51,8 +51,4 @@ class Queue extends Node
     }
     return $str;
   }
-
-  static function Create() : Queue {
-    return new Queue;
-  }
 }
