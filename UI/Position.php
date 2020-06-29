@@ -14,7 +14,7 @@ class Position extends Element
   private $Child =  " ";
 
   /// Child
-  function SetChild(Node $child) {
+  function Child(Node $child) {
     $this->Child = $child;
     return $this;
   }
@@ -24,7 +24,7 @@ class Position extends Element
   }
 
   /// Left
-  function SetLeft(string $string) {
+  function Left(string $string) {
     $this->Left = $string;
     return $this;
   }
@@ -34,7 +34,7 @@ class Position extends Element
   }
 
   /// Right
-  function SetRight(string $string) {
+  function Right(string $string) {
     $this->Right = $string;
     return $this;
   }
@@ -44,7 +44,7 @@ class Position extends Element
   }
 
   /// Top
-  function SetTop(string $string) {
+  function Top(string $string) {
     $this->Top = $string;
     return $this;
   }
@@ -54,7 +54,7 @@ class Position extends Element
   }
 
   /// Bottom
-  function SetBottom(string $string) {
+  function Bottom(string $string) {
     $this->Bottom = $string;
     return $this;
   }
@@ -70,49 +70,49 @@ class Position extends Element
     foreach ($args as &$arg) {
       if ($arg->GetName() === "style") {
         if (!empty($this->Left))
-          $arg->SetValue(
+          $arg->Value(
             $arg->GetValue()
             ." ".(new ThemeParameter)
-            ->SetName(Left)
-            ->SetValue($this->Left)
+            ->Name(Left)
+            ->Value($this->Left)
             ->Generate().";"
           );
         if (!empty($this->Right))
-          $arg->SetValue(
+          $arg->Value(
             $arg->GetValue()
             ." ".(new ThemeParameter)
-            ->SetName(Right)
-            ->SetValue($this->Right)
+            ->Name(Right)
+            ->Value($this->Right)
             ->Generate().";"
           );
         if (!empty($this->Top))
-          $arg->SetValue(
+          $arg->Value(
             $arg->GetValue()
             ." ".(new ThemeParameter)
-            ->SetName(Top)
-            ->SetValue($this->Top)
+            ->Name(Top)
+            ->Value($this->Top)
             ->Generate().";"
           );
         if (!empty($this->Bottom))
-          $arg->SetValue(
+          $arg->Value(
             $arg->GetValue()
             ." ".(new ThemeParameter)
-            ->SetName(Bottom)
-            ->SetValue($this->Bottom)
+            ->Name(Bottom)
+            ->Value($this->Bottom)
             ->Generate().";"
           );
         break;
       }
     } 
-    return (new Queue)
-    ->SetChilds($args);
+    return Queue::Create()
+    ->Children($args);
   }
 
   function Generate(): string {
-    return (new Tag)
-    ->SetName("div")
-    ->AddArguments($this->GetArguments()->GetChilds())
-    ->SetChild($this->Child)
+    return Tag::Create()
+    ->Name("div")
+    ->Arguments($this->GetArguments()->GetChildren())
+    ->Child($this->Chsild)
     ->Generate();
   }
 }

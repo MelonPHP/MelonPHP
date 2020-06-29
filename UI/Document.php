@@ -13,16 +13,16 @@ class Document extends Element
 
   function __construct() {
     parent::__construct();
-    $this->Themes = (new Queue)
-    ->SetLeftPrefix(" ")
-    ->SetChilds([
+    $this->Themes = Queue::Create()
+    ->LeftPrefix(" ")
+    ->Children([
       GetStandartTheme(),
       GetElementsTheme()
     ]);
   }
 
   /// Child
-  function SetChild(Node $child) {
+  function Child(Node $child) {
     $this->Child = $child;
     return $this;
   }
@@ -32,27 +32,17 @@ class Document extends Element
   }
 
   /// Theme
-  function SetThemes(array $themes) {
-    $this->Themes->SetChilds($themes);
-    return $this;
-  }
-
-  function AddThemes(array $themes) {
-    $this->Themes->AddChilds($themes);
-    return $this;
-  }
-
-  function AddTheme(Theme $theme) {
-    $this->Themes->AddChild($theme);
+  function Themes($themes) {
+    $this->Themes->Children($themes);
     return $this;
   }
 
   function GetThemes() : array {
-    return $this->Themes->GetChilds();
+    return $this->Themes->GetChildren();
   }
 
   /// Title
-  function SetTitle(string $string) {
+  function Title(string $string) {
     $this->Title = $string;
     return $this;
   }
@@ -63,31 +53,31 @@ class Document extends Element
 
   /// Generate
   function Generate() : string {
-    return "<!DOCTYPE html>".(new Tag)
-    ->SetName("html")
-    ->SetChild(
-      (new Queue)
-      ->SetChilds([ 
-        (new Tag)
-        ->SetName("head")
-        ->SetChild(
-          (new Queue)
-          ->SetChilds([
-            (new Tag)
-            ->SetName("title")
-            ->SetChild($this->Title),
-            (new Tag)
-            ->SetName("style")
-            ->SetChild($this->Themes),
-            (new Tag)
-            ->SetName("meta")
-            ->AddArguments([
+    return "<!DOCTYPE html>".Tag::Create()
+    ->Name("html")
+    ->Child(
+      Queue::Create()
+      ->Children([ 
+        Tag::Create()
+        ->Name("head")
+        ->Child(
+          Queue::Create()
+          ->Children([
+            Tag::Create()
+            ->Name("title")
+            ->Child($this->Title),
+            Tag::Create()
+            ->Name("style")
+            ->Child($this->Themes),
+            Tag::Create()
+            ->Name("meta")
+            ->Arguments([
               (new Argument)
-              ->SetName("name")
-              ->SetValue("viewport"),
+              ->Name("name")
+              ->Value("viewport"),
               (new Argument)
-              ->SetName("content")
-              ->SetValue(CommaLine([
+              ->Name("content")
+              ->Value(CommaLine([
                 "width=device-width", 
                 "initial-scale=1", 
                 "user-scalable=no"
@@ -95,10 +85,10 @@ class Document extends Element
             ])
           ])
         ),
-        (new Tag)
-        ->SetName("body")
-        ->SetArguments($this->GetArguments()->GetChilds())
-        ->SetChild($this->Child)
+        Tag::Create()
+        ->Name("body")
+        ->Arguments($this->GetArguments()->GetChildren())
+        ->Child($this->Child)
       ])
     )->Generate();
   }

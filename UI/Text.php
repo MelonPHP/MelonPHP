@@ -9,8 +9,8 @@ class Text extends Element
 
   function __construct() {
     parent::__construct();
-    $this->AddThemeKey("__text");
-    $this->AddThemeKey("__text_no_select");
+    $this->ThemeKeys(["__text"]);
+    $this->ThemeKeys(["__text_no_select"]);
   }
 
   /// Text
@@ -26,9 +26,9 @@ class Text extends Element
   /// Generate
   function Generate() : string {
     return (new Tag)
-    ->SetArguments($this->GetArguments()->GetChilds())
-    ->SetName("p")
-    ->SetChild($this->Text)
+    ->Arguments([$this->GetArguments()->GetChildren()])
+    ->Name("p")
+    ->Child($this->Text)
     ->Generate();
   }
 }

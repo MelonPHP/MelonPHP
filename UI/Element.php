@@ -13,63 +13,43 @@ abstract class Element extends Node
   private $Id = "";
 
   function __construct() {
-    $this->Arguments = (new Queue)
-    ->SetLeftPrefix(" ");
-    $this->Parameters = (new Queue)
-    ->SetLeftPrefix(" ")
-    ->SetRightPrefix(";");
-    $this->Keys = (new Queue)
-    ->SetLeftPrefix(" ");
+    $this->Arguments = Queue::Create()
+    ->LeftPrefix(" ");
+    $this->Parameters = Queue::Create()
+    ->LeftPrefix(" ")
+    ->RightPrefix(";");
+    $this->Keys = Queue::Create()
+    ->LeftPrefix(" ");
   }
 
   /// Keys
-  function SetThemeKeys(array $keys) {
-    $this->Keys->SetChilds($keys);
-    return $this;
-  }
-
-  function AddThemeKeys(array $keys) {
-    $this->Keys->AddChilds($keys);
-    return $this;
-  }
-
-  function AddThemeKey(string $key) {
-    $this->Keys->AddChild($key);
+  function ThemeKeys($keys) {
+    $this->Keys->Children($keys);
     return $this;
   }
 
   function GetThemesKeys() : array {
-    return $this->Keys->GetChilds();
+    return $this->Keys->GetChildren();
   }
 
   /// Parameters
-  function AddThemeParameter() {
-    $this->Parameters->AddChild(ThemeParameter::From(func_get_args(), func_num_args()));
+  function ThemeParameter() {
+    $this->Parameters->Children([ThemeParameter::From(func_get_args(), func_num_args())]);
     return $this;
   }
 
   function GetThemeParameters() : array {
-    return $this->Parameters->GetChilds();
+    return $this->Parameters->GetChildren();
   }
 
   /// Arguments
-  function SetArguments(array $arguments) {
-    $this->Arguments->SetChilds($arguments);
-    return $this;
-  }
-
-  function AddArguments(array $arguments) {
-    $this->Arguments->AddChilds($arguments);
-    return $this;
-  }
-  
-  function AddArgument(Argument $argument) {
-    $this->Arguments->AddChild($argument);
+  function Arguments($arguments) {
+    $this->Arguments->Children($arguments);
     return $this;
   }
 
   /// ID
-  function SetID(string $string) {
+  function ID(string $string) {
     $this->Id = $string;
     return $this;
   }
@@ -80,25 +60,25 @@ abstract class Element extends Node
 
   // sdo
   function GetArguments() : Queue {
-    $arguments = (new Queue)
-    ->SetLeftPrefix(" ");
+    $arguments = Queue::Create()
+    ->LeftPrefix(" ");
     if (!empty($this->Id))
-      $arguments->AddChild(
-        (new Argument)
-        ->SetName("id")
-        ->SetValue($this->Id)
-      );
-    $arguments->AddChild(
+      $arguments->Children([
+        Argument::Create()
+        ->Name("id")
+        ->Value($this->Id)
+      ]);
+    $arguments->Children([
+      Argument::Create()
+      ->Name("class")
+      ->Value($this->Keys->Generate())
+    ]);
+    $arguments->Children([
       (new Argument)
-      ->SetName("class")
-      ->SetValue($this->Keys->Generate())
-    );
-    $arguments->AddChild(
-      (new Argument)
-      ->SetName("style")
-      ->SetValue($this->Parameters->Generate())
-    );
-    $arguments->AddChilds($this->Arguments->GetChilds());
+      ->Name("style")
+      ->Value($this->Parameters->Generate())
+    ]);
+    $arguments->Children($this->Arguments->GetChildren());
     return $arguments;
   }
 }

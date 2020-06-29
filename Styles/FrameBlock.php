@@ -11,11 +11,11 @@ class FrameBlock extends Node
 
   function __construct() {
     $this->Frames = (new Queue)
-    ->SetLeftPrefix(" ");
+    ->LeftPrefix(" ");
   }
 
   /// Key
-  function SetKey(string $string) {
+  function Key(string $string) {
     $this->Key = $string;
     return $this;
   }
@@ -25,23 +25,13 @@ class FrameBlock extends Node
   }
 
   /// Parameters
-  function SetFrames(array $nodes) {
-    $this->Frames->SetChilds($nodes);
-    return $this;
-  }
-
-  function AddFrames(array $nodes) {
-    $this->Frames->AddChilds($nodes);
-    return $this;
-  }
-
-  function AddFrame(Frame $node) {
-    $this->Frames->AddChild($node);
+  function Frames($nodes) {
+    $this->Frames->Children($nodes);
     return $this;
   }
 
   function GetFrames() : array {
-    return $this->Frames->GetChilds();
+    return $this->Frames->GetChildren();
   }
 
   /// Generate

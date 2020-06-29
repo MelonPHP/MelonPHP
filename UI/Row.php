@@ -6,6 +6,6 @@ class Row extends Flex
 {
   function __construct() {
     parent::__construct();
-    $this->AddThemeKey("__ly_row");
+    $this->ThemeKeys("__ly_row");
   }
 }

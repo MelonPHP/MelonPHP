@@ -6,6 +6,6 @@ class Center extends Container
 {
   function __construct() {
     parent::__construct();
-    $this->AddThemeKey("__center");
+    $this->ThemeKeys("__center");
   }
 }

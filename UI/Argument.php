@@ -8,7 +8,7 @@ class Argument extends Node
   private $Value = "";
 
   /// Name
-  function SetName(string $string) {
+  function Name(string $string) {
     $this->Name = $string;
     return $this;
   }
@@ -18,7 +18,7 @@ class Argument extends Node
   }
 
   /// Value
-  function SetValue(string $string) {
+  function Value(string $string) {
     $this->Value = $string;
     return $this;
   }

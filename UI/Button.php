@@ -9,15 +9,13 @@ class Button extends ActionNode
   function __construct() {
     parent::__construct();
 
-    $this->AddThemeKey("__text");
-    $this->AddThemeKey("__button");
-    $this->AddThemeKey("__hover_cursor");
+    $this->ThemeKeys(["__text", "__button", "__hover_cursor"]);
 
-    $this->SetType(ButtonTypes::Send);
+    $this->Type(ButtonTypes::Send);
   }
 
   /// Text
-  function SetText(string $text) {
+  function Text(string $text) {
     $this->Value = $text;
     return $this;
   }
@@ -27,7 +25,7 @@ class Button extends ActionNode
   }
 
   /// Type
-  function SetType(string $string) {
+  function Type(string $string) {
     if ($string === ButtonTypes::Send || $string === ButtonTypes::Clear)
       $this->Type = $string;
     return $this;
@@ -39,9 +37,9 @@ class Button extends ActionNode
 
   /// Generate
   function Generate() : string {
-    return (new Tag)
-    ->SetName("input")
-    ->AddArguments($this->GetArguments()->GetChilds())
+    return Tag::Create()
+    ->Name("input")
+    ->Arguments($this->GetArguments()->GetChildren())
     ->Generate();
   }
 }

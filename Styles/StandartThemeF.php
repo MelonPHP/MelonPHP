@@ -4,136 +4,136 @@ require_once(__DIR__ . "/../Includes/Styles.php");
 
 function GetStandartTheme() : Theme {
   return (new Theme)
-  ->AddThemeBlocks([
+  ->ThemeBlocks([
 
     (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKeys([
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys([
       "body", "div", "dl", "dt", "dd", "ul", 
       "ol", "li", "h1", "h2", "h3", "h4", "h5", 
       "h6", "pre", "form", "fieldset", "input", 
       "textarea", "p", "blockquote", "th", 
       "td", "html", "body"
     ])
-    ->AddModifier(
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Margin, Px(0))
-      ->AddParameter(Padding, Px(0))
-    ),
-
-    (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKey("table")
-    ->AddModifier(
-      (new StandartModifier)
-      ->AddParameter(BorderCollapse, Collapse)
-      ->AddParameter(BorderSpacing, 0)
-    ),
-
-    (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKeys(["fieldset", "img"])
-    ->AddModifier(
-      (new StandartModifier)
-      ->AddParameter(Border, 0)
-    ),
-
-    (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKey("input")
-    ->AddModifier(
-      (new StandartModifier)
-      ->AddParameter(Border, [Px(0), Solid, Hex("b0b0b0")])
-    ),
-
-    (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKeys(["address", "caption", "cite", "code", "dfn", "th", "var"])
-    ->AddModifier(
-      (new StandartModifier)
-      ->AddParameter(FontStyle, Normal)
-      ->AddParameter(FontWeight, Normal)
-    ),
-
-    (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKeys(["ol", "ul"])
-    ->AddModifier(
-      (new StandartModifier)
-      ->AddParameter(ListStyle, None)
-    ),
-
-    (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKeys(["caption", "th"])
-    ->AddModifier(
-      (new StandartModifier)
-      ->AddParameter(TextAlign, Left)
-    ),
-
-    (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKeys(["h1", "h2", "h3", "h4", "h5", "h6"])
-    ->AddModifier(
-      (new StandartModifier)
-      ->AddParameter(FontSize, Pr(100))
-      ->AddParameter(FontWeight, Normal)
-    ),
-
-    (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKey("q")
-    ->AddModifiers([
-      (new BeforeModifier)
-      ->AddParameter(Content, ""),
-      (new AfterModifier)
-      ->AddParameter(Content, "")
+      ->Parameter(Margin, Px(0))
+      ->Parameter(Padding, Px(0))
     ]),
 
     (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKeys(["abbr", "acronym"])
-    ->AddModifier(
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["table"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Border, 0)
-    ),
+      ->Parameter(BorderCollapse, Collapse)
+      ->Parameter(BorderSpacing, 0)
+    ]),
 
     (new ThemeBlock)
-    ->SetKeys(["input", "textarea", "button", "select", "a"])
-    ->SetType(ThemeBlockTypes::Core)
-    ->AddModifier(
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["fieldset", "img"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter("-webkit-tap-highlight-color", Transparent)
-    ),
+      ->Parameter(Border, 0)
+    ]),
 
     (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKey("*")
-    ->AddModifier(
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["input"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Cursor, Defualt)
-      ->AddParameter(BoxSizing, BorderBox)
-    ),
+      ->Parameter(Border, [Px(0), Solid, Hex("b0b0b0")])
+    ]),
 
     (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKey("html")
-    ->AddModifier(
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["address", "caption", "cite", "code", "dfn", "th", "var"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Position, Relative)
-      ->AddParameter(Height, Pr(100))
-    ),
+      ->Parameter(FontStyle, Normal)
+      ->Parameter(FontWeight, Normal)
+    ]),
 
     (new ThemeBlock)
-    ->SetType(ThemeBlockTypes::Core)
-    ->SetKey("body")
-    ->AddModifier(
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["ol", "ul"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Position, Fixed)
-      ->AddParameter(Top, 0)
-      ->AddParameter(Left, 0)
-      ->AddParameter(Height, Pr(100))
-      ->AddParameter(Width, Pr(100))
-    )
+      ->Parameter(ListStyle, None)
+    ]),
+
+    (new ThemeBlock)
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["caption", "th"])
+    ->Modifiers([
+      (new StandartModifier)
+      ->Parameter(TextAlign, Left)
+    ]),
+
+    (new ThemeBlock)
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["h1", "h2", "h3", "h4", "h5", "h6"])
+    ->Modifiers([
+      (new StandartModifier)
+      ->Parameter(FontSize, Pr(100))
+      ->Parameter(FontWeight, Normal)
+    ]),
+
+    (new ThemeBlock)
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["q"])
+    ->Modifiers([
+      (new BeforeModifier)
+      ->Parameter(Content, ""),
+      (new AfterModifier)
+      ->Parameter(Content, "")
+    ]),
+
+    (new ThemeBlock)
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["abbr", "acronym"])
+    ->Modifiers([
+      (new StandartModifier)
+      ->Parameter(Border, 0)
+    ]),
+
+    (new ThemeBlock)
+    ->Keys(["input", "textarea", "button", "select", "a"])
+    ->Type(ThemeBlockTypes::Core)
+    ->Modifiers([
+      (new StandartModifier)
+      ->Parameter("-webkit-tap-highlight-color", Transparent)
+    ]),
+
+    (new ThemeBlock)
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["*"])
+    ->Modifiers([
+      (new StandartModifier)
+      ->Parameter(Cursor, Defualt)
+      ->Parameter(BoxSizing, BorderBox)
+    ]),
+
+    (new ThemeBlock)
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["html"])
+    ->Modifiers([
+      (new StandartModifier)
+      ->Parameter(Position, Relative)
+      ->Parameter(Height, Pr(100))
+    ]),
+
+    (new ThemeBlock)
+    ->Type(ThemeBlockTypes::Core)
+    ->Keys(["body"])
+    ->Modifiers([
+      (new StandartModifier)
+      ->Parameter(Position, Fixed)
+      ->Parameter(Top, 0)
+      ->Parameter(Left, 0)
+      ->Parameter(Height, Pr(100))
+      ->Parameter(Width, Pr(100))
+    ]),
   ]);
 }

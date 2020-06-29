@@ -12,7 +12,7 @@ class ActionVarible extends ActionNode
   }
 
   /// Value
-  function SetValue(string $string) {
+  function Value(string $string) {
     $this->Value = $string;
     return $this;
   }
@@ -23,9 +23,9 @@ class ActionVarible extends ActionNode
 
   /// Generate
   function Generate() : string {
-    return (new Tag)
-    ->SetName("input")
-    ->AddArguments($this->GetArguments()->GetChilds())
+    return Tag::Create()
+    ->Name("input")
+    ->Arguments($this->GetArguments()->GetChildren())
     ->Generate();
   }
 }

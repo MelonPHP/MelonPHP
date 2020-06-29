@@ -6,6 +6,6 @@ class HorizontalScrollView extends Container
 {
   function __construct() {
     parent::__construct();
-    $this->AddThemeKey("__sc_horizontal");
+    $this->ThemeKeys(["__sc_horizontal"]);
   }
 }

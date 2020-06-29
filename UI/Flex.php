@@ -13,32 +13,22 @@ abstract class Flex extends Element
 
   function __construct() {
      parent::__construct();
-     $this->AddThemeKey("__layout_queue");
-     $this->Childs = new Queue;
+     $this->ThemeKeys(["__layout_queue"]);
+     $this->Childs = Queue::Create();
   }
 
   // Childs
-  function SetChilds(array $childs) {
-    $this->Childs->SetChilds($childs);
+  function Children($childs) {
+    $this->Childs->Children($childs);
     return $this;
   }
 
-  function AddChilds(array $childs) {
-    $this->Childs->AddChilds($childs);
-    return $this;
-  }
-
-  function AddChild(Node $child) {
-    $this->Childs->AddChild($child);
-    return $this;
-  }
-
-  function GetChilds() : array {
-    return $this->Childs->GetChilds();
+  function GetChildren() : array {
+    return $this->Childs->GetChildren();
   }
 
   /// MainAlign
-  public function SetMainAlign(string $align) {
+  public function MainAlign(string $align) {
     $this->MainAlign = $align;
     return $this;
   }
@@ -48,7 +38,7 @@ abstract class Flex extends Element
   }
 
   /// CrossAlign
-  public function SetCrossAlign(string $align) {
+  public function CrossAlign(string $align) {
     $this->CrossAlign = $align;
     return $this;
   }
@@ -60,32 +50,32 @@ abstract class Flex extends Element
   /// Generate
   // TODO: Refactor
   function GetArguments() : Queue {
-    $args = parent::GetArguments()->GetChilds();
+    $args = parent::GetArguments()->GetChildren();
     foreach ($args as &$arg) {
       if ($arg->GetName() === "style") {
-        $arg->SetValue(
+        $arg->Value(
           $arg->GetValue()
           ." ".(new ThemeParameter)
-          ->SetName(JustifyContent)
-          ->SetValue($this->MainAlign)
+          ->Name(JustifyContent)
+          ->Value($this->MainAlign)
           ->Generate().";"
           ." ".(new ThemeParameter)
-          ->SetName(AlignItems)
-          ->SetValue($this->CrossAlign)
+          ->Name(AlignItems)
+          ->Value($this->CrossAlign)
           ->Generate().";"
         );
         break;
       }
     } 
-    return (new Queue)
-    ->SetChilds($args);
+    return Queue::Create()
+    ->Children($args);
   }
 
   function Generate() : string {
-    return (new Tag)
-    ->SetName("div")
-    ->AddArguments($this->GetArguments()->GetChilds())
-    ->SetChild($this->Childs)
+    return Tag::Create()
+    ->Name("div")
+    ->Arguments($this->GetArguments()->GetChildren())
+    ->Child($this->Childs)
     ->Generate();
   }
 }

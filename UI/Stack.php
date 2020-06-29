@@ -11,51 +11,40 @@ class Stack extends Element
   function __construct() {
     parent::__construct();
     //TODO: Add
-    $this->AddThemeKey("__ly_container");
-    $this->AddThemeKey("__ly_stack");
-    $this->Childs = (new Queue);
+    $this->ThemeKeys(["__ly_container"]);
+    $this->ThemeKeys(["__ly_stack"]);
+    $this->Childs = Queue::Create();
   }
 
   // Childs
-  function SetChilds(array $childs) {
-    $this->Childs->SetChilds($childs);
+  function Children($childs) {
+    $this->Childs->Children($childs);
     return $this;
   }
-
-  function AddChilds(array $childs) {
-    $this->Childs->AddChilds($childs);
-    return $this;
-  }
-
-  function AddChild(Node $child) {
-    $this->Childs->AddChild($child);
-    return $this;
-  }
-
-  function GetChilds() : array {
-    return $this->Childs->GetChilds();
+  function GetChildren() : array {
+    return $this->Childs->GetChildren();
   }
 
   // Generator
   function GenerateChilds() : string {
-    $childs = $this->Childs->GetChilds();
+    $childs = $this->Childs->GetChildren();
     foreach ($childs as &$child) {
       if (!($child instanceof Element)) {
-        $child = (new Container)
-        ->SetChild($child);
+        $child = Container::Create()
+        ->Child($child);
       }
-      $child->AddThemeKey("__ly_stack_item");
+      $child->ThemeKeys(["__ly_stack_item"]);
     }
-    return (new Queue)
-    ->SetChilds($childs)
+    return Queue::Create()
+    ->Children($childs)
     ->Generate();
   }
 
   function Generate(): string {
-    return (new Tag)
-    ->SetName("div")
-    ->SetArguments($this->GetArguments()->GetChilds())
-    ->SetChild($this->GenerateChilds())
+    return Tag::Create()
+    ->Name("div")
+    ->Arguments($this->GetArguments()->GetChildren())
+    ->Child($this->GenerateChilds())
     ->Generate();
   }
 }

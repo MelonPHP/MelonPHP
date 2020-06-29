@@ -9,10 +9,10 @@ class TextBox extends Field
   }
 
   function Generate() : string {
-    return (new Tag)
-    ->SetName("textarea")
-    ->AddArguments($this->GetArguments()->GetChilds())
-    ->SetChild(
+    return Tag::Create()
+    ->Name("textarea")
+    ->Arguments($this->GetArguments()->GetChildren())
+    ->Child(
       !empty($this->GetText())
         ? $this->GetText()
         : " "

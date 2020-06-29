@@ -8,7 +8,7 @@ class ThemeParameter extends Node
   private $Value;
 
   /// Name
-  function SetName(string $name) {
+  function Name(string $name) {
     $this->Name = $name;
     return $this;
   }
@@ -18,7 +18,7 @@ class ThemeParameter extends Node
   }
 
   /// Value
-  function SetValue(string $value) {
+  function Value(string $value) {
     $this->Value = $value;
     return $this;
   }
@@ -35,8 +35,8 @@ class ThemeParameter extends Node
   /// ----- STATIC -----
   private static function FromQuery(string $name, $query) {
     return (new ThemeParameter)
-    ->SetName($name)
-    ->SetValue(
+    ->Name($name)
+    ->Value(
       !is_array($query) 
         ? $query
         : SpaceLine($query)

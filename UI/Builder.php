@@ -2,20 +2,17 @@
 
 require_once(__DIR__ . "/Component.php");
 
-class Builder extends Component
+class Builder extends Node
 {
   private $Function;
-  private $Arguments = array();
+  private $Arguments;
 
-  function AddArgument($argument) {
-    array_push($this->Arguments, $argument);
-    return $this;
+  function __construct() {
+    $Arguments = Queue::Create();
   }
 
-  function AddArguments(array $arguments) {
-    foreach ($arguments as $argument) {
-      array_push($this->Arguments, $argument);
-    }
+  function Arguments($arguments) {
+    $this->Arguments->Children($arguments);
     return $this;
   }
 
@@ -23,7 +20,7 @@ class Builder extends Component
     return $this->Arguments;
   }
 
-  function SetFunction($func) {
+  function Function($func) {
     $this->Function = $func;
     return $this;
   }

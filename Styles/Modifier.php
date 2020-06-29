@@ -11,19 +11,19 @@ abstract class Modifier extends Node
 
   function __construct(string $name) {
     $this->Parameters = (new Queue)
-    ->SetLeftPrefix(" ")
-    ->SetRightPrefix(";");
+    ->LeftPrefix(" ")
+    ->RightPrefix(";");
     $this->Name = $name;
   }
 
   /// Parameters
-  function AddParameter() {
-    $this->Parameters->AddChild(ThemeParameter::From(func_get_args(), func_num_args()));
+  function Parameter() {
+    $this->Parameters->Children([ThemeParameter::From(func_get_args(), func_num_args())]);
     return $this;
   }
 
   function GetParameters() : array {
-    return $this->Parameters->GetChilds();
+    return $this->Parameters->GetChildren();
   }
 
   /// Name
