@@ -4,162 +4,162 @@ require_once(__DIR__ . "/../Includes/Styles.php");
 
 function GetElementsTheme() : Theme {
   return (new Theme)
-  ->AddThemeBlocks([
+  ->ThemeBlocks([
 
     (new ThemeBlock)
-    ->SetKey("__text")
-    ->AddModifier(
+    ->Keys(["__text"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(FontSize, Px(14))
-      //->AddParameter(WebKit(UserSelect), None)
-      //->AddParameter(Moz(UserSelect), None)
-      //->AddParameter(UserSelect, None)
-      ->AddParameter(FontFamily, CommaLine([
+      ->Parameter(FontSize, Px(14))
+      //->Parameter(WebKit(UserSelect), None)
+      //->Parameter(Moz(UserSelect), None)
+      //->Parameter(UserSelect, None)
+      ->Parameter(FontFamily, CommaLine([
         "'Segoe UI'", "Frutiger", 
         "'Frutiger Linotype'", 
         "'Dejavu Sans'", "'Helvetica Neue'", 
         "Arial", "sans-serif"
       ]))
-    ),
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__text_no_select")
-    ->AddModifier(
+    ->Keys(["__text_no_select"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(WebKit(UserSelect), None)
-      ->AddParameter(Moz(UserSelect), None)
-      ->AddParameter(UserSelect, None)
-    ),
+      ->Parameter(WebKit(UserSelect), None)
+      ->Parameter(Moz(UserSelect), None)
+      ->Parameter(UserSelect, None)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__hover_cursor")
-    ->AddModifier(
+    ->Keys(["__hover_cursor"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Cursor, Pointer)
-      ->AddParameter(Webkit(Cursor), "hand")
-    ),
+      ->Parameter(Cursor, Pointer)
+      ->Parameter(Webkit(Cursor), "hand")
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__text_cursor")
-    ->AddModifier(
+    ->Keys(["__text_cursor"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Cursor, Text)
-    ),
+      ->Parameter(Cursor, Text)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__layout_queue")
-    ->AddModifier(
+    ->Keys(["__layout_queue"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Width, Pr(100))
-      ->AddParameter(Height, Pr(100))
-      ->AddParameter(FlexShrink, 0)
-      ->AddParameter(Left, 0)
-      ->AddParameter(Flex, Auto)
-      ->AddParameter(Display, WebKit(Flex))
-      ->AddParameter(Display, Flex)
-      ->AddParameter(JustifyContent, FlexStart)
-      ->AddParameter(AlignItems, Left)
-    ),
+      ->Parameter(Width, Pr(100))
+      ->Parameter(Height, Pr(100))
+      ->Parameter(FlexShrink, 0)
+      ->Parameter(Left, 0)
+      ->Parameter(Flex, Auto)
+      ->Parameter(Display, WebKit(Flex))
+      ->Parameter(Display, Flex)
+      ->Parameter(JustifyContent, FlexStart)
+      ->Parameter(AlignItems, Left)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__ly_row")
-    ->AddModifier(
+    ->Keys(["__ly_row"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(FlexDirection, Row)
-      ->AddParameter(WebKit(FlexDirection), Row)
-    ),
+      ->Parameter(FlexDirection, Row)
+      ->Parameter(WebKit(FlexDirection), Row)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__ly_column")
-    ->AddModifier(
+    ->Keys(["__ly_column"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(FlexDirection, Column)
-      ->AddParameter(WebKit(FlexDirection), Column)
-    ),
+      ->Parameter(FlexDirection, Column)
+      ->Parameter(WebKit(FlexDirection), Column)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__ly_grid")
-    ->AddModifier(
+    ->Keys(["__ly_grid"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Width, Pr(100))
-      ->AddParameter(Height, Pr(100))
-      ->AddParameter(Display, Grid)
-    ),
+      ->Parameter(Width, Pr(100))
+      ->Parameter(Height, Pr(100))
+      ->Parameter(Display, Grid)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__ly_container")
-    ->AddModifier(
+    ->Keys(["__ly_container"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Width, Pr(100))
-      ->AddParameter(Height, Pr(100))
-      ->AddParameter(Display, Block)
-    ),
+      ->Parameter(Width, Pr(100))
+      ->Parameter(Height, Pr(100))
+      ->Parameter(Display, Block)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__ly_stack")
-    ->AddModifier(
+    ->Keys(["__ly_stack"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Position, Absolute)
-    ),
+      ->Parameter(Position, Absolute)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__center")
-    ->AddModifier(
+    ->Keys(["__center"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Margin, Auto)
-    ),
+      ->Parameter(Margin, Auto)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__sc_vertical")
-    ->AddModifier(
+    ->Keys(["__sc_vertical"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(OverflowX, Hidden)
-      ->AddParameter(OverflowY, Auto)
-    ),
+      ->Parameter(OverflowX, Hidden)
+      ->Parameter(OverflowY, Auto)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__sc_horizontal")
-    ->AddModifier(
+    ->Keys(["__sc_horizontal"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(OverflowX, Auto)
-      ->AddParameter(OverflowY, Hidden)
-    ),
+      ->Parameter(OverflowX, Auto)
+      ->Parameter(OverflowY, Hidden)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__sc_all")
-    ->AddModifier(
+    ->Keys(["__sc_all"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(OverflowX, Auto)
-      ->AddParameter(OverflowY, Auto)
-    ),
+      ->Parameter(OverflowX, Auto)
+      ->Parameter(OverflowY, Auto)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__button")
-    ->AddModifier(
+    ->Keys(["__button"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Width, Pr(100))
-    ),
+      ->Parameter(Width, Pr(100))
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__field")
-    ->AddModifier(
+    ->Keys(["__field"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Width, Pr(100))
-    ),
+      ->Parameter(Width, Pr(100))
+    ]),
     
     (new ThemeBlock)
-    ->SetKey("__ly_stack")
-    ->AddModifier(
+    ->Keys(["__ly_stack"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Position, Relative)
-    ),
+      ->Parameter(Position, Relative)
+    ]),
 
     (new ThemeBlock)
-    ->SetKey("__ly_stack_item")
-    ->AddModifier(
+    ->Keys(["__ly_stack_item"])
+    ->Modifiers([
       (new StandartModifier)
-      ->AddParameter(Position, Absolute)
-    )
+      ->Parameter(Position, Absolute)
+    ])
   ]);
 }
 

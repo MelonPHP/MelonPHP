@@ -2,11 +2,13 @@
 
 require_once(__DIR__ . "/../Includes/Core.php");
 
-abstract class Component extends Node
+abstract class Component extends Element
 {
-  abstract function Build() : Node /* html */;
+  abstract function Build() : Element;
 
   public function Generate() : string {
-    return $this->Build()->Generate();
+    return $this->Build()
+    ->Arguments($this->GetArguments()->GetChildren())
+    ->Generate();
   }
 }

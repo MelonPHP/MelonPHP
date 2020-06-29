@@ -13,11 +13,11 @@ class Tag extends Node
 
   function __construct() {
     $this->Arguments = (new Queue)
-    ->SetLeftPrefix(" ");
+    ->LeftPrefix(" ");
   }
 
   /// Name
-  function SetName(string $string) {
+  function Name(string $string) {
     $this->Name = $string;
     return $this;
   }
@@ -27,27 +27,17 @@ class Tag extends Node
   }
 
   // Arguments
-  function SetArguments(array $arguments) {
-    $this->Arguments->SetChilds($arguments);
-    return $this;
-  }
-
-  function AddArguments(array $arguments) {
-    $this->Arguments->AddChilds($arguments);
-    return $this;
-  }
-
-  function AddArgument(Argument $argument) {
-    $this->Arguments->AddChild($argument);
+  function Arguments($arguments) {
+    $this->Arguments->Children($arguments);
     return $this;
   }
 
   function GetArguments() : array {
-    return $this->Arguments->GetChilds();
+    return $this->Arguments->GetChildren();
   }
 
   /// Child
-  function SetChild($child) {
+  function Child($child) {
     if (!is_string($child))
       $child = $child->Generate();
     $this->Child = $child;
@@ -65,4 +55,4 @@ class Tag extends Node
     else
       return "<".$this->Name.$this->Arguments->Generate().">".$this->Child."</".$this->Name.">";
   }
-} 
+}

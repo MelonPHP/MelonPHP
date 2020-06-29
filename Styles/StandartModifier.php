@@ -7,4 +7,5 @@ class StandartModifier extends Modifier
   function __construct() {
     parent::__construct("");
   }
+
 }

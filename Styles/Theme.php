@@ -17,13 +17,13 @@ class Theme extends Node
 
   function __construct() {
     $this->ThemeBlocks = (new Queue)
-    ->SetLeftPrefix(" ");
+    ->LeftPrefix(" ");
     $this->FrameBlocks = (new Queue)
-    ->SetLeftPrefix(" ");
+    ->LeftPrefix(" ");
   }
 
   /// TargetMinWidth
-  function SetMinWidth(string $string) {
+  function MinWidth(string $string) {
     $this->TargetMinWidth = $string;
     return $this;
   }
@@ -33,7 +33,7 @@ class Theme extends Node
   }
 
   /// TargetMaxWidth
-  function SetMaxWidth(string $string) {
+  function MaxWidth(string $string) {
     $this->TargetMaxWidth = $string;
     return $this;
   }
@@ -43,7 +43,7 @@ class Theme extends Node
   }
 
   /// TargetMinHeight
-  function SetMinHeight(string $string) {
+  function MinHeight(string $string) {
     $this->TargetMinHeight = $string;
     return $this;
   }
@@ -53,7 +53,7 @@ class Theme extends Node
   }
 
   /// TargetMaxHeight
-  function SetMaxHeight(string $string) {
+  function MaxHeight(string $string) {
     $this->TargetMaxHeight = $string;
     return $this;
   }
@@ -63,76 +63,56 @@ class Theme extends Node
   }
 
   /// ThemeBlocks
-  function SetThemeBlocks(array $nodes) {
-    $this->ThemeBlocks->SetChilds($nodes);
-    return $this;
-  }
-
-  function AddThemeBlocks(array $nodes) {
-    $this->ThemeBlocks->AddChilds($nodes);
-    return $this;
-  }
-
-  function AddThemeBlock(ThemeBlock $node) {
-    $this->ThemeBlocks->AddChild($node);
+  function ThemeBlocks($nodes) {
+    $this->ThemeBlocks->Children($nodes);
     return $this;
   }
 
   function GetThemeBlocks() : array {
-    return $this->ThemeBlocks->GetChilds();
+    return $this->ThemeBlocks->GetChildren();
   }
 
   /// FrameBlocks
-  function SetFrameBlocks(array $nodes) {
-    $this->FrameBlocks->SetChilds($nodes);
-    return $this;
-  }
-
-  function AddFrameBlocks(array $nodes) {
-    $this->FrameBlocks->AddChilds($nodes);
-    return $this;
-  }
-
-  function AddFrameBlock(FrameBlock $node) {
-    $this->FrameBlocks->AddChild($node);
+  function FrameBlocks($nodes) {
+    $this->FrameBlocks->Children($nodes);
     return $this;
   }
 
   function GetFrameBlocks() : array {
-    return $this->FrameBlocks->GetChilds();
+    return $this->FrameBlocks->GetChildren();
   }
 
   /// Generate
   // TODO: Refactor. Add Css constants
   function GenerateMedias(string $content) : string {
     $medias = (new Queue)
-    ->SetLeftPrefix(" and (")
-    ->SetRightPrefix(")");
+    ->LeftPrefix(" and (")
+    ->RightPrefix(")");
     if (!empty($this->TargetMinWidth))
-      $medias->AddChild(
-        (new ThemeParameter)
-        ->SetName("min-width")
-        ->SetValue($this->TargetMinWidth)
-      );
+      $medias->Children([
+        ThemeParameter::Create()
+        ->Name("min-width")
+        ->Value($this->TargetMinWidth)
+      ]);
     if (!empty($this->TargetMaxWidth))
-      $medias->AddChild(
-        (new ThemeParameter)
-        ->SetName("max-width")
-        ->SetValue($this->TargetMaxWidth)
-      );
+      $medias->Children([
+        ThemeParameter::Create()
+        ->Name("max-width")
+        ->Value($this->TargetMaxWidth)
+      ]);
     if (!empty($this->TargetMinHeight))
-      $medias->AddChild(
-        (new ThemeParameter)
-        ->SetName("min-height")
-        ->SetValue($this->TargetMinHeight)
-      );
+      $medias->Children([
+        ThemeParameter::Create()
+        ->Name("min-height")
+        ->Value($this->TargetMinHeight)
+      ]);
     if (!empty($this->TargetMaxHeight))
-      $medias->AddChild(
-        (new ThemeParameter)
-        ->SetName("max-height")
-        ->SetValue($this->TargetMaxHeight)
-      );
-    if (count($medias->GetChilds()) > 0) {
+      $medias->Children([
+        ThemeParameter::Create()
+        ->Name("max-height")
+        ->Value($this->TargetMaxHeight)
+      ]);
+    if (count($medias->GetChildren()) > 0) {
       return "@media screen".$medias->Generate()." {".$content." }";
     }
     else

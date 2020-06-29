@@ -11,22 +11,22 @@ class Frame extends Node
 
   function __construct() {
     $this->Parameters = (new Queue)
-    ->SetLeftPrefix(" ")
-    ->SetRightPrefix(";");
+    ->LeftPrefix(" ")
+    ->RightPrefix(";");
   }
 
   /// Parameters
-  function AddParameter() {
-    $this->Parameters->AddChild(ThemeParameter::From(func_get_args(), func_num_args()));
+  function Parameter() {
+    $this->Parameters->Children([ThemeParameter::From(func_get_args(), func_num_args())]);
     return $this;
   }
 
   function GetParameters() : array {
-    return $this->Parameters->GetChilds();
+    return $this->Parameters->GetChildren();
   }
 
   /// Value
-  function SetValue(string $string) {
+  function Value(string $string) {
     $this->Value = $string;
     return $this;
   }

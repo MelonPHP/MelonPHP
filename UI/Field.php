@@ -9,12 +9,12 @@ abstract class Field extends ActionNode
 
   function __construct() {
     parent::__construct();
-    $this->AddThemeKey("__text");
-    $this->AddThemeKey("__field");
-    $this->AddThemeKey("__text_cursor");
+    $this->ThemeKeys(["__text"]);
+    $this->ThemeKeys(["__field"]);
+    $this->ThemeKeys(["__text_cursor"]);
   }
 
-  function SetText(string $text) {
+  function Text(string $text) {
     $this->Value = $text;
     return $this;
   }
@@ -23,7 +23,7 @@ abstract class Field extends ActionNode
     return $this->Value;
   }
 
-  function SetPlaceholder(string $text) {
+  function Placeholder(string $text) {
     $this->Placeholder = $text;
     return $this;
   }
@@ -36,18 +36,18 @@ abstract class Field extends ActionNode
   function GetArguments() : Queue {
     $args = parent::GetArguments();
     if (!empty($this->Type))
-      $args->AddChild(
-        (new Argument)
-        ->SetName("placeholder")
-        ->SetValue($this->Placeholder)
-      );
+      $args->Children([
+        Argument::Create()
+        ->Name("placeholder")
+        ->Value($this->Placeholder)
+      ]);
     return $args;
   }
 
   function Generate() : string {
-    return (new Tag)
-    ->SetName("input")
-    ->AddArguments($this->GetArguments()->GetChilds())
+    return Tag::Create()
+    ->Name("input")
+    ->Arguments($this->GetArguments()->GetChildren())
     ->Generate();
   }
 }

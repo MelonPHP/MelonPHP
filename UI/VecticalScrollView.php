@@ -6,6 +6,6 @@ class VerticalScrollView extends Container
 {
   function __construct() {
     parent::__construct();
-    $this->AddThemeKey("__sc_vertical");
+    $this->ThemeKeys(["__sc_vertical"]);
   }
 }

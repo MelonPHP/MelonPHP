@@ -16,33 +16,23 @@ class Action extends Container
   function __construct() {
     parent::__construct();
 
-    $this->Varibles = new Queue;
+    $this->Varibles = Queue::Create();
 
-    $this->SetType(ActionTypes::Get);
+    $this->Type(ActionTypes::Get);
   }
 
   /// Varibles
-  function SetVaribles(array $varibles) {
-    $this->Varibles->SetChilds($varibles);
-    return $this;
-  }
-
-  function AddVaribles(array $varibles) {
-    $this->Varibles->AddChilds($varibles);
-    return $this;
-  }
-
-  function AddVarible(ActionVarible $varible) {
-    $this->Varibles->AddChild($varible);
+  function Varibles($varibles) {
+    $this->Varibles->Children($varibles);
     return $this;
   }
 
   function GetVaribles() : array {
-    return $this->Varibles->GetChilds();
+    return $this->Varibles->GetChildren();
   }
 
   /// Type
-  function SetType(string $type) {
+  function Type(string $type) {
     $this->Type = $type;
     return $this;
   }
@@ -52,7 +42,7 @@ class Action extends Container
   }
 
   /// Redirect
-  function SetRedirect(string $uri) {
+  function Redirect(string $uri) {
     $this->Redirect = $uri;
     return $this;
   }
@@ -65,29 +55,44 @@ class Action extends Container
   function GetArguments() : Queue {
     $args = parent::GetArguments();
     if (!empty($this->Redirect))
-      $args->AddChild(
-        (new Argument)
-        ->SetName("action")
-        ->SetValue($this->Redirect)
-      );
+      $args->Children([
+        Argument::Create()
+        ->Name("action")
+        ->Value($this->Redirect)
+      ]);
     if (!empty($this->Type))
-      $args->AddChild(
-        (new Argument)
-        ->SetName("method")
-        ->SetValue($this->Type)
-      );
+      $args->Children([
+        Argument::Create()
+        ->Name("method")
+        ->Value($this->Type)
+      ]);
     return $args;
   }
 
   function Generate() : string {
-    return (new Tag)
-    ->SetName("form")
-    ->AddArguments($this->GetArguments()->GetChilds())
-    ->SetChild(
-      (new Queue)
-      ->AddChild($this->GetChild())
-      ->AddChilds($this->GetVaribles())
+    return Tag::Create()
+    ->Name("form")
+    ->Arguments($this->GetArguments()->GetChildren())
+    ->Child(
+      Queue::Create()
+      ->Children($this->GetChild())
+      ->Children($this->GetVaribles())
     )
     ->Generate();
+  }
+
+  static function Create() : Action {
+    return new Action;
+  }
+
+  static function GetValue(string $name, $standart = null, string $type = ActionTypes::Get) {
+    switch ($type) {
+      case ActionTypes::Get:
+        return isset($_GET[$name]) ? $_GET[$name] : $standart;
+      case ActionTypes::Post:
+        return isset($_POST[$name]) ? $_POST[$name] : $standart;
+      default:
+        throw "error";
+    }
   }
 }

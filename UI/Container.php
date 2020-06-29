@@ -10,12 +10,12 @@ class Container extends Element
 
   function __construct() {
     parent::__construct();
-    $this->AddThemeKey("__ly_container");
-    $this->Child = new EmptyNode;
+    $this->ThemeKeys(["__ly_container"]);
+    $this->Child = EmptyNode::Create();
   }
 
   /// Child
-  function SetChild(Node $child) {
+  function Child(Node $child) {
     $this->Child = $child;
     return $this;
   }
@@ -27,9 +27,9 @@ class Container extends Element
   /// Generate
   function Generate() : string {
     return (new Tag)
-    ->SetName("div")
-    ->AddArguments($this->GetArguments()->GetChilds())
-    ->SetChild($this->Child)
+    ->Name("div")
+    ->Arguments($this->GetArguments()->GetChildren())
+    ->Child($this->Child)
     ->Generate();
   }
 }

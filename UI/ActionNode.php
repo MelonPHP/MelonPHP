@@ -11,7 +11,7 @@ abstract class ActionNode extends Element
   private $ActionKey = "";
 
   // ActionKey
-  function SetActionKey(string $string) {
+  function ActionKey(string $string) {
     $this->ActionKey = $string;
     return $this;
   }
@@ -24,23 +24,23 @@ abstract class ActionNode extends Element
   function GetArguments() : Queue {
     $args = parent::GetArguments();
     if (!empty($this->Type))
-      $args->AddChild(
-        (new Argument)
-        ->SetName("type")
-        ->SetValue($this->Type)
-      );
+      $args->Children([
+        Argument::Create()
+        ->Name("type")
+        ->Value($this->Type)
+      ]);
     if (!empty($this->ActionKey))
-      $args->AddChild(
-        (new Argument)
-        ->SetName("name")
-        ->SetValue($this->ActionKey)
-      );
+      $args->Children([
+        Argument::Create()
+        ->Name("name")
+        ->Value($this->ActionKey)
+      ]);
     if (!empty($this->Value))
-      $args->AddChild(
-        (new Argument)
-        ->SetName("value")
-        ->SetValue($this->Value)
-      );
+      $args->Children([
+        Argument::Create()
+        ->Name("value")
+        ->Value($this->Value)
+      ]);
     return $args;
   }
 

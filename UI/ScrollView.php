@@ -6,6 +6,6 @@ class ScrollView extends Container
 {
   function __construct() {
     parent::__construct();
-    $this->AddThemeKey("__sc_all");
+    $this->ThemeKeys(["__sc_all"]);
   }
 }

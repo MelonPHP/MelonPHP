@@ -4,12 +4,12 @@ require_once(__DIR__ . "/Node.php");
 
 class Queue extends Node
 {
-  private $Childs = array();
+  private $Children = array();
   private $PrefixLeft = "";
   private $PrefixRight = "";
 
   /// PrefixLeft
-  function SetLeftPrefix(string $string) {
+  function LeftPrefix(string $string) {
     $this->PrefixLeft = $string;
     return $this;
   }
@@ -19,7 +19,7 @@ class Queue extends Node
   }
 
   /// PrefixRight
-  function SetRightPrefix(string $string) {
+  function RightPrefix(string $string) {
     $this->PrefixRight = $string;
     return $this;
   }
@@ -28,32 +28,25 @@ class Queue extends Node
     return $this->PrefixRight;
   }
 
-  /// Childs
-  function SetChilds(array $nodes /*node or string*/) {
-    $this->Childs = $nodes;
+  /// Children
+  function Children($nodes /*node or array of node or string array or string*/) {
+    if (!is_array($nodes))
+      array_push($this->Children, $nodes);
+    else
+      foreach ($nodes as $node) {
+        array_push($this->Children, $node);
+      }
     return $this;
   }
 
-  function AddChilds(array $nodes /*node or string*/) {
-    foreach ($nodes as $node) {
-      array_push($this->Childs, $node);
-    }
-    return $this;
-  }
-
-  function AddChild($node /*node or string*/) {
-    array_push($this->Childs, $node);
-    return $this;
-  }
-
-  function GetChilds() : array {
-    return $this->Childs;
+  function GetChildren() : array {
+    return $this->Children;
   }
 
   /// Generate
   function Generate() : string {
     $str = "";
-    foreach ($this->Childs as $child) {
+    foreach ($this->Children as $child) {
       $str .= $this->PrefixLeft.(is_string($child) ? $child : $child->Generate()).$this->PrefixRight;
     }
     return $str;

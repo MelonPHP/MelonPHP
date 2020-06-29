@@ -6,6 +6,6 @@ class Column extends Flex
 {
   function __construct() {
     parent::__construct();
-    $this->AddThemeKey("__ly_column");
+    $this->ThemeKeys("__ly_column");
   }
 }

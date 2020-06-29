@@ -12,13 +12,13 @@ class Grid extends Element
 
   function __construct() {
      parent::__construct();
-     $this->AddThemeKey("__ly_grid");
+     $this->ThemeKeys(["__ly_grid"]);
      $this->Childs = new Queue;
      $this->Spacing = Px(0);
   }
 
   /// Spacing
-  function SetSpacing(string $spacing) {
+  function Spacing(string $spacing) {
     $this->Spacing = $spacing;
     return $this;
   }
@@ -28,7 +28,7 @@ class Grid extends Element
   }
 
   /// ColumnTeample
-  function SetColumnTeample(string $spacing) {
+  function ColumnTeample(string $spacing) {
     $this->ColumnTeample = $spacing;
     return $this;
   }
@@ -38,48 +38,38 @@ class Grid extends Element
   }
 
   /// Childs
-  function SetChilds(array $childs) {
-    $this->Childs->SetChilds($childs);
-    return $this;
-  }
-
-  function AddChilds(array $childs) {
-    $this->Childs->AddChilds($childs);
-    return $this;
-  }
-
-  function AddChild(Node $child) {
-    $this->Childs->AddChild($child);
+  function Children($childs) {
+    $this->Childs->Children($childs);
     return $this;
   }
 
   function GetChilds() : array {
-    return $this->Childs->GetChilds();
+    return $this->Childs->GetChildren();
   }
 
   /// Generate
   function GetArguments() : Queue {
-    $args = parent::GetArguments()->GetChilds();
+    $args = parent::GetArguments()->GetChildren();
     foreach ($args as &$arg) {
       if ($arg->GetName() === "style") {
-        $totalQ = (new Queue)
-        ->SetLeftPrefix(" ")
-        ->SetRightPrefix(";");
+        $totalQ = Queue::Create()
+        ->LeftPrefix(" ")
+        ->RightPrefix(";");
         if (!empty($this->Spacing))
-          $totalQ->AddChild(
+          $totalQ->Children([
             (new ThemeParameter)
-            ->SetName(GridGap)
-            ->SetValue($this->Spacing)
+            ->Name(GridGap)
+            ->Value($this->Spacing)
             ->Generate()
-          );
+          ]);
         if (!empty($this->ColumnTeample))
-          $totalQ->AddChild(
+          $totalQ->Children([
             (new ThemeParameter)
-            ->SetName(GridTemplateColumns)
-            ->SetValue($this->ColumnTeample)
+            ->Name(GridTemplateColumns)
+            ->Value($this->ColumnTeample)
             ->Generate()
-          );
-        $arg->SetValue(
+          ]);
+        $arg->Value(
           $arg->GetValue()
           .$totalQ->Generate()
         );
@@ -87,14 +77,14 @@ class Grid extends Element
       }
     } 
     return (new Queue)
-    ->SetChilds($args);
+    ->Children($args);
   }
 
   function Generate() : string {
-    return (new Tag)
-    ->SetName("div")
-    ->AddArguments($this->GetArguments()->GetChilds())
-    ->SetChild($this->Childs)
+    return Tag::Create()
+    ->Name("div")
+    ->Arguments($this->GetArguments()->GetChildren())
+    ->Child($this->Childs)
     ->Generate();
   }
 }
