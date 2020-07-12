@@ -1,5 +1,7 @@
 # Melon PHP
 
+> Simple HTML and CSS generator like flutter but for PHP
+
 ## Examples
 
 ### Clicker Example
