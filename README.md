@@ -2,6 +2,8 @@
 
 ### Clicker Example
 
+###### code:
+
 ```php
 
 <?php
@@ -53,6 +55,20 @@ class TestPage extends Component
 
 
 ```
+
+###### result:
+
+### Layouts Example
+
+###### code:
+
+###### result:
+
+### Align Example
+
+###### code:
+
+###### result:
 
 #
 
