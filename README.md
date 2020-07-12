@@ -100,7 +100,6 @@ class TestPage extends Component
 
   function Build() : Element {
     return Document::Create()
-    // Присваиваем имя страницы
     ->Title("Test page")
     ->Child(
       Stack::Create()
@@ -140,9 +139,9 @@ class TestPage extends Component
     ->ThemeParameter(BackgroundColor, $color)
     ->Children([
       Text::Create()
-      ->Text("Hello Gidra"),
+      ->Text("Hello Melon PHP"),
       Text::Create()
-      ->Text("Hello Gidra")
+      ->Text("Hello Melon PHP")
     ]);
   }
 
@@ -172,7 +171,6 @@ class TestPage extends Component
 
   function Build() : Element {
     return Document::Create()
-    // Присваиваем имя страницы
     ->Title("Test page")
     ->Child(
       Row::Create()
