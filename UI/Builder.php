@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . "/Component.php");
+require_once(__DIR__ . "/../Core/Queue.php");
 
 class Builder extends Node
 {
@@ -8,7 +9,7 @@ class Builder extends Node
   private $Arguments;
 
   function __construct() {
-    $Arguments = Queue::Create();
+    $this->Arguments = new Queue;
   }
 
   function Arguments($arguments) {
@@ -17,7 +18,7 @@ class Builder extends Node
   }
 
   function GetArguments() : array {
-    return $this->Arguments;
+    return $this->Arguments->GetChildren();
   }
 
   function Function($func) {
@@ -31,6 +32,6 @@ class Builder extends Node
 
   public function Generate() : string {
     if ($this->Function != null)
-      return call_user_func($this->Function, $this->Arguments)->Generate();
+      return call_user_func($this->Function, $this->Arguments->GetChildren())->Generate();
   }
 }

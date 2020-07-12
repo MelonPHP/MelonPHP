@@ -37,6 +37,14 @@ class Document extends Element
     return $this;
   }
 
+  function Theme($values) {
+    if (is_a($values, "Theme"))
+      $this->Themes->Children($values);
+    else
+      $this->Themes->Children(Theme::Create()->ThemeBlocks($values));
+    return $this;
+  }
+
   function GetThemes() : array {
     return $this->Themes->GetChildren();
   }

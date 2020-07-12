@@ -12,7 +12,7 @@ class ActionVarible extends ActionNode
   }
 
   /// Value
-  function Value(string $string) {
+  function Value($string) {
     $this->Value = $string;
     return $this;
   }
