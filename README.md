@@ -2,11 +2,11 @@
 
 ### Clicker Example
 
-‘‘‘ php
+```php
 
 <?php
 
-require_once(__DIR__ . "/libs/include_tree-php.php");
+require_once(__DIR__ . "/Includes/All.php");
 
 // Компонент
 class TestPage extends Component
@@ -52,7 +52,7 @@ class TestPage extends Component
 } Node::Run(TestPage::Create());
 
 
-‘‘‘
+```
 
 #
 
