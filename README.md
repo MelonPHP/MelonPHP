@@ -10,14 +10,13 @@
 
 require_once(__DIR__ . "/Includes/All.php");
 
-// Компонент
 class TestPage extends Component
 {
   private $TapCount;
 
   function __construct() {
-    parent::____construct();
-  
+    parent::__construct();
+
     $this->TapCount = Action::GetValue("click_count", 0 /* standart value */, ActionTypes::Post);
     $this->TapCount++;
   }
@@ -39,19 +38,19 @@ class TestPage extends Component
         ->Children([
           Text::Create()
           ->ThemeParameter(PaddingBottom, Px(15))
-          ->Text("Нажато $this->TapCount раз"),
+          ->Text("Press $this->TapCount times"),
           Button::Create()
           ->ThemeParameter(Width, Auto)
           ->ThemeParameter(Padding, [Px(4), Px(10)])
           ->ThemeParameter(BackgroundColor, Blue)
           ->ThemeParameter(Color, White)
           ->ThemeParameter(BorderRadius, Px(4))
-          ->Text("Нажмите")
+          ->Text("Press")
         ])
       )
     );
   }
-} Node::Run(TestPage::Create());
+} Node::Run(new TestPage);
 
 
 ```
