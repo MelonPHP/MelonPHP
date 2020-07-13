@@ -122,6 +122,8 @@ class TestPage extends PageComponent
 
 ###### result:
 
+![](https://github.com/MelonPHP/MelonPHP/blob/stable/.assets/ex_1.png)
+
 ### Align Example
 
 ###### code:
