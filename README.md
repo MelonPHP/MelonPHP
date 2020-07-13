@@ -59,6 +59,8 @@ class ClickerDisplay extends DisplayComponent
 
 ###### result:
 
+![](https://github.com/MelonPHP/MelonPHP/blob/stable/.assets/ex_1.png)
+
 ### Layouts Example
 
 ###### code:
@@ -122,7 +124,7 @@ class TestPage extends PageComponent
 
 ###### result:
 
-![](https://github.com/MelonPHP/MelonPHP/blob/stable/.assets/ex_1.png)
+![](https://github.com/MelonPHP/MelonPHP/blob/stable/.assets/ex_2.png)
 
 ### Align Example
 
@@ -197,6 +199,8 @@ class TestPage extends PageComponent
 ```
 
 ###### result:
+
+![](https://github.com/MelonPHP/MelonPHP/blob/stable/.assets/ex_3.png)
 
 #
 
