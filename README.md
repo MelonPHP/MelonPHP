@@ -14,13 +14,11 @@
 
 require_once(__DIR__ . "/Includes/All.php");
 
-class TestPage extends Component
+class TestPage extends PageComponent
 {
   private $TapCount;
 
-  function __construct() {
-    parent::__construct();
-
+  function Think() {
     $this->TapCount = Action::GetValue("click_count", 0 /* standart value */, ActionTypes::Post);
     $this->TapCount++;
   }
@@ -71,7 +69,7 @@ class TestPage extends Component
 
 require_once(__DIR__ . "/Includes/All.php");
 
-class TestPage extends Component
+class TestPage extends PageComponent
 {
 
   function BuildRow() {
@@ -134,7 +132,7 @@ class TestPage extends Component
 
 require_once(__DIR__ . "/Includes/All.php");
 
-class TestPage extends Component
+class TestPage extends PageComponent
 {
 
   function BuildColumn($color) : Column {
