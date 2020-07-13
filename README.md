@@ -14,7 +14,7 @@
 
 require_once(__DIR__ . "/Includes/All.php");
 
-class TestPage extends PageComponent
+class Delete Run function, now this is Display function and only in PageCom extends PageComponent
 {
   private $TapCount;
 
@@ -52,7 +52,7 @@ class TestPage extends PageComponent
       )
     );
   }
-} Node::Run(new TestPage);
+} TestPage::Display();
 
 
 ```
@@ -116,7 +116,7 @@ class TestPage extends PageComponent
       ])
     );
   }
-} Node::Run(new TestPage);
+} TestPage::Display();
 
 ```
 
@@ -189,7 +189,7 @@ class TestPage extends PageComponent
       ])
     );
   }
-} Node::Run(new TestPage);
+} TestPage::Display();
 
 
 ```
