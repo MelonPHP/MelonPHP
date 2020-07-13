@@ -14,11 +14,11 @@
 
 require_once(__DIR__ . "/Includes/All.php");
 
-class Delete Run function, now this is Display function and only in PageCom extends PageComponent
+class ClickerDisplay extends DisplayComponent
 {
   private $TapCount;
 
-  function Think() {
+  function Initialize() {
     $this->TapCount = Action::GetValue("click_count", 0 /* standart value */, ActionTypes::Post);
     $this->TapCount++;
   }
@@ -52,7 +52,7 @@ class Delete Run function, now this is Display function and only in PageCom exte
       )
     );
   }
-} TestPage::Display();
+} ClickerDisplay::Display();
 
 
 ```
