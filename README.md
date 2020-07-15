@@ -29,7 +29,7 @@ class ClickerDisplay extends DisplayComponent
     ->Child(
       Action::Create()
       ->Type(ActionTypes::Post)
-      ->Varible("click_count", $this->TapCount)
+      ->Variable("click_count", $this->TapCount)
       ->Child(
         Column::Create()
         ->ThemeParameter(Padding, Px(15))
