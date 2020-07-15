@@ -22,14 +22,14 @@ class Action extends Container
   }
 
   /// Varibles
-  function Varibles($varibles) {
+  function Variables($varibles) {
     $this->Varibles->Children($varibles);
     return $this;
   }
 
-  function Varible(string $name, $value) {
+  function Variable(string $name, $value) {
     $this->Varibles->Children(
-      ActionVarible::Create()
+      ActionVariable::Create()
       ->ActionKey($name)
       ->Value($value)
     );

@@ -25,7 +25,7 @@ require_once(__DIR__ . "/../UI/PictureSizes.php");
 require_once(__DIR__ . "/../UI/Action.php");
 require_once(__DIR__ . "/../UI/ActionTypes.php");
 require_once(__DIR__ . "/../UI/ActionNode.php");
-require_once(__DIR__ . "/../UI/ActionVarible.php");
+require_once(__DIR__ . "/../UI/ActionVariable.php");
 require_once(__DIR__ . "/../UI/Button.php");
 require_once(__DIR__ . "/../UI/ButtonTypes.php");
 require_once(__DIR__ . "/../UI/Field.php");

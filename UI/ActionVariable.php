@@ -4,7 +4,7 @@ require_once(__DIR__ . "/../Includes/Core.php");
 require_once(__DIR__ . "/ActionNode.php");
 require_once(__DIR__ . "/Tag.php");
 
-class ActionVarible extends ActionNode
+class ActionVariable extends ActionNode
 {
   function __construct() {
     parent::__construct();
