@@ -7,6 +7,6 @@ abstract class DisplayComponent extends Component
   abstract function Build() : Document;
   
   static function Display() {
-    echo @self::Create()->Build()->Generate();
+    echo @static::Create()->Build()->Generate();
   }
 }

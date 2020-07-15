@@ -5,7 +5,7 @@ require_once(__DIR__ . "/Container.php");
 require_once(__DIR__ . "/Argument.php");
 require_once(__DIR__ . "/Tag.php");
 require_once(__DIR__ . "/ActionTypes.php");
-require_once(__DIR__ . "/ActionVarible.php");
+require_once(__DIR__ . "/ActionVariable.php");
 
 class Action extends Container
 {
