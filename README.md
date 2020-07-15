@@ -23,7 +23,7 @@ class ClickerDisplay extends DisplayComponent
     $this->TapCount++;
   }
 
-  function Build() : Element {
+  function Build() : Document {
     return Document::Create()
     ->Title("Test page")
     ->Child(
@@ -97,7 +97,7 @@ class TestPage extends PageComponent
     ]);
   }
 
-  function Build() : Element {
+  function Build() : Document {
     return Document::Create()
     ->Title("Test page")
     ->Child(
@@ -170,7 +170,7 @@ class TestPage extends PageComponent
     ->MainAlign(MainAxisAligns::Center);
   }
 
-  function Build() : Element {
+  function Build() : Document {
     return Document::Create()
     ->Title("Test page")
     ->Child(
