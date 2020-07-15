@@ -43,6 +43,10 @@ class Queue extends Node
     return $this->Children;
   }
 
+  function Count() : int {
+    return count($this->Children);
+  }
+
   /// Generate
   function Generate() : string {
     $str = "";

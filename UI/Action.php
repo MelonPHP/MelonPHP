@@ -27,6 +27,15 @@ class Action extends Container
     return $this;
   }
 
+  function Varible(string $name, $value) {
+    $this->Varibles->Children(
+      ActionVarible::Create()
+      ->ActionKey($name)
+      ->Value($value)
+    );
+    return $this;
+  }
+
   function GetVaribles() : array {
     return $this->Varibles->GetChildren();
   }

@@ -16,10 +16,9 @@ abstract class Element extends Node
     $this->Arguments = Queue::Create()
     ->LeftPrefix(" ");
     $this->Parameters = Queue::Create()
-    ->LeftPrefix(" ")
-    ->RightPrefix(";");
+    ->RightPrefix("; ");
     $this->Keys = (new Queue)
-    ->LeftPrefix(" ");
+    ->RightPrefix(" ");
   }
 
   /// Keys
@@ -68,16 +67,18 @@ abstract class Element extends Node
         ->Name("id")
         ->Value($this->Id)
       ]);
-    $arguments->Children([
-      Argument::Create()
-      ->Name("class")
-      ->Value($this->Keys->Generate())
-    ]);
-    $arguments->Children([
-      (new Argument)
-      ->Name("style")
-      ->Value($this->Parameters->Generate())
-    ]);
+    if ($this->Keys->Count() != 0)
+      $arguments->Children([
+        Argument::Create()
+        ->Name("class")
+        ->Value($this->Keys->Generate())
+      ]);
+    if ($this->Parameters->Count() != 0)
+      $arguments->Children([
+        (new Argument)
+        ->Name("style")
+        ->Value($this->Parameters->Generate())
+      ]);
     $arguments->Children($this->Arguments->GetChildren());
     return $arguments;
   }
