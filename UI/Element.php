@@ -67,18 +67,16 @@ abstract class Element extends Node
         ->Name("id")
         ->Value($this->Id)
       ]);
-    if ($this->Keys->Count() != 0)
-      $arguments->Children([
-        Argument::Create()
-        ->Name("class")
-        ->Value($this->Keys->Generate())
-      ]);
-    if ($this->Parameters->Count() != 0)
-      $arguments->Children([
-        (new Argument)
-        ->Name("style")
-        ->Value($this->Parameters->Generate())
-      ]);
+    $arguments->Children([
+      Argument::Create()
+      ->Name("class")
+      ->Value($this->Keys->Generate())
+    ]);
+    $arguments->Children([
+      (new Argument)
+      ->Name("style")
+      ->Value($this->Parameters->Generate())
+    ]);
     $arguments->Children($this->Arguments->GetChildren());
     return $arguments;
   }
