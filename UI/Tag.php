@@ -50,9 +50,8 @@ class Tag extends Node
 
   /// Generate
   function Generate() : string {
-    if (empty($this->Child))
-      return "<".$this->Name.$this->Arguments->Generate()."/>";
-    else
-      return "<".$this->Name.$this->Arguments->Generate().">".$this->Child."</".$this->Name.">";
+    return empty($this->Child)
+      ? "<$this->Name$this->Arguments->Generate()/>"
+      : "<$this->Name$this->Arguments->Generate()>$this->Child</$this->Name>";
   }
 }
