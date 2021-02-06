@@ -2,7 +2,7 @@
 
 class Scaffold extends Widget {
     public function __construct(
-        public Element $body,
+        public Widget $body,
         public String $title,
     ) { }
 
@@ -35,7 +35,7 @@ class Scaffold extends Widget {
                         ),
                         new Element(
                             name: 'style',
-                            children: [ new TextPaint($this->paintCss($this->body)) ],
+                            children: [ new TextPaint($this->paintCss($this->body->createElement())) ],
                         ),
                     ],
                 ),

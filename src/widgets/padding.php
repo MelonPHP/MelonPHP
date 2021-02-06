@@ -6,7 +6,7 @@ require_once __DIR__ . '/../common/widget.php';
 class Padding extends Widget {
     public function __construct(
         public PaddingValue $padding,
-        public Element $child,
+        public Widget $child,
     ) { }
 
     public function createElement() : Element {
