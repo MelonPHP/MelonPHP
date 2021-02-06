@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../melon.php';
+require_once __DIR__ . '/paint.php';
 
 class StyleValue extends Paint {
     public function __construct(

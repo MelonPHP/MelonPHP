@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../melon.php';
-
 class PaintUtil {
     public static function buffer(Array $array, $function, String $separator = '') : String {
         $buffer = '';

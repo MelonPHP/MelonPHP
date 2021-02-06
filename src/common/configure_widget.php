@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/widget.php';
+require_once __DIR__ . '/element.php';
 
 abstract class ConfigureWidget extends Widget {
     public function createElement() : Element {

@@ -1,8 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../melon.php';
+require_once __DIR__ . '/paint.php';
+require_once __DIR__ . '/../utils.php';
 
-abstract class Element extends Paint {
+class Element extends Paint {
     public function __construct(
         public String $name,
         public String|Null $id = null,

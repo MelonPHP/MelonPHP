@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../melon.php';
+require_once __DIR__ . '/../common.php';
+require_once __DIR__ . '/../utils.php';
 
 class PaddingValue extends StyleValue {
     private function __construct(

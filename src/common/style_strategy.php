@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../melon.php';
+require_once __DIR__ . '/paint.php';
+require_once __DIR__ . '/../utils.php';
 
 class StyleStrategy extends Paint {
     public function __construct(
