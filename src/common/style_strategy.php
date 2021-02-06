@@ -3,15 +3,22 @@
 class StyleStrategy extends Paint {
     public function __construct(
         public String $name,
-        public Array $action,
+        public String|Null $action = null,
         public Array $styles,
     ) {
         
     }
 
     public function paint() : String {
-        $result = PaintUtil::bufferPaint($this->styles);
+        $result = PaintUtil::buffer($this->styles, function ($e) {
+            return ' '.$e->paint();
+        });
 
-        return $this->name.':'.$this->action.' {'.$result.'}';
+        // :<value> or [empty_string]
+        $action = $this->action !==null 
+            ? ':'.$this->action 
+            : '';
+
+        return $this->name.$action.' {'.$result.'}';
     }
 }

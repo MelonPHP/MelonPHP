@@ -5,15 +5,23 @@ require_once __DIR__ . '/../common/widget.php';
 
 class Padding extends Widget {
     public function __construct(
-        public PaddingStyle $padding,
-        public Paint $child,
+        public PaddingValue $padding,
+        public Element $child,
     ) { }
 
-    public function build() : Paint {
+    public function createElement() : Element {
+        $id = GenerateUtil::randomString();
+
         return new Element(
             name: 'div',
-            styles: [ $this->padding ],
-            child: $this->child,
+            id: $id,
+            styles: [ 
+                new StyleStrategy(
+                    name: '#'.$id,
+                    styles: [ $this->padding ]
+                ),
+            ],
+            children: [ $this->child ] 
         );
     }
 }
