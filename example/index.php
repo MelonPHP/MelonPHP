@@ -8,7 +8,7 @@ class TestDisplay extends DisplayWidget {
             title: 'test page',
             body: new Padding(
                 padding: PaddingValue::all(Css::Px(100)),
-                child: new Text('Title', theme: new TextTheme(fontSize: Css::Px(19)))
+                child: new Text('Title', theme: new TextTheme(fontSize: Css::Px(24)))
             )
         );
     }

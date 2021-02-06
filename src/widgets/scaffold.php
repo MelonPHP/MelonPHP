@@ -26,10 +26,8 @@ class Scaffold extends Widget {
     }
 
     public function createElement() : Element {
-        // $body = $this->body->createElement();
-        // $buffer = $this->paintCss($body);
-
-        //var_dump($buffer);
+        $body = $this->body->createElement();
+        $buffer = $this->paintCss($body);
 
         return new Element(
             name: 'html',
@@ -49,13 +47,13 @@ class Scaffold extends Widget {
                         ),
                         new Element(
                             name: 'style',
-                            children: [ ],
+                            children: [ new TextPaint($buffer) ],
                         ),
                     ],
                 ),
                 new Element(
                     name: 'body',
-                    children: [ $this->body->createElement() ],
+                    children: [ $body ],
                 ),
             ] ,
         );
