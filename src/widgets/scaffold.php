@@ -11,15 +11,26 @@ class Scaffold extends Widget {
 
     public function paintCss(Element $element, String $buffer = '') : String {
         foreach ($element->children as $child) {
-            $result = PaintUtil::bufferPaint($child->styles, separator: ' ');
-            $buffer .= $result;
-            $buffer .= $this->paintCss($child);
+            if ($child instanceof Element) {
+                if ($child instanceof Widget) {
+                    $child = $child->createElement();
+                }
+
+                $result = PaintUtil::bufferPaint($child->styles, separator: ' ');
+                $buffer .= $result;
+                $buffer .= $this->paintCss($child);
+            }
         }
 
         return $buffer;
     }
 
     public function createElement() : Element {
+        // $body = $this->body->createElement();
+        // $buffer = $this->paintCss($body);
+
+        //var_dump($buffer);
+
         return new Element(
             name: 'html',
             children: [
@@ -38,13 +49,13 @@ class Scaffold extends Widget {
                         ),
                         new Element(
                             name: 'style',
-                            children: [ new TextPaint($this->paintCss($this->body->createElement())) ],
+                            children: [ ],
                         ),
                     ],
                 ),
                 new Element(
                     name: 'body',
-                    children: [ $this->body ],
+                    children: [ $this->body->createElement() ],
                 ),
             ] ,
         );

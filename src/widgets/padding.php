@@ -21,7 +21,7 @@ class Padding extends Widget {
                     styles: [ $this->padding ],
                 ),
             ],
-            children: [ $this->child ] ,
+            children: [ $this->child->createElement() ] ,
         );
     }
 }

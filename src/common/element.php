@@ -14,12 +14,12 @@ class Element extends Paint {
     }
 
     public function paint() : String {
-        $result = PaintUtil::bufferPaint($this->children ?? []);
+        $result = PaintUtil::bufferPaint($this->children);
         
         $id = $this->id !== null 
-            ? ' id="'.$this->id 
+            ? ' id="'.$this->id.'"'
             : '';
 
-        return '<'.$this->name.$id.'">'.$result.'</'.$this->name.'>';
+        return '<'.$this->name.$id.'>'.$result.'</'.$this->name.'>';
     }
 }
