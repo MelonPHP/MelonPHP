@@ -3,9 +3,9 @@
 abstract class Element extends Paint {
     public function __construct(
         public String $name,
-        public String|Null $id,
-        public Array $styles,
-        public Array $children,
+        public String|Null $id = null,
+        public Array $styles = [],
+        public Array $children = [],
     ) {
         
     }
