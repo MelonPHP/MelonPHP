@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../melon.php';
+
 class TextTheme extends StyleTheme {
     public function __construct(
         public String|Null $fontSize = null,

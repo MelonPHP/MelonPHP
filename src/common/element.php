@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../melon.php';
+
 abstract class Element extends Paint {
     public function __construct(
         public String $name,

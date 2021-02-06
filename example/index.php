@@ -13,3 +13,6 @@ class TestDisplay extends DisplayWidget {
         );
     }
 }
+
+$view = new TestDisplay();
+$view->display();

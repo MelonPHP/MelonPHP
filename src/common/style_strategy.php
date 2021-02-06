@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../melon.php';
+
 class StyleStrategy extends Paint {
     public function __construct(
         public String $name,

@@ -1,7 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../styles/padding_style.php';
-require_once __DIR__ . '/../common/widget.php';
+require_once __DIR__ . '/../melon.php';
 
 class Padding extends Widget {
     public function __construct(
