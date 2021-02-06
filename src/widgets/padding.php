@@ -15,13 +15,13 @@ class Padding extends Widget {
         return new Element(
             name: 'div',
             id: $id,
-            styles: [ 
+            styles: [
                 new StyleStrategy(
                     name: '#'.$id,
-                    styles: [ $this->padding ]
+                    styles: [ $this->padding ],
                 ),
             ],
-            children: [ $this->child ] 
+            children: [ $this->child ] ,
         );
     }
 }
