@@ -27,7 +27,7 @@ class Text extends Widget {
             $themes[] = new StyleStrategy(
                 name: '#'.$id,
                 action: 'hover',
-                styles: $this->theme->createTheme(),
+                styles: $this->hoverTheme->createTheme(),
             );
         }
 

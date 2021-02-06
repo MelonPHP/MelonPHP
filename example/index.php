@@ -8,7 +8,14 @@ class TestDisplay extends DisplayWidget {
             title: 'test page',
             body: new Padding(
                 padding: PaddingValue::all(Css::Px(100)),
-                child: new Text('Title', theme: new TextTheme(fontSize: Css::Px(24)))
+                child: new Text('Title', 
+                    theme: new TextTheme(
+                        fontSize: Css::Px(24)
+                    ),
+                    hoverTheme: new TextTheme(
+                        fontSize: Css::Px(13)
+                    ),
+                ),
             )
         );
     }
@@ -16,3 +23,4 @@ class TestDisplay extends DisplayWidget {
 
 $view = new TestDisplay();
 $view->display();
+

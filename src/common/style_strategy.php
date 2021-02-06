@@ -22,6 +22,6 @@ class StyleStrategy extends Paint {
             ? ':'.$this->action 
             : '';
 
-        return $this->name.$action.' {'.$result.'}';
+        return $this->name.$action.' {'.$result.' }';
     }
 }

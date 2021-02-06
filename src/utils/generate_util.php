@@ -1,7 +1,7 @@
 <?php
 
 class GenerateUtil {
-    public static function randomString($length = 32, $mask = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
+    public static function randomString($length = 32, $mask = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
         $characters = $mask;
         $randomString = '';
       
@@ -9,7 +9,7 @@ class GenerateUtil {
             $index = rand(0, strlen($characters) - 1);
             $randomString .= $characters[$index];
         }
-        
+
         return $randomString;
     }
 }
