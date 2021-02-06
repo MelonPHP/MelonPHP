@@ -10,15 +10,9 @@ abstract class Element extends Paint {
         
     }
 
-    public function paintContent() : String {
-        if ($this->children !== null) {
-            return PaintUtil::bufferPaint($this->children);
-        }
-
-        return '';
-    }
-
     public function paint() : String {
-        return '<'.$this->name.' id="'.$this->id.'">'.$this->paintContent().'</'.$this->name.'>';
+        $result = PaintUtil::bufferPaint($this->children ?? []);
+
+        return '<'.$this->name.' id="'.$this->id.'">'.$result.'</'.$this->name.'>';
     }
 }
