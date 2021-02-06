@@ -7,13 +7,13 @@ class TestDisplay extends DisplayWidget {
         return new Scaffold(
             title: 'test page',
             body: new Padding(
-                padding: PaddingValue::all(Css::Px(100)),
+                padding: PaddingEdges::all(Mea::Px(100)),
                 child: new Text('Title', 
                     theme: new TextTheme(
-                        fontSize: Css::Px(24)
+                        fontSize: Mea::Px(24)
                     ),
                     hoverTheme: new TextTheme(
-                        fontSize: Css::Px(13)
+                        fontSize: Mea::Px(13)
                     ),
                 ),
             )

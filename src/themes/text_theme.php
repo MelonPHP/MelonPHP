@@ -5,20 +5,24 @@ require_once __DIR__ . '/../utils.php';
 
 class TextTheme extends StyleTheme {
     public function __construct(
-        public String|Null $fontSize = '14px',
-        public String|Null $fontWeight = '400',
-        public String|Null $color = '#000000',
+        public String|Null $fontSize = null,
+        public String|Null $fontWeight = null,
+        public String|Null $color = null,
     ) { 
-        // $this->fontSize = Css::Px(14);
-        // $this->fontWeight = FontWeight::Regular;
-        // $this->color = Css::Hex('000000');
+        $fontSize = Mea::Px(14);
+        $fontWeight = FontWeight::Regular;
+        $color = Mea::Hex('000000');
     }
 
     public function createTheme() : Array {
-        return [
-            new StyleValue('font-size', $this->fontSize),
-            new StyleValue('font-weight', $this->fontWeight),
-            new StyleValue('color', $this->color),
+        $array = [
+            new StyleValue(CssTags::FontSize, $this->fontSize),
+            new StyleValue(CssTags::FontWeight, $this->fontWeight),
+            new StyleValue(CssTags::Color, $this->color),
         ];
+
+        return PaintUtil::arrayWhere($array, function ($e) {
+            return $e->value != null;
+        }) ;
     }
 }

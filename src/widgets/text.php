@@ -18,14 +18,14 @@ class Text extends Widget {
 
         if ($this->theme !== null) {
             $themes[] = new StyleStrategy(
-                name: '#'.$id,
+                name: Mea::Id($id),
                 styles: $this->theme->createTheme(),
             );
         }
 
         if ($this->hoverTheme !== null) {
             $themes[] = new StyleStrategy(
-                name: '#'.$id,
+                name: Mea::Id($id),
                 action: 'hover',
                 styles: $this->hoverTheme->createTheme(),
             );

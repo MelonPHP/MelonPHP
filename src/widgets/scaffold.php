@@ -9,8 +9,8 @@ class Scaffold extends Widget {
         public String $title,
     ) { }
 
-    public function paintCss(Element $element, String $buffer = '') : String {
-        foreach ($element->children as $child) {
+    public function paintCss(Array $children, String $buffer = '') : String {
+        foreach ($children as $child) {
             if ($child instanceof Element) {
                 if ($child instanceof Widget) {
                     $child = $child->createElement();
@@ -18,7 +18,7 @@ class Scaffold extends Widget {
 
                 $result = PaintUtil::bufferPaint($child->styles, separator: ' ');
                 $buffer .= $result;
-                $buffer .= $this->paintCss($child);
+                $buffer .= $this->paintCss($child->children);
             }
         }
 
@@ -27,7 +27,7 @@ class Scaffold extends Widget {
 
     public function createElement() : Element {
         $body = $this->body->createElement();
-        $buffer = $this->paintCss($body);
+        $buffer = $this->paintCss([ $body ]);
 
         return new Element(
             name: 'html',
@@ -36,9 +36,11 @@ class Scaffold extends Widget {
                     name: 'head',
                     children: [
                         new Element(
+                            isClose: true,
                             name: 'meta',
                         ),
                         new Element(
+                            isClose: true,
                             name: 'meta',
                         ),
                         new Element(

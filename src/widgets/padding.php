@@ -5,7 +5,7 @@ require_once __DIR__ . '/../utils.php';
 
 class Padding extends Widget {
     public function __construct(
-        public PaddingValue $padding,
+        public PaddingEdges $padding,
         public Widget $child,
     ) { }
 
@@ -17,7 +17,7 @@ class Padding extends Widget {
             id: $id,
             styles: [
                 new StyleStrategy(
-                    name: '#'.$id,
+                    name: Mea::Id($id),
                     styles: [ $this->padding ],
                 ),
             ],

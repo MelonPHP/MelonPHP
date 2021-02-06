@@ -20,4 +20,16 @@ class PaintUtil {
             return $e->paint();
         }, separator: $separator);
     }
+
+    public static function arrayWhere(Array $array, $function) : Array {
+        $buffer = [];
+
+        foreach ($array as $value) {
+            if ($function($value)) {
+                $buffer[] = $value;
+            }
+        }
+
+        return $buffer;
+    }
 }

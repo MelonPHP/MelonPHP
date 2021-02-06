@@ -3,17 +3,17 @@
 require_once __DIR__ . '/../common.php';
 require_once __DIR__ . '/../utils.php';
 
-class PaddingValue extends StyleValue {
+class PaddingEdges extends StyleValue {
     private function __construct(
-        public String $left,
-        public String $right,
-        public String $top,
-        public String $bottom,
+        public String|Null $left = null,
+        public String|Null $right = null,
+        public String|Null $top = null,
+        public String|Null $bottom = null,
     ) {
-        $left = $left ?? Css::Px(0);
-        $right = $right ?? Css::Px(0);
-        $top = $top ?? Css::Px(0);
-        $bottom = $bottom ?? Css::Px(0);
+        $left = $left ?? Mea::Px(0);
+        $right = $right ?? Mea::Px(0);
+        $top = $top ?? Mea::Px(0);
+        $bottom = $bottom ?? Mea::Px(0);
 
         parent::__construct('padding', $top.' '.$right.' '.$bottom.' '.$left);
     }
@@ -23,8 +23,8 @@ class PaddingValue extends StyleValue {
         String $right,
         String $top,
         String $bottom,
-    ) : PaddingValue {
-        return new PaddingValue(
+    ) : PaddingEdges {
+        return new PaddingEdges(
             left: $left,
             right: $right,
             top: $top,
@@ -34,8 +34,8 @@ class PaddingValue extends StyleValue {
 
     public static function all(
         String $value,
-    ) : PaddingValue {
-        return new PaddingValue(
+    ) : PaddingEdges {
+        return new PaddingEdges(
             left: $value,
             right: $value,
             top: $value,
@@ -46,8 +46,8 @@ class PaddingValue extends StyleValue {
     public static function symmetric(
         String $horizontal,
         String $vertical,
-    ) : PaddingValue {
-        return new PaddingValue(
+    ) : PaddingEdges {
+        return new PaddingEdges(
             left: $horizontal,
             right: $horizontal,
             top: $vertical,
