@@ -3,7 +3,7 @@
 abstract class Element extends Paint {
     public function __construct(
         public String $name,
-        public String $id,
+        public String|Null $id,
         public Array $styles,
         public Array $children,
     ) {
@@ -12,7 +12,11 @@ abstract class Element extends Paint {
 
     public function paint() : String {
         $result = PaintUtil::bufferPaint($this->children ?? []);
+        
+        $id = $this->id !== null 
+            ? ' id="'.$this->id 
+            : '';
 
-        return '<'.$this->name.' id="'.$this->id.'">'.$result.'</'.$this->name.'>';
+        return '<'.$this->name.$id.'">'.$result.'</'.$this->name.'>';
     }
 }
