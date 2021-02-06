@@ -1,6 +1,6 @@
 <?php
 
-abstract class ConfigWidget extends Widget {
+abstract class ConfigureWidget extends Widget {
     public function createElement() : Element {
         return $this->build()->createElement();
     }
