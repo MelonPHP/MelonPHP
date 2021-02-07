@@ -12,6 +12,7 @@ class Text extends Widget {
     ) { }
 
     public function createElement() : Element {
+        // TODO: Refactor
         $id = GenerateUtil::randomString();
 
         $themes = [

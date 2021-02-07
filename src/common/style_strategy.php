@@ -24,4 +24,8 @@ class StyleStrategy extends Paint {
 
         return $this->name.$action.' {'.$result.' }';
     }
+
+    public function __toString() {
+        return $this->name.'||'.($this->action ?? '');
+    }
 }
