@@ -38,10 +38,10 @@ class Scaffold extends Widget {
                         new Element(
                             isClose: true,
                             name: 'meta',
-                        ),
-                        new Element(
-                            isClose: true,
-                            name: 'meta',
+                            tags: [
+                                new ElementTag('name', 'viewport'),
+                                new ElementTag('content', 'width=device-width, initial-scale=1, user-scalable=no'),
+                            ]
                         ),
                         new Element(
                             name: 'title',

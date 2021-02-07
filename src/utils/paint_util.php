@@ -1,11 +1,13 @@
 <?php
 
 class PaintUtil {
-    public static function buffer(Array $array, $function, String $separator = '') : String {
+    public static function buffer(Array $array, $function = null, String $separator = '') : String {
         $buffer = '';
         
         foreach ($array as $item) {
-            $result = $function($item);
+            $result = $function !== null 
+                ? $function($item)
+                : $item;
 
             if ($result !== null) {
                 $buffer .= $separator.$result;

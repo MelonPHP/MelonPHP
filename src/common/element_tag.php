@@ -3,7 +3,7 @@
 class ElementTag extends Paint {
     public function __construct(
         public String $name,
-        public String|Null $value,
+        public String|Null $value = null,
     ) {
         
     }

@@ -20,12 +20,12 @@ class Element extends Paint {
         $tags = [
             new ElementTag('id', $this->id),
             new ElementTag('class', $this->classes !== null
-                ? implode(' ', $this->classes)
+                ? PaintUtil::buffer($this->classes, separator: ' ')
                 : null
             ),
         ];
         
-        array_merge($tags, $this->tags);
+        $tags = array_merge($tags, $this->tags);
 
         $tags = PaintUtil::arrayWhere($tags, function ($e) {
             return $e->value !== null;
