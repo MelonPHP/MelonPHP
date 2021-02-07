@@ -23,9 +23,8 @@ class Scaffold extends Widget {
         return $styles;
     }
 
-    public function createElement() : Element {
-        $body = $this->body->createElement();
-        $buffer = $this->paintCss([ new Element('', styles: [
+    public function getScaffoldTheme() : Array {
+        return [
             new StyleStrategy(
                 name: "body div dl dt dd ul ol li h1 h2 h3 h4 h5 h6 pre form fieldset input textarea p blockquote th td html body",
                 styles: [
@@ -77,7 +76,15 @@ class Scaffold extends Widget {
                     new StyleValue(CssTags::Margin, Mea::px(0)),
                 ]
             ),
-        ]), $body, ]);
+        ];
+    }
+
+    public function createElement() : Element {
+        $body = $this->body->createElement();
+        $buffer = $this->paintCss([ 
+            new Element('', styles: $this->getScaffoldTheme()), 
+            $body, 
+        ]);
         $buffer = array_unique($buffer);
 
         return new Element(
