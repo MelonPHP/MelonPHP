@@ -15,7 +15,7 @@ class PaddingEdges extends StyleValue {
         $top = $top ?? Mea::px(0);
         $bottom = $bottom ?? Mea::px(0);
 
-        parent::__construct('padding', $top.' '.$right.' '.$bottom.' '.$left);
+        parent::__construct(CssTags::Padding, $top.' '.$right.' '.$bottom.' '.$left);
     }
 
     public static function only(

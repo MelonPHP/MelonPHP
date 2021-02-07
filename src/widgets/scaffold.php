@@ -25,7 +25,59 @@ class Scaffold extends Widget {
 
     public function createElement() : Element {
         $body = $this->body->createElement();
-        $buffer = $this->paintCss([ $body ]);
+        $buffer = $this->paintCss([ new Element('', styles: [
+            new StyleStrategy(
+                name: "body div dl dt dd ul ol li h1 h2 h3 h4 h5 h6 pre form fieldset input textarea p blockquote th td html body",
+                styles: [
+                    new StyleValue(CssTags::Margin, Mea::px(0)),
+                    new StyleValue(CssTags::Padding, Mea::px(0)),
+                ]
+            ),
+            new StyleStrategy(
+                name: "table",
+                styles: [
+                    new StyleValue(CssTags::BorderSpacing, 0),
+                    new StyleValue(CssTags::BorderCollapse, CssTags::Collapse),
+                ]
+            ),
+            new StyleStrategy(
+                name: "fieldset img",
+                styles: [
+                    new StyleValue(CssTags::Border, 0),
+                ]
+            ),
+            new StyleStrategy(
+                name: "input textarea button select a",
+                styles: [
+                    new StyleValue("-webkit-tap-highlight-color", CssTags::Transparent),
+                ]
+            ),
+            new StyleStrategy(
+                name: "*",
+                styles: [
+                    new StyleValue(CssTags::Cursor, CssTags::Default),
+                    new StyleValue(CssTags::BoxSizing, CssTags::BorderBox),
+                ]
+            ),
+            new StyleStrategy(
+                name: "html",
+                styles: [
+                    new StyleValue(CssTags::Position, CssTags::Relative),
+                    new StyleValue(CssTags::Height, Mea::pr(100)),
+                ]
+            ),
+            new StyleStrategy(
+                name: "body",
+                styles: [
+                    new StyleValue(CssTags::Position, CssTags::Fixed),
+                    new StyleValue(CssTags::Top, 0),
+                    new StyleValue(CssTags::Left, 0),
+                    new StyleValue(CssTags::Height, Mea::pr(100)),
+                    new StyleValue(CssTags::Width, Mea::pr(100)),
+                    new StyleValue(CssTags::Margin, Mea::px(0)),
+                ]
+            ),
+        ]), $body, ]);
         $buffer = array_unique($buffer);
 
         return new Element(
