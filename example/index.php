@@ -13,7 +13,7 @@ class TestDisplay extends DisplayWidget {
                         fontSize: Mea::Px(24)
                     ),
                     hoverTheme: new TextTheme(
-                        fontSize: Mea::Px(13)
+                        color: Mea::hex('432298')
                     ),
                 ),
             )

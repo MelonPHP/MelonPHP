@@ -10,10 +10,10 @@ class PaddingEdges extends StyleValue {
         public String|Null $top = null,
         public String|Null $bottom = null,
     ) {
-        $left = $left ?? Mea::Px(0);
-        $right = $right ?? Mea::Px(0);
-        $top = $top ?? Mea::Px(0);
-        $bottom = $bottom ?? Mea::Px(0);
+        $left = $left ?? Mea::px(0);
+        $right = $right ?? Mea::px(0);
+        $top = $top ?? Mea::px(0);
+        $bottom = $bottom ?? Mea::px(0);
 
         parent::__construct('padding', $top.' '.$right.' '.$bottom.' '.$left);
     }

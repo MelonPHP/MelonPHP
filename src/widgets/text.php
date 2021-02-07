@@ -14,7 +14,25 @@ class Text extends Widget {
     public function createElement() : Element {
         $id = GenerateUtil::randomString();
 
-        $themes = [];
+        $themes = [
+            new StyleStrategy(
+                name: Mea::class('__text'),
+                styles: [
+                    new StyleValue(CssTags::FontSize, Mea::px(14)),
+                    new StyleValue(CssTags::FontFamily, "'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif"),
+                ]
+            ),
+            new StyleStrategy(
+                name: Mea::class('__text_no_select'),
+                styles: [
+                    new StyleValue(Mea::mozilla(CssTags::UserSelect), CssTags::None),
+                    new StyleValue(Mea::safari(CssTags::UserSelect), CssTags::None),
+                    new StyleValue(CssTags::UserSelect, CssTags::None),
+                ]
+            ),
+        ];
+
+        // TODO: Refactor
 
         if ($this->theme !== null) {
             $themes[] = new StyleStrategy(
@@ -35,6 +53,7 @@ class Text extends Widget {
             name: 'p',
             id: $id,
             styles: $themes,
+            classes: [ '__text', '__text_no_select' ],
             children: [ new TextPaint($this->text) ],
         );
     }

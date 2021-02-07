@@ -9,9 +9,9 @@ class TextTheme extends StyleTheme {
         public String|Null $fontWeight = null,
         public String|Null $color = null,
     ) { 
-        $fontSize = Mea::Px(14);
+        $fontSize = Mea::px(14);
         $fontWeight = FontWeight::Regular;
-        $color = Mea::Hex('000000');
+        $color = Mea::hex('000000');
     }
 
     public function createTheme() : Array {
