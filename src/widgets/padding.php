@@ -17,7 +17,7 @@ class Padding extends Widget {
             id: $id,
             styles: [
                 new StyleStrategy(
-                    name: Mea::Id($id),
+                    name: Mea::id($id),
                     styles: [ $this->padding ],
                 ),
             ],
