@@ -23,6 +23,12 @@ class ErrorDisplay extends DisplayWidget {
                                 color: Color::hex('22222220')
                             ),
                         ]),
+                        border: Borders::symmetric(
+                            horizontal: new Border(
+                                width: Metrica::px(2),
+                                color: Color::hex('349934')
+                            ),
+                        ),
                     ),
                     press: new BoxTheme(
                         color: Color::hex('999999'),

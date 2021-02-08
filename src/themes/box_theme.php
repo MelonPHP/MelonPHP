@@ -7,7 +7,7 @@ class BoxTheme extends StyleTheme {
     public function __construct(
         public String|Null $color = null,
         public Radius|Null $radius = null,
-        public String|Null $border = null,
+        public Borders|Null $border = null,
         public Shadows|Null $shadows = null,
     ) { }
 
@@ -15,9 +15,14 @@ class BoxTheme extends StyleTheme {
         $array = [
             new StyleValue(CssTags::BackgroundColor, $this->color),
             $this->radius,
-            new StyleValue(CssTags::Border, $this->border),
             $this->shadows,
         ];
+
+        $theme = $this->border?->createTheme();
+        
+        if ($theme !== null) {
+            $array = array_merge($array, $theme);
+        }
 
         return PaintUtil::arrayWhere($array, function ($e) {
             return $e?->value != null;

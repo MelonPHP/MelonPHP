@@ -9,3 +9,5 @@ require_once __DIR__ . '/styles/color.php';
 require_once __DIR__ . '/styles/metrica.php';
 require_once __DIR__ . '/styles/radius.php';
 require_once __DIR__ . '/styles/shadows.php';
+require_once __DIR__ . '/styles/shadow.php';
+require_once __DIR__ . '/styles/border.php';
