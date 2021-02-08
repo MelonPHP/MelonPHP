@@ -14,13 +14,13 @@ class MainDisplay extends DisplayWidget {
         return $this->controller->name === null 
             ? new Text('Put your name at get request. example: "http://localhost:8000/?name=Roman S"')
             : new Text('Hello, '.$this->controller->name,
-                    theme: new TextTheme(
-                        fontSize: Mea::px(20),
-                        fontWeight: FontWeight::Bold,
+                    normal: new TextTheme(
+                        size: Metrica::px(20),
+                        weight: FontWeight::Bold,
                     ),
-                    hoverTheme: new TextTheme(
-                        color: Mea::hex("449922"),
-                        fontWeight: FontWeight::Medium
+                    hover: new TextTheme(
+                        color: Color::hex("449922"),
+                        weight: FontWeight::Medium
                     ),
                 );
     }

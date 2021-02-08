@@ -8,8 +8,9 @@ class Text extends Widget {
     
     public function __construct(
         public String $text,
-        public TextTheme|Null $theme = null,
-        public TextTheme|Null $hoverTheme = null,
+        public TextTheme|Null $normal = null,
+        public TextTheme|Null $hover = null,
+        public TextTheme|Null $press = null,
     ) { }
 
     public function getTextTheme() : StyleStrategy {
@@ -36,7 +37,7 @@ class Text extends Widget {
     public function getIdTheme($id) : StyleStrategy {
         return new StyleStrategy(
             name: CssTags::id($id),
-            styles: $this->theme->createTheme(),
+            styles: $this->normal->createTheme(),
         );
     }
 
@@ -44,7 +45,15 @@ class Text extends Widget {
         return new StyleStrategy(
             name: CssTags::id($id),
             action: 'hover',
-            styles: $this->hoverTheme->createTheme(),
+            styles: $this->hover->createTheme(),
+        );
+    }
+
+    public function getIdPressTheme($id) : StyleStrategy {
+        return new StyleStrategy(
+            name: CssTags::id($id),
+            action: 'active',
+            styles: $this->press->createTheme(),
         );
     }
 
@@ -56,12 +65,16 @@ class Text extends Widget {
         $themes[] = $this->getTextTheme();
         $themes[] = $this->getNoSelectTextTheme();
 
-        if ($this->theme !== null) {
+        if ($this->normal !== null) {
             $themes[] = $this->getIdTheme($id);
         }
 
-        if ($this->hoverTheme !== null) {
+        if ($this->hover !== null) {
             $themes[] = $this->getIdHoverTheme($id);
+        }
+
+        if ($this->press !== null) {
+            $themes[] = $this->getIdPressTheme($id);
         }
 
         return new Element(

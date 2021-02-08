@@ -12,9 +12,9 @@ class Container extends Widget {
         public String|Null $maxHeight = null,
         public String|Null $minWidth = null,
         public String|Null $minHeight = null,
-        public BoxTheme|Null $theme = null,
-        public BoxTheme|Null $hoverTheme = null,
-        public BoxTheme|Null $pressTheme = null,
+        public BoxTheme|Null $normal = null,
+        public BoxTheme|Null $hover= null,
+        public BoxTheme|Null $press = null,
         public Widget|Null $child = null,
     ) { }
 
@@ -41,8 +41,8 @@ class Container extends Widget {
             styles: [],
         );
 
-        if ($this->theme !== null) {
-            $idStyle->styles = array_merge($idStyle->styles, $this->theme->createTheme());
+        if ($this->normal !== null) {
+            $idStyle->styles = array_merge($idStyle->styles, $this->normal->createTheme());
         }
 
         if ($this->width !== null) {
@@ -71,19 +71,19 @@ class Container extends Widget {
 
         $styles[] = $idStyle;
 
-        if ($this->hoverTheme !== null) {
+        if ($this->hover !== null) {
             $styles[] = new StyleStrategy(
                 name: CssTags::id($id),
                 action: 'hover',
-                styles: $this->hoverTheme->createTheme(),
+                styles: $this->hover->createTheme(),
             );
         }
 
-        if ($this->pressTheme !== null) {
+        if ($this->press !== null) {
             $styles[] = new StyleStrategy(
                 name: CssTags::id($id),
                 action: 'active',
-                styles: $this->pressTheme->createTheme(),
+                styles: $this->press->createTheme(),
             );
         }
 

@@ -6,19 +6,19 @@ require_once __DIR__ . '/../styles.php';
 
 class TextTheme extends StyleTheme {
     public function __construct(
-        public String|Null $fontSize = null,
-        public String|Null $fontWeight = null,
+        public String|Null $size = null,
+        public String|Null $weight = null,
         public String|Null $color = null,
     ) { 
-        $fontSize = Metrica::px(14);
-        $fontWeight = FontWeight::Regular;
+        $size = Metrica::px(14);
+        $weight = FontWeight::Regular;
         $color = Color::hex('000000');
     }
 
     public function createTheme() : Array {
         $array = [
-            new StyleValue(CssTags::FontSize, $this->fontSize),
-            new StyleValue(CssTags::FontWeight, $this->fontWeight),
+            new StyleValue(CssTags::FontSize, $this->size),
+            new StyleValue(CssTags::FontWeight, $this->weight),
             new StyleValue(CssTags::Color, $this->color),
         ];
 

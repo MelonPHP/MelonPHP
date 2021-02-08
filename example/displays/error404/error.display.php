@@ -7,29 +7,35 @@ class ErrorDisplay extends DisplayWidget {
         return new Scaffold(
             title: "error 404",
             body: new Container(
-                theme: new BoxTheme(
-                    backgroundColor: Color::hex('fcfcfc'),
+                normal: new BoxTheme(
+                    color: Color::hex('fcfcfc'),
                 ),
-                pressTheme: new BoxTheme(
-                    backgroundColor: Color::hex('999999'),
+                press: new BoxTheme(
+                    color: Color::hex('999999'),
                 ),
                 child: new Column(
                     margin: Edges::all(Metrica::px(25)),
                     crossAxisAlign: CrossAxisAlign::Center,
-                    mainAxisAlign: CrossAxisAlign::Center,
+                    mainAxisAlign: MainAxisAlign::Center,
                     children: [
                         new Text('ERROR 404',
-                            theme: new TextTheme(
-                                fontSize: 28,
-                                fontWeight: FontWeight::Bold,
+                            normal: new TextTheme(
+                                size: 28,
+                                weight: FontWeight::Bold,
                                 color: Color::hex('878787'),
+                            ),
+                            hover: new TextTheme(
+                                color: Color::hex('000'),
+                            ),
+                            press: new TextTheme(
+                                color: Color::hex('fff'),
                             ),
                         ),
                         new Container(height: Metrica::px(25)),
                         new Text('Page don\'t find',
-                            theme: new TextTheme(
-                                fontSize: 16,
-                                fontWeight: FontWeight::Medium,
+                            normal: new TextTheme(
+                                size: 16,
+                                weight: FontWeight::Medium,
                             ),
                         ),
                     ],

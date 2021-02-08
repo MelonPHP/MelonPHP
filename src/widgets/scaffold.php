@@ -6,8 +6,8 @@ require_once __DIR__ . '/../styles.php';
 
 class Scaffold extends Widget {
     public function __construct(
-        public Widget $body,
         public String $title,
+        public Widget $body,
     ) { }
 
     private function paintCss(Array $children, Array $styles = []) : Array {
