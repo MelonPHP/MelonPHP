@@ -26,10 +26,10 @@ class Scaffold extends Widget {
     public function getScaffoldTheme() : Array {
         return [
             new StyleStrategy(
-                name: "body div dl dt dd ul ol li h1 h2 h3 h4 h5 h6 pre form fieldset input textarea p blockquote th td html body",
+                name: "body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, html, body",
                 styles: [
-                    new StyleValue(CssTags::Margin, Mea::px(0)),
-                    new StyleValue(CssTags::Padding, Mea::px(0)),
+                    new StyleValue(CssTags::Margin, 0),
+                    new StyleValue(CssTags::Padding, 0),
                 ]
             ),
             new StyleStrategy(
@@ -40,13 +40,13 @@ class Scaffold extends Widget {
                 ]
             ),
             new StyleStrategy(
-                name: "fieldset img",
+                name: "fieldset, img",
                 styles: [
                     new StyleValue(CssTags::Border, 0),
                 ]
             ),
             new StyleStrategy(
-                name: "input textarea button select a",
+                name: "input, textarea, button, select, a",
                 styles: [
                     new StyleValue("-webkit-tap-highlight-color", CssTags::Transparent),
                 ]
@@ -73,7 +73,6 @@ class Scaffold extends Widget {
                     new StyleValue(CssTags::Left, 0),
                     new StyleValue(CssTags::Height, Mea::pr(100)),
                     new StyleValue(CssTags::Width, Mea::pr(100)),
-                    new StyleValue(CssTags::Margin, Mea::px(0)),
                 ]
             ),
         ];

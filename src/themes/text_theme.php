@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../common.php';
+require_once __DIR__ . '/../common/style_theme.php';
 require_once __DIR__ . '/../utils.php';
 
 class TextTheme extends StyleTheme {
@@ -23,6 +23,6 @@ class TextTheme extends StyleTheme {
 
         return PaintUtil::arrayWhere($array, function ($e) {
             return $e->value != null;
-        }) ;
+        });
     }
 }
