@@ -23,7 +23,7 @@ class TextTheme extends StyleTheme {
         ];
 
         return PaintUtil::arrayWhere($array, function ($e) {
-            return $e->value != null;
+            return $e?->value != null;
         });
     }
 }

@@ -16,6 +16,7 @@ class Container extends Widget {
         public BoxTheme|Null $hover= null,
         public BoxTheme|Null $press = null,
         public Widget|Null $child = null,
+        public Edges|Null $margin = null,
     ) { }
 
     private function getContainerStyle() {
@@ -67,6 +68,10 @@ class Container extends Widget {
 
         if ($this->minHeight !== null) {
             $idStyle->styles[] = new StyleValue(CssTags::MinHeight, $this->minHeight);
+        }
+
+        if ($this->margin != null) {
+            $idStyle->styles[] = $this->margin;
         }
 
         $styles[] = $idStyle;

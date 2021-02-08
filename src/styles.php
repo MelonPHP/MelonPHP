@@ -7,3 +7,5 @@ require_once __DIR__ . '/styles/cross_axis_align.php';
 require_once __DIR__ . '/styles/main_axis_align.php';
 require_once __DIR__ . '/styles/color.php';
 require_once __DIR__ . '/styles/metrica.php';
+require_once __DIR__ . '/styles/radius.php';
+require_once __DIR__ . '/styles/shadows.php';
