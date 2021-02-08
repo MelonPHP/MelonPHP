@@ -20,7 +20,7 @@ class Element extends Paint {
         $tags = [
             new ElementTag('id', $this->id),
             new ElementTag('class', $this->classes !== null
-                ? PaintUtil::buffer($this->classes, separator: ' ')
+                ? substr(PaintUtil::buffer($this->classes, separator: ' '), 1)
                 : null
             ),
         ];
