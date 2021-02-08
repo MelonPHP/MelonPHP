@@ -27,32 +27,34 @@ class ErrorDisplay extends DisplayWidget {
                     press: new BoxTheme(
                         color: Color::hex('999999'),
                     ),
-                    child: new Column(
-                        margin: Edges::all(Metrica::px(25)),
-                        crossAxisAlign: CrossAxisAlign::Center,
-                        mainAxisAlign: MainAxisAlign::Center,
-                        children: [
-                            new Text('ERROR 404',
-                                normal: new TextTheme(
-                                    size: 28,
-                                    weight: FontWeight::Bold,
-                                    color: Color::hex('878787'),
+                    child: new Padding(
+                        padding: Edges::all(Metrica::px(25)),
+                        child: new Column(
+                            crossAxisAlign: CrossAxisAlign::Center,
+                            mainAxisAlign: MainAxisAlign::Center,
+                            children: [
+                                new Text('ERROR 404',
+                                    normal: new TextTheme(
+                                        size: 28,
+                                        weight: FontWeight::Bold,
+                                        color: Color::hex('878787'),
+                                    ),
+                                    hover: new TextTheme(
+                                        color: Color::hex('000'),
+                                    ),
+                                    press: new TextTheme(
+                                        color: Color::hex('fff'),
+                                    ),
                                 ),
-                                hover: new TextTheme(
-                                    color: Color::hex('000'),
+                                new Container(height: Metrica::px(25)),
+                                new Text('Page don\'t find',
+                                    normal: new TextTheme(
+                                        size: 16,
+                                        weight: FontWeight::Medium,
+                                    ),
                                 ),
-                                press: new TextTheme(
-                                    color: Color::hex('fff'),
-                                ),
-                            ),
-                            new Container(height: Metrica::px(25)),
-                            new Text('Page don\'t find',
-                                normal: new TextTheme(
-                                    size: 16,
-                                    weight: FontWeight::Medium,
-                                ),
-                            ),
-                        ],
+                            ],
+                        ),
                     ),
                 ),
             ),

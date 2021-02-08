@@ -21,12 +21,6 @@ class Padding extends Widget {
                     name: CssTags::id($id),
                     styles: [ 
                         $this->padding,
-                        new StyleValue(CssTags::Position, CssTags::Absolute),
-                        new StyleValue(CssTags::Top, 0),
-                        new StyleValue(CssTags::Left, 0),
-                        new StyleValue(CssTags::Right, 0),
-                        new StyleValue(CssTags::Bottom, 0),
-                        new StyleValue(CssTags::Height, CssTags::Auto),
                     ],
                 ),
             ],
