@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../common.php';
 require_once __DIR__ . '/../utils.php';
 
-class ContainerTheme extends StyleTheme {
+class BoxTheme extends StyleTheme {
     public function __construct(
         public String|Null $backgroundColor = null,
         public String|Null $borderRadius = null,

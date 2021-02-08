@@ -2,10 +2,11 @@
 
 require_once __DIR__ . '/../common.php';
 require_once __DIR__ . '/../utils.php';
+require_once __DIR__ . '/../styles.php';
 
 class Padding extends Widget {
     public function __construct(
-        public PaddingEdges $padding,
+        public Edges $padding,
         public Widget $child,
     ) { }
 
@@ -17,7 +18,7 @@ class Padding extends Widget {
             id: $id,
             styles: [
                 new StyleStrategy(
-                    name: Mea::id($id),
+                    name: CssTags::id($id),
                     styles: [ $this->padding ],
                 ),
             ],

@@ -1,19 +1,22 @@
 <?php
 
 require_once __DIR__ . '/../common.php';
+require_once __DIR__ . '/../common/style_value.php';
 require_once __DIR__ . '/../utils.php';
+require_once __DIR__ . '/metrica.php';
+require_once __DIR__ . '/css_tags.php';
 
-class PaddingEdges extends StyleValue {
+class Edges extends StyleValue {
     private function __construct(
         public String|Null $left = null,
         public String|Null $right = null,
         public String|Null $top = null,
         public String|Null $bottom = null,
     ) {
-        $left = $left ?? Mea::px(0);
-        $right = $right ?? Mea::px(0);
-        $top = $top ?? Mea::px(0);
-        $bottom = $bottom ?? Mea::px(0);
+        $left = $left ?? Metrica::px(0);
+        $right = $right ?? Metrica::px(0);
+        $top = $top ?? Metrica::px(0);
+        $bottom = $bottom ?? Metrica::px(0);
 
         parent::__construct(CssTags::Padding, $top.' '.$right.' '.$bottom.' '.$left);
     }
@@ -23,8 +26,8 @@ class PaddingEdges extends StyleValue {
         String $right,
         String $top,
         String $bottom,
-    ) : PaddingEdges {
-        return new PaddingEdges(
+    ) : Edges {
+        return new Edges(
             left: $left,
             right: $right,
             top: $top,
@@ -34,8 +37,8 @@ class PaddingEdges extends StyleValue {
 
     public static function all(
         String $value,
-    ) : PaddingEdges {
-        return new PaddingEdges(
+    ) : Edges {
+        return new Edges(
             left: $value,
             right: $value,
             top: $value,
@@ -46,8 +49,8 @@ class PaddingEdges extends StyleValue {
     public static function symmetric(
         String $horizontal,
         String $vertical,
-    ) : PaddingEdges {
-        return new PaddingEdges(
+    ) : Edges {
+        return new Edges(
             left: $horizontal,
             right: $horizontal,
             top: $vertical,

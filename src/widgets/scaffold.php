@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../common.php';
 require_once __DIR__ . '/../utils.php';
+require_once __DIR__ . '/../styles.php';
 
 class Scaffold extends Widget {
     public function __construct(
@@ -9,7 +10,7 @@ class Scaffold extends Widget {
         public String $title,
     ) { }
 
-    public function paintCss(Array $children, Array $styles = []) : Array {
+    private function paintCss(Array $children, Array $styles = []) : Array {
         foreach ($children as $child) {
             if ($child instanceof Element) {
                 if ($child instanceof Widget) {
@@ -23,7 +24,7 @@ class Scaffold extends Widget {
         return $styles;
     }
 
-    public function getScaffoldTheme() : Array {
+    private function getScaffoldTheme() : Array {
         return [
             new StyleStrategy(
                 name: "body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, html, body",
@@ -62,7 +63,7 @@ class Scaffold extends Widget {
                 name: "html",
                 styles: [
                     new StyleValue(CssTags::Position, CssTags::Relative),
-                    new StyleValue(CssTags::Height, Mea::pr(100)),
+                    new StyleValue(CssTags::Height, Metrica::pr(100)),
                 ]
             ),
             new StyleStrategy(
@@ -71,8 +72,8 @@ class Scaffold extends Widget {
                     new StyleValue(CssTags::Position, CssTags::Fixed),
                     new StyleValue(CssTags::Top, 0),
                     new StyleValue(CssTags::Left, 0),
-                    new StyleValue(CssTags::Height, Mea::pr(100)),
-                    new StyleValue(CssTags::Width, Mea::pr(100)),
+                    new StyleValue(CssTags::Height, Metrica::pr(100)),
+                    new StyleValue(CssTags::Width, Metrica::pr(100)),
                 ]
             ),
         ];

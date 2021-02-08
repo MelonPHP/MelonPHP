@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../common/style_theme.php';
 require_once __DIR__ . '/../utils.php';
+require_once __DIR__ . '/../styles.php';
 
 class TextTheme extends StyleTheme {
     public function __construct(
@@ -9,9 +10,9 @@ class TextTheme extends StyleTheme {
         public String|Null $fontWeight = null,
         public String|Null $color = null,
     ) { 
-        $fontSize = Mea::px(14);
+        $fontSize = Metrica::px(14);
         $fontWeight = FontWeight::Regular;
-        $color = Mea::hex('000000');
+        $color = Color::hex('000000');
     }
 
     public function createTheme() : Array {

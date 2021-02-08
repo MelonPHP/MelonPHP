@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/flex.php';
+require_once __DIR__ . '/../styles.php';
 
 class Row extends FlexWidget {
 
@@ -8,10 +9,10 @@ class Row extends FlexWidget {
         $result = parent::createElement();
 
         $result->styles[] = new StyleStrategy(
-            name: Mea::class("__row"),
+            name: CssTags::class("__row"),
             styles: [ 
                 new StyleValue(CssTags::FlexDirection, CssTags::Row),
-                new StyleValue(Mea::safari(CssTags::FlexDirection), CssTags::Row),
+                new StyleValue(CssTags::safari(CssTags::FlexDirection), CssTags::Row),
             ],
         );
 

@@ -34,4 +34,15 @@ class PaintUtil {
 
         return $buffer;
     }
+
+    public static function pushIfNotNull(Array &$array, $value, $modern = null) {
+        if ($value !== null) {
+            if ($modern !== null) {
+                $array[] = $modern();
+            }
+            else {
+                $array[] = $value;
+            }
+        }
+    }
 }

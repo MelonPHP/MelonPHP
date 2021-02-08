@@ -286,4 +286,20 @@ class CssTags {
     const WordWrap = "word-wrap";
     const WritingMode = "writing-mode";
     const ZIndex = "z-index";
+
+    public static function id(String $value) : String {
+        return '#'.$value;
+    }
+
+    public static function class(String $value) : String {
+        return '.'.$value;
+    }
+
+    public static function safari(String $value) : string {
+        return "-webkit-".$value;
+    }
+    
+    public static function mozilla(String $value) : string {
+        return "-moz-".$value;
+    }
 }

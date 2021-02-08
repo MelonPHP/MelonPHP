@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../common.php';
 require_once __DIR__ . '/../utils.php';
-require_once __DIR__ . '/../themes.php';
+require_once __DIR__ . '/../styles.php';
 
 class Container extends Widget {
     public function __construct(
@@ -12,72 +12,76 @@ class Container extends Widget {
         public String|Null $maxHeight = null,
         public String|Null $minWidth = null,
         public String|Null $minHeight = null,
-        public ContainerTheme|Null $theme = null,
-        public ContainerTheme|Null $hoverTheme = null,
-        public ContainerTheme|Null $pressTheme = null,
+        public BoxTheme|Null $theme = null,
+        public BoxTheme|Null $hoverTheme = null,
+        public BoxTheme|Null $pressTheme = null,
         public Widget|Null $child = null,
     ) { }
+
+    private function getContainerStyle() {
+        return new StyleStrategy(
+            name: CssTags::class("__container"),
+            styles: [ 
+                new StyleValue(CssTags::Width, Metrica::pr(100)),
+                new StyleValue(CssTags::Height, Metrica::pr(100)),
+                new StyleValue(CssTags::Display, CssTags::Block),
+            ],
+        );
+    }
 
     public function createElement() : Element {
         $id = GenerateUtil::randomString();
 
-        $themes = [
-            new StyleStrategy(
-                name: Mea::class("__container"),
-                styles: [ 
-                    new StyleValue(CssTags::Width, Mea::pr(100)),
-                    new StyleValue(CssTags::Height, Mea::pr(100)),
-                    new StyleValue(CssTags::Display, CssTags::Block),
-                ],
-            ),
-        ];
+        $styles = [];
 
-        $styleMain = new StyleStrategy(
-            name: Mea::Id($id),
+        $styles[] = $this->getContainerStyle();
+
+        $idStyle = new StyleStrategy(
+            name: CssTags::id($id),
             styles: [],
         );
 
         if ($this->theme !== null) {
-            $styleMain->styles = array_merge($styleMain->styles, $this->theme->createTheme());
+            $idStyle->styles = array_merge($idStyle->styles, $this->theme->createTheme());
         }
 
         if ($this->width !== null) {
-            $styleMain->styles[] = new StyleValue(CssTags::Width, $this->width);
+            $idStyle->styles[] = new StyleValue(CssTags::Width, $this->width);
         }
 
         if ($this->height !== null) {
-            $styleMain->styles[] = new StyleValue(CssTags::Height, $this->height);
+            $idStyle->styles[] = new StyleValue(CssTags::Height, $this->height);
         }
 
         if ($this->maxWidth !== null) {
-            $styleMain->styles[] = new StyleValue(CssTags::MaxWidth, $this->maxWidth);
+            $idStyle->styles[] = new StyleValue(CssTags::MaxWidth, $this->maxWidth);
         }
 
         if ($this->maxHeight !== null) {
-            $styleMain->styles[] = new StyleValue(CssTags::MaxHeight, $this->maxHeight);
+            $idStyle->styles[] = new StyleValue(CssTags::MaxHeight, $this->maxHeight);
         }
 
         if ($this->minWidth !== null) {
-            $styleMain->styles[] = new StyleValue(CssTags::MinWidth, $this->minWidth);
+            $idStyle->styles[] = new StyleValue(CssTags::MinWidth, $this->minWidth);
         }
 
         if ($this->minHeight !== null) {
-            $styleMain->styles[] = new StyleValue(CssTags::MinHeight, $this->minHeight);
+            $idStyle->styles[] = new StyleValue(CssTags::MinHeight, $this->minHeight);
         }
 
-        $themes[] = $styleMain;
+        $styles[] = $idStyle;
 
         if ($this->hoverTheme !== null) {
-            $themes[] = new StyleStrategy(
-                name: Mea::Id($id),
+            $styles[] = new StyleStrategy(
+                name: CssTags::id($id),
                 action: 'hover',
                 styles: $this->hoverTheme->createTheme(),
             );
         }
 
         if ($this->pressTheme !== null) {
-            $themes[] = new StyleStrategy(
-                name: Mea::Id($id),
+            $styles[] = new StyleStrategy(
+                name: CssTags::id($id),
                 action: 'active',
                 styles: $this->pressTheme->createTheme(),
             );
@@ -87,7 +91,7 @@ class Container extends Widget {
             name: 'div',
             id: $id,
             classes: [ "__container" ],
-            styles: $themes,
+            styles: $styles,
             children:  $this->child !== null 
                 ? [ $this->child->createElement() ]
                 : [ ],
