@@ -11,3 +11,5 @@ require_once __DIR__ . '/styles/radius.php';
 require_once __DIR__ . '/styles/shadows.php';
 require_once __DIR__ . '/styles/shadow.php';
 require_once __DIR__ . '/styles/border.php';
+require_once __DIR__ . '/styles/image_fit.php';
+require_once __DIR__ . '/styles/image_position.php';
