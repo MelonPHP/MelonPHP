@@ -4,7 +4,7 @@ require_once __DIR__ . '/../common.php';
 require_once __DIR__ . '/../utils.php';
 require_once __DIR__ . '/../styles.php';
 
-class Container extends Widget {
+class HorizontalScrollBar extends Widget {
     public function __construct(
         public String|Null $width = null,
         public String|Null $height = null,
@@ -12,19 +12,17 @@ class Container extends Widget {
         public String|Null $maxHeight = null,
         public String|Null $minWidth = null,
         public String|Null $minHeight = null,
-        public BoxTheme|Null $normal = null,
-        public BoxTheme|Null $hover= null,
-        public BoxTheme|Null $press = null,
         public Widget|Null $child = null,
     ) { }
 
     private function getContainerStyle() {
         return new StyleStrategy(
-            name: CssTags::class("__container"),
+            name: CssTags::class("__horizontal_scroll_bar"),
             styles: [ 
                 new StyleValue(CssTags::Width, Metrica::pr(100)),
                 new StyleValue(CssTags::Height, Metrica::pr(100)),
-                new StyleValue(CssTags::Display, CssTags::Block),
+                new StyleValue(CssTags::OverflowX, CssTags::Auto),
+                new StyleValue(CssTags::OverflowY, CssTags::Hidden),
             ],
         );
     }
@@ -40,11 +38,7 @@ class Container extends Widget {
             name: CssTags::id($id),
             styles: [],
         );
-
-        if ($this->normal !== null) {
-            $idStyle->styles = array_merge($idStyle->styles, $this->normal->createTheme());
-        }
-
+        
         if ($this->width !== null) {
             $idStyle->styles[] = new StyleValue(CssTags::Width, $this->width);
         }
@@ -71,26 +65,10 @@ class Container extends Widget {
 
         $styles[] = $idStyle;
 
-        if ($this->hover !== null) {
-            $styles[] = new StyleStrategy(
-                name: CssTags::id($id),
-                action: 'hover',
-                styles: $this->hover->createTheme(),
-            );
-        }
-
-        if ($this->press !== null) {
-            $styles[] = new StyleStrategy(
-                name: CssTags::id($id),
-                action: 'active',
-                styles: $this->press->createTheme(),
-            );
-        }
-
         return new Element(
             name: 'div',
             id: $id,
-            classes: [ "__container" ],
+            classes: [ "__horizontal_scroll_bar" ],
             styles: $styles,
             children:  $this->child !== null 
                 ? [ $this->child->createElement() ]
