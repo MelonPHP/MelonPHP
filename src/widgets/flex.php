@@ -8,7 +8,6 @@ abstract class FlexWidget extends Widget {
     public function __construct(
         public String|Null $crossAxisAlign = null,
         public String|Null $mainAxisAlign = null,
-        public Edges|Null $margin = null,
         public Array $children,
     ) { }
 
@@ -47,11 +46,8 @@ abstract class FlexWidget extends Widget {
         $styles = [];
 
         $styles[] = $this->getFlexStyle();
-
         $idStyle = $this->getIdStyle($id);
-        if ($this->margin != null) {
-            $idStyle->styles[] = $this->margin;
-        }
+
         $styles[] = $idStyle;
 
         return new Element(
