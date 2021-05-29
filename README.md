@@ -6,7 +6,7 @@
 
 ### Controller
 
-```
+```php
 class MainDisplayController extends Controller {
     public String|Null $name;
 
@@ -19,7 +19,7 @@ class MainDisplayController extends Controller {
 
 ### Display
 
-```
+```php
 class MainDisplay extends DisplayWidget {
     private MainDisplayController $controller;
 
